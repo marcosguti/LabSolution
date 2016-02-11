@@ -2,7 +2,7 @@ package controller;
 
 import java.util.List;
 
-import com.fpmislata.persistencia.hibernate.util.BussinessException;
+import hibernateUtil.BussinessException;
 
 import clases.Paciente;
 import dao.PacienteDAO;

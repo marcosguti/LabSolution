@@ -4,9 +4,9 @@
  */
 package dao;
 
-import com.fpmislata.persistencia.hibernate.util.BussinessException;
-import com.fpmislata.persistencia.hibernate.util.BussinessMessage;
-import com.fpmislata.persistencia.hibernate.util.HibernateUtil;
+import hibernateUtil.BussinessException;
+import hibernateUtil.BussinessMessage;
+import hibernateUtil.HibernateUtil;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
