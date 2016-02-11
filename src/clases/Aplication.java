@@ -5,6 +5,7 @@
 package clases;
 
 import facturacion.Interfaz_principal;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 /**
  *
@@ -18,6 +19,7 @@ public class Aplication {
    
     public static void main(String[] args) {
        new Interfaz_principal().setVisible(true);
+
     }
 
    

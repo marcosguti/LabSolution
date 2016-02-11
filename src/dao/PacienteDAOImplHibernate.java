@@ -8,7 +8,7 @@ import org.hibernate.Session;
 
 import clases.Paciente;
 
-import com.fpmislata.persistencia.hibernate.util.BussinessException;
+import hibernateUtil.BussinessException;
 
 
 public class PacienteDAOImplHibernate extends GenericDAOImplHibernate<Paciente, Integer> implements PacienteDAO {
