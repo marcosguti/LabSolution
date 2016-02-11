@@ -30,5 +30,10 @@ public class PacienteController {
 
     	return pacienteDAO.getByCed(cedula);
     }
+    public List< Paciente >getAll( ) throws BussinessException {
+
+    	return pacienteDAO.findAll();
+    }
+ 
 
 }
