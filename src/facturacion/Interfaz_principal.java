@@ -32,6 +32,8 @@ control_existencias ctrl = new control_existencias();
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        item_venta = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -40,8 +42,6 @@ control_existencias ctrl = new control_existencias();
         Buscararticulos = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        item_venta = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
@@ -51,7 +51,22 @@ control_existencias ctrl = new control_existencias();
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jDesktopPane1.setBackground(java.awt.Color.lightGray);
+        jMenu3.setBorder(new javax.swing.border.MatteBorder(null));
+        jMenu3.setText("Reporte");
+        jMenu3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
+        jMenu3.setPreferredSize(new java.awt.Dimension(200, 50));
+
+        item_venta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        item_venta.setText("Crear");
+        item_venta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        item_venta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                item_ventaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(item_venta);
+
+        jMenuBar1.add(jMenu3);
 
         jMenu1.setBorder(new javax.swing.border.MatteBorder(null));
         jMenu1.setText("Paciente");
@@ -86,7 +101,7 @@ control_existencias ctrl = new control_existencias();
         jMenu2.setPreferredSize(new java.awt.Dimension(200, 50));
 
         jMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jMenuItem3.setText("Registar");
+        jMenuItem3.setText("Crear");
         jMenuItem3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,7 +111,7 @@ control_existencias ctrl = new control_existencias();
         jMenu2.add(jMenuItem3);
 
         Buscararticulos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Buscararticulos.setText("Lista de articulos");
+        Buscararticulos.setText("Editar");
         Buscararticulos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Buscararticulos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,23 +142,6 @@ control_existencias ctrl = new control_existencias();
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setBorder(new javax.swing.border.MatteBorder(null));
-        jMenu3.setText("Examen");
-        jMenu3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
-        jMenu3.setPreferredSize(new java.awt.Dimension(200, 50));
-
-        item_venta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        item_venta.setText("Nueva venta");
-        item_venta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        item_venta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                item_ventaActionPerformed(evt);
-            }
-        });
-        jMenu3.add(item_venta);
-
-        jMenuBar1.add(jMenu3);
-
         jMenu4.setBorder(new javax.swing.border.MatteBorder(null));
         jMenu4.setText("Consultas");
         jMenu4.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
@@ -162,7 +160,7 @@ control_existencias ctrl = new control_existencias();
         jMenuBar1.add(jMenu4);
 
         jMenu5.setBorder(new javax.swing.border.MatteBorder(null));
-        jMenu5.setText("Proveedores");
+        jMenu5.setText("Finanzas");
         jMenu5.setFont(new java.awt.Font("Segoe UI Semibold", 1, 24)); // NOI18N
         jMenu5.setPreferredSize(new java.awt.Dimension(200, 50));
 
@@ -199,7 +197,7 @@ control_existencias ctrl = new control_existencias();
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -323,7 +321,7 @@ control_existencias ctrl = new control_existencias();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Buscararticulos;
     private javax.swing.JMenuItem item_venta;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    public javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
