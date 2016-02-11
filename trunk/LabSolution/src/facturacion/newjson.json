@@ -1,0 +1,10 @@
+/* 
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+{
+    "name": "eimar"
+}
+jdbc:mysql://localhost/facturacion
+con = DriverManager.getConnection(url,"root","12345");
