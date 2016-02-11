@@ -4,6 +4,14 @@
  */
 package facturacion;
 
+import clases.Paciente;
+import controller.PacienteController;
+import dao.PacienteDAOImplHibernate;
+import hibernateUtil.BussinessException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,11 +31,23 @@ public class Interfaz_buscarclientes extends javax.swing.JInternalFrame {
               
     
      public void mostrar_tabla(){
+         
+         PacienteController pacienteController= new PacienteController();
         control_cliente control = new control_cliente("Documento","Tipo de documento","Nombres","Apellidos","Direccion","Ciudad","telefono");       
-        String[] columnas = {"Documento","Tipo de documento","Nombres","Apellidos","Direccion","Ciudad","Telefono"};
+        String[] columnas = {"Nombres","Apellidos","Cedula","Edad","Telefono"};
+        List<Paciente> pacientes=new ArrayList<Paciente>();
+        try {
+           pacientes= pacienteController.getAll();
+        } catch (BussinessException ex) {
+            Logger.getLogger(Interfaz_buscarclientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
         datostabla = control.consulta_clientes();
-        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
-        jTable1.setModel(datos);
+        Paciente  [pacientes.size()] columns ;
+        for (Paciente paciente : pacientes) {
+             
+         }
+//        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
+//        jTable1.setModel(datos);
 
 
 }
