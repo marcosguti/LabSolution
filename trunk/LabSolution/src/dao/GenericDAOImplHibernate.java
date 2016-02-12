@@ -208,12 +208,13 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements
 	@Override
 	public List<T> findAll() throws BussinessException {
 		Session session = sessionFactory.getCurrentSession();
-		try {
+		session.beginTransaction();
+                try {
 
 			Query query = session.createQuery("SELECT e FROM "
-					+ getEntityClass().getName() + " e");
+					+ getEntityClass().getSimpleName() + " e");
 			List<T> entities = query.list();
-
+                        session.getTransaction().commit();
 			return entities;
 		} catch (javax.validation.ConstraintViolationException cve) {
 			try {
