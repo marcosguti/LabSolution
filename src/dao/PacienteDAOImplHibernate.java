@@ -17,6 +17,7 @@ public class PacienteDAOImplHibernate extends GenericDAOImplHibernate<Paciente, 
 	public List< Paciente> getByCed(String cedula) throws BussinessException {
 		
 		Session session = sessionFactory.getCurrentSession();
+                        session.beginTransaction();
 		try {
 			Query query = 
 					session.createQuery(

@@ -22,7 +22,7 @@ public class Interfaz_buscarclientes extends javax.swing.JInternalFrame {
 
    
     private Object[][] datostabla;    
-    control_existencias ctr = new control_existencias();
+    
     public Interfaz_buscarclientes() {
         initComponents();
         mostrar_tabla();
@@ -30,10 +30,8 @@ public class Interfaz_buscarclientes extends javax.swing.JInternalFrame {
     }
               
     
-     public void mostrar_tabla(){
-         
-         PacienteController pacienteController= new PacienteController();
-        control_cliente control = new control_cliente("Documento","Tipo de documento","Nombres","Apellidos","Direccion","Ciudad","telefono");       
+     public void mostrar_tabla(){PacienteController pacienteController= new PacienteController();
+//        control_cliente control = new control_cliente("Documento","Tipo de documento","Nombres","Apellidos","Direccion","Ciudad","telefono");       
         String[] columnas = {"Nombres","Apellidos","Cedula","Edad","Telefono"};
         List<Paciente> pacientes=new ArrayList<Paciente>();
         try {
@@ -41,11 +39,23 @@ public class Interfaz_buscarclientes extends javax.swing.JInternalFrame {
         } catch (BussinessException ex) {
             Logger.getLogger(Interfaz_buscarclientes.class.getName()).log(Level.SEVERE, null, ex);
         }
-        datostabla = control.consulta_clientes();
-        Paciente  [pacientes.size()] columns ;
+//        datostabla = control.consulta_clientes();
+     ;
+     datostabla= new Object[pacientes.size()][5];
+     int i=0;
         for (Paciente paciente : pacientes) {
-             
-         }
+            
+            datostabla[i][0] = paciente.getNombres();
+            datostabla[i][1] = paciente.getApellidos();
+            datostabla[i][2] = paciente.getCedula();
+            datostabla[i][3]= paciente.getEdad();
+            datostabla[i][4] = paciente.getTelefono();
+            
+            i++;
+        }
+        DefaultTableModel model = new DefaultTableModel(datostabla, columnas);
+        jTable1.setModel(model);
+  
 //        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
 //        jTable1.setModel(datos);
 
@@ -156,11 +166,12 @@ public class Interfaz_buscarclientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_buscarclienteKeyReleased
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    String[] columnas = {"Documento","Tipo de documento","Nombres","Apellidos","Direccion","Ciudad","Telefono"};
-        datostabla = ctr.datos_cliente(buscarcliente.getText());
-        DefaultTableModel datostcli = new DefaultTableModel(datostabla,columnas);
-        jTable1.setModel(datostcli);
-        buscarcliente.setText("");
+//   String[] columnas = {"Documento","Tipo de documento","Nombres","Apellidos","Direccion","Ciudad","Telefono"};
+//        datostabla = ctr.datos_cliente(buscarcliente.getText());
+//        DefaultTableModel datostcli = new DefaultTableModel(datostabla,columnas);
+//        jTable1.setModel(datostcli);
+//        buscarcliente.setText("");
+        
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
