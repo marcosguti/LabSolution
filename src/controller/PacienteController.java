@@ -6,7 +6,7 @@ import hibernateUtil.BussinessException;
 
 import clases.Paciente;
 import dao.PacienteDAO;
-import dao.PacienteDAOImplHibernate;
+import dao.PacienteDAOImpl;
 
 
 
@@ -18,7 +18,7 @@ public class PacienteController {
     PacienteDAO pacienteDAO;
 
     public PacienteController() {
-        pacienteDAO=new PacienteDAOImplHibernate();
+        pacienteDAO=new PacienteDAOImpl();
     }
 
     public void guardar(Paciente paciente) throws BussinessException {

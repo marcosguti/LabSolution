@@ -6,7 +6,7 @@ package facturacion;
 
 import clases.Paciente;
 import controller.PacienteController;
-import dao.PacienteDAOImplHibernate;
+import dao.PacienteDAOImpl;
 import hibernateUtil.BussinessException;
 import java.util.ArrayList;
 import java.util.List;
