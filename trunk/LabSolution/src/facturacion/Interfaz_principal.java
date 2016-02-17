@@ -39,6 +39,7 @@ control_existencias ctrl = new control_existencias();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
         Buscararticulos = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
@@ -52,7 +53,7 @@ control_existencias ctrl = new control_existencias();
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jMenu3.setBorder(new javax.swing.border.MatteBorder(null));
-        jMenu3.setText("Reporte");
+        jMenu3.setText("Resultado");
         jMenu3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
         jMenu3.setPreferredSize(new java.awt.Dimension(200, 50));
 
@@ -101,7 +102,7 @@ control_existencias ctrl = new control_existencias();
         jMenu2.setPreferredSize(new java.awt.Dimension(200, 50));
 
         jMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jMenuItem3.setText("Crear");
+        jMenuItem3.setText("Nueva Area");
         jMenuItem3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +110,16 @@ control_existencias ctrl = new control_existencias();
             }
         });
         jMenu2.add(jMenuItem3);
+
+        jMenuItem9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jMenuItem9.setText("Nueva Prueba");
+        jMenuItem9.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem9);
 
         Buscararticulos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Buscararticulos.setText("Editar");
@@ -222,9 +233,9 @@ control_existencias ctrl = new control_existencias();
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
        
-        Interfaz_articulo art = new Interfaz_articulo();
-        jDesktopPane1.add(art);
-        art.show();       
+        Interfaz_GrupoPruebas gp = new Interfaz_GrupoPruebas();
+        jDesktopPane1.add(gp);
+        gp.show();       
             
         
     }//GEN-LAST:event_jMenuItem3ActionPerformed
@@ -284,6 +295,12 @@ control_existencias ctrl = new control_existencias();
     dev.show();
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+       Interfaz_Prueba interfaz_Prueba= new Interfaz_Prueba();
+       jDesktopPane1.add(interfaz_Prueba);
+       interfaz_Prueba.show();
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -336,5 +353,6 @@ control_existencias ctrl = new control_existencias();
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 }

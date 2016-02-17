@@ -3,20 +3,20 @@ package clases;
 import javax.persistence.*;
 
 
-@Entity
+//@Entity
 public class Paciente {
-	  @Id
-	    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="paciente_id_seq")
-	    @SequenceGenerator(name="paciente_id_seq", sequenceName="paciente_id_seq", allocationSize=1)
-	    @Column(name = "id")
-	public int id;
-	public String cedula;
-	public String nombres;
-	public String apellidos;
-	public String telefono;
-	public String sexo;
+//	  @Id
+//	    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="paciente_id_seq")
+//	    @SequenceGenerator(name="paciente_id_seq", sequenceName="paciente_id_seq", allocationSize=1)
+//	    @Column(name = "id")
+	private int id;
+	private String cedula;
+	private String nombres;
+	private String apellidos;
+	private String telefono;
+	private String sexo;
 
-	public int edad;
+	private int edad;
 	
 	public Paciente(){}
 	

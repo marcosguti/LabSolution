@@ -11,7 +11,7 @@ import clases.Paciente;
 import hibernateUtil.BussinessException;
 
 
-public class PacienteDAOImplHibernate extends GenericDAOImplHibernate<Paciente, Integer> implements PacienteDAO {
+public class PacienteDAOImpl extends GenericDAOImplHibernate<Paciente, Integer> implements PacienteDAO {
 
 	@Override
 	public List< Paciente> getByCed(String cedula) throws BussinessException {
