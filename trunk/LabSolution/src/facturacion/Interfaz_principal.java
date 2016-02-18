@@ -53,7 +53,7 @@ control_existencias ctrl = new control_existencias();
 
         };
         jScrollPane1 = new javax.swing.JScrollPane(new TreeInterfazPrincipal());
-        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuPrincipal = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         item_venta = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
@@ -73,12 +73,13 @@ control_existencias ctrl = new control_existencias();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setPreferredSize(new java.awt.Dimension(1500, 800));
 
         jDesktopPane1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jScrollPane1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jMenuBar1.setName(""); // NOI18N
+        jMenuPrincipal.setName(""); // NOI18N
 
         jMenu3.setBorder(new javax.swing.border.MatteBorder(null));
         jMenu3.setText("Resultado");
@@ -95,7 +96,7 @@ control_existencias ctrl = new control_existencias();
         });
         jMenu3.add(item_venta);
 
-        jMenuBar1.add(jMenu3);
+        jMenuPrincipal.add(jMenu3);
 
         jMenu1.setBorder(new javax.swing.border.MatteBorder(null));
         jMenu1.setText("Paciente");
@@ -122,7 +123,7 @@ control_existencias ctrl = new control_existencias();
         });
         jMenu1.add(jMenuItem1);
 
-        jMenuBar1.add(jMenu1);
+        jMenuPrincipal.add(jMenu1);
 
         jMenu2.setBorder(new javax.swing.border.MatteBorder(null));
         jMenu2.setText("Prueba");
@@ -179,7 +180,7 @@ control_existencias ctrl = new control_existencias();
         });
         jMenu2.add(jMenuItem8);
 
-        jMenuBar1.add(jMenu2);
+        jMenuPrincipal.add(jMenu2);
 
         jMenu4.setBorder(new javax.swing.border.MatteBorder(null));
         jMenu4.setText("Consultas");
@@ -196,7 +197,7 @@ control_existencias ctrl = new control_existencias();
         });
         jMenu4.add(jMenuItem7);
 
-        jMenuBar1.add(jMenu4);
+        jMenuPrincipal.add(jMenu4);
 
         jMenu5.setBorder(new javax.swing.border.MatteBorder(null));
         jMenu5.setText("Finanzas");
@@ -223,9 +224,9 @@ control_existencias ctrl = new control_existencias();
         });
         jMenu5.add(jMenuItem5);
 
-        jMenuBar1.add(jMenu5);
+        jMenuPrincipal.add(jMenu5);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuPrincipal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -384,7 +385,6 @@ Interfaz_buscarclientes buscar = new Interfaz_buscarclientes();
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
@@ -394,6 +394,7 @@ Interfaz_buscarclientes buscar = new Interfaz_buscarclientes();
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuBar jMenuPrincipal;
     public static javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
