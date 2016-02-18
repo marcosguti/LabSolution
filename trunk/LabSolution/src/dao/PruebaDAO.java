@@ -7,11 +7,13 @@ package dao;
 
 import clases.Paciente;
 import clases.Prueba;
+import hibernateUtil.BussinessException;
+import java.util.List;
 
 /**
  *
  * @author marcosguti
  */
 public interface PruebaDAO extends GenericDAO<Prueba, Integer>  {
-    
+     public List<Prueba> getPruebas(String nombreGrupoPruebas) throws BussinessException;
 }

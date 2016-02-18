@@ -7,11 +7,18 @@ package dao;
 
 import clases.GrupoPruebas;
 import clases.Paciente;
+import clases.Prueba;
+import hibernateUtil.BussinessException;
+import java.util.List;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 /**
  *
  * @author marcosguti
  */
 public class GrupoPruebasDAOImpl extends GenericDAOImplHibernate<GrupoPruebas, Integer> implements GrupoPruebasDAO  {
+
+    
     
 }

@@ -4,8 +4,15 @@
  */
 package facturacion;
 
+import hibernateUtil.BussinessException;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -30,7 +37,22 @@ control_existencias ctrl = new control_existencias();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jDesktopPane1 = new javax.swing.JDesktopPane(){
+
+            ImageIcon icon = new ImageIcon("dinero.jpg");
+            Image image = icon.getImage();
+
+            //    Image newimage = image.getScaledInstance(400, 300, Image.SCALE_SMOOTH);
+
+            @Override
+            protected void paintComponent(Graphics g)
+            {
+                super.paintComponent(g);
+                g.drawImage(image, 0, 0, this);
+            }
+
+        };
+        jScrollPane1 = new javax.swing.JScrollPane(new TreeInterfazPrincipal());
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         item_venta = new javax.swing.JMenuItem();
@@ -51,6 +73,12 @@ control_existencias ctrl = new control_existencias();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jDesktopPane1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jScrollPane1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jMenuBar1.setName(""); // NOI18N
 
         jMenu3.setBorder(new javax.swing.border.MatteBorder(null));
         jMenu3.setText("Resultado");
@@ -203,12 +231,19 @@ control_existencias ctrl = new control_existencias();
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1500, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1236, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jDesktopPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -242,7 +277,7 @@ control_existencias ctrl = new control_existencias();
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
             
-               
+          jMenuItem4.setEnabled(false);
           Interfaz_Pacientes cli = new Interfaz_Pacientes();       
           jDesktopPane1.add(cli);
           cli.show();          
@@ -257,18 +292,22 @@ control_existencias ctrl = new control_existencias();
     }//GEN-LAST:event_BuscararticulosActionPerformed
 
     private void item_ventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_ventaActionPerformed
-     String venta = JOptionPane.showInputDialog(this,"Ingrese el documento del cliente: ",JOptionPane.OK_OPTION);
-       if(ctrl.existe_cliente(venta))
-       {
-        Interfaz_factura fact = new Interfaz_factura(ctrl);
-        jDesktopPane1.add(fact);
-        fact.show(); 
-       }
-       else
-       {
-              
-          JOptionPane.showMessageDialog(null,"El cliente no existe, debe registrarlo","Mensaje",JOptionPane.QUESTION_MESSAGE);  
-       }
+
+Interfaz_buscarclientes buscar = new Interfaz_buscarclientes();
+        jDesktopPane1.add(buscar);
+        buscar.show(); 
+//     String venta = JOptionPane.showInputDialog(this,"Ingrese el documento del cliente: ",JOptionPane.OK_OPTION);
+//       if(ctrl.existe_cliente(venta))
+//       {
+//        Interfaz_factura fact = new Interfaz_factura(ctrl);
+//        jDesktopPane1.add(fact);
+//        fact.show(); 
+//       }
+//       else
+//       {
+//              
+//          JOptionPane.showMessageDialog(null,"El cliente no existe, debe registrarlo","Mensaje",JOptionPane.QUESTION_MESSAGE);  
+//       }
     }//GEN-LAST:event_item_ventaActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
@@ -299,6 +338,7 @@ control_existencias ctrl = new control_existencias();
        Interfaz_Prueba interfaz_Prueba= new Interfaz_Prueba();
        jDesktopPane1.add(interfaz_Prueba);
        interfaz_Prueba.show();
+      
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     /**
@@ -338,7 +378,7 @@ control_existencias ctrl = new control_existencias();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Buscararticulos;
     private javax.swing.JMenuItem item_venta;
-    public javax.swing.JDesktopPane jDesktopPane1;
+    public static javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -348,11 +388,12 @@ control_existencias ctrl = new control_existencias();
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
+    public static javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    public static javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

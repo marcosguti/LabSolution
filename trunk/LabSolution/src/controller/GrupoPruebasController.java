@@ -6,6 +6,7 @@
 package controller;
 
 import clases.GrupoPruebas;
+import clases.Prueba;
 import dao.GrupoPruebasDAO;
 import dao.GrupoPruebasDAOImpl;
 import hibernateUtil.BussinessException;
@@ -33,4 +34,6 @@ public class GrupoPruebasController {
 
     	return grupoPruebasDAO.findAll();
     }
+    
+    
 }
