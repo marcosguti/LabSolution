@@ -51,7 +51,8 @@ public final class Interfaz_GrupoPruebas extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Registrar Area");
+        setTitle("Registrar Area de Pruebas");
+        setToolTipText("");
 
         registrarButton.setText("Registrar");
         registrarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -179,6 +180,7 @@ public final class Interfaz_GrupoPruebas extends javax.swing.JInternalFrame {
 						JOptionPane.INFORMATION_MESSAGE);
 				limpiar();
 				bloquear_cajas();
+                                  Interfaz_principal.jScrollPane1.setViewportView(new TreeInterfazPrincipal());
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(this,
 						"Error al registrar el cliente");

@@ -7,11 +7,14 @@ package dao;
 
 import clases.GrupoPruebas;
 import clases.Paciente;
+import clases.Prueba;
+import hibernateUtil.BussinessException;
+import java.util.List;
 
 /**
  *
  * @author marcosguti
  */
 public interface GrupoPruebasDAO extends GenericDAO<GrupoPruebas, Integer> {
-    
+   
 }

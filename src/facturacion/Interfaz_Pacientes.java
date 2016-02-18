@@ -233,6 +233,7 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
 
     public void limpiar()
     {
+        
        jtfDocumento.setText("");
        comboTipoDoc.setName("");
        jtfNombre.setText("");
@@ -240,7 +241,9 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
 //       dirclientejTextField4.setText("");
         
     }
-    
+   public void habilitarMenu(javax.swing.JMenuItem jmenu) {
+       jmenu.setEnabled(true);
+   }
     public void  bloquear_cajas()
     {
        jtfDocumento.setEnabled(false);
@@ -309,6 +312,8 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_registrarButtonActionPerformed
 
     private void salirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirButtonActionPerformed
+        Interfaz_buscarclientes.jButtonRegistrar.setEnabled(true);
+        Interfaz_principal.jMenuItem4.setEnabled(true);
         this.dispose();
     }//GEN-LAST:event_salirButtonActionPerformed
 

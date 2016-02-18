@@ -32,4 +32,7 @@ public class PruebaController {
 
     	return grupoPruebasDAO.findAll();
     }
+    public List<Prueba> getPruebas(String nombre) throws BussinessException{
+        return grupoPruebasDAO.getPruebas(nombre);
+    }
 }

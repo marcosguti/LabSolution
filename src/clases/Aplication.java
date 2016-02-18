@@ -25,9 +25,11 @@ public class Aplication {
     public static void main(String[] args) throws BussinessException {
        new Interfaz_principal().setVisible(true);
 //            GrupoPruebasController grupoPruebasController = new GrupoPruebasController();
+//        PruebaController pruebaController=new PruebaController();
 //            GrupoPruebas grupoPruebas= new GrupoPruebas("HEMATOLOGIA");
 //            grupoPruebasController.guardar(grupoPruebas);
-//             List<GrupoPruebas> a= grupoPruebasController.getAll();
+//             List<Prueba> a= pruebaController.getPruebas("HEMATOLOGIA");
+//             System.out.println(a.size());
 //		GrupoPruebas b= a.get(0);
 //                PruebaController pruebaController= new PruebaController();
 //                Prueba prueba=new Prueba("TGP", "lb/s", "21-22", b, 2000);

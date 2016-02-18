@@ -69,7 +69,7 @@ public final class Interfaz_Prueba extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Registrar Paciente");
+        setTitle("Registrar Prueba");
 
         registrarButton.setText("Registrar");
         registrarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -240,9 +240,11 @@ public final class Interfaz_Prueba extends javax.swing.JInternalFrame {
     public void limpiar()
     {
        jtfLimiteInf.setText("");
+       jtfLimiteSup.setText("");
        comboGrupoPruebas.setName("");
        jtfNombre.setText("");
        jtfUnidad.setText("");
+       jtfPrecio.setText("");
 //       dirclientejTextField4.setText("");
         
     }
@@ -250,6 +252,7 @@ public final class Interfaz_Prueba extends javax.swing.JInternalFrame {
     public void  bloquear_cajas()
     {
        jtfLimiteInf.setEnabled(false);
+       jtfLimiteSup.setEnabled(false);
        comboGrupoPruebas.setEnabled(false);
        jtfNombre.setEnabled(false);
        jtfUnidad.setEnabled(false);
@@ -264,6 +267,7 @@ public final class Interfaz_Prueba extends javax.swing.JInternalFrame {
     public void  desbloquear()
     {
        jtfLimiteInf.setEnabled(true);
+       jtfLimiteSup.setEnabled(true);
        comboGrupoPruebas.setEnabled(true);
        jtfNombre.setEnabled(true);
        jtfUnidad.setEnabled(true);
@@ -301,6 +305,8 @@ public final class Interfaz_Prueba extends javax.swing.JInternalFrame {
 						JOptionPane.INFORMATION_MESSAGE);
 				limpiar();
 				bloquear_cajas();
+//                                Interfaz_principal.jScrollPane1.removeAll();
+                                Interfaz_principal.jScrollPane1.setViewportView(new TreeInterfazPrincipal());
 			} catch (Exception e) {
                             e.printStackTrace();
 				JOptionPane.showMessageDialog(this,
