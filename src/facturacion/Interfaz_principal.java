@@ -7,6 +7,8 @@ package facturacion;
 import hibernateUtil.BussinessException;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -53,6 +55,11 @@ control_existencias ctrl = new control_existencias();
 
         };
         jScrollPane1 = new javax.swing.JScrollPane(new TreeInterfazPrincipal());
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jButtonBuscar = new javax.swing.JButton();
+        jtfBuscarPaciente = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jMenuPrincipal = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         item_venta = new javax.swing.JMenuItem();
@@ -78,6 +85,15 @@ control_existencias ctrl = new control_existencias();
         jDesktopPane1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jScrollPane1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jScrollPane2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jScrollPane2.setViewportView(new JTablePacientes());
+
+        jButtonBuscar.setText("Buscar");
+
+        jLabel1.setText("PRUEBAS");
+
+        jLabel2.setText("PACIENTES");
 
         jMenuPrincipal.setName(""); // NOI18N
 
@@ -232,19 +248,43 @@ control_existencias ctrl = new control_existencias();
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButtonBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jtfBuscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(26, 26, 26))
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1247, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDesktopPane1)
+                    .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 736, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtfBuscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonBuscar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -252,7 +292,7 @@ control_existencias ctrl = new control_existencias();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-       Interfaz_buscarclientes buscar = new Interfaz_buscarclientes();
+       Interfaz_BuscarPacientes buscar = new Interfaz_BuscarPacientes();
         jDesktopPane1.add(buscar);
         buscar.show(); 
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -294,7 +334,7 @@ control_existencias ctrl = new control_existencias();
 
     private void item_ventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_ventaActionPerformed
 
-Interfaz_buscarclientes buscar = new Interfaz_buscarclientes();
+Interfaz_BuscarPacientes buscar = new Interfaz_BuscarPacientes();
         jDesktopPane1.add(buscar);
         buscar.show(); 
 //     String venta = JOptionPane.showInputDialog(this,"Ingrese el documento del cliente: ",JOptionPane.OK_OPTION);
@@ -379,7 +419,10 @@ Interfaz_buscarclientes buscar = new Interfaz_buscarclientes();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Buscararticulos;
     private javax.swing.JMenuItem item_venta;
+    public static javax.swing.JButton jButtonBuscar;
     public static javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -396,5 +439,7 @@ Interfaz_buscarclientes buscar = new Interfaz_buscarclientes();
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuBar jMenuPrincipal;
     public static javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JScrollPane jScrollPane2;
+    public static javax.swing.JTextField jtfBuscarPaciente;
     // End of variables declaration//GEN-END:variables
 }

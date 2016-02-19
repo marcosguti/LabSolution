@@ -34,6 +34,8 @@ public class GrupoPruebasController {
 
     	return grupoPruebasDAO.findAll();
     }
-    
+       public boolean delete(String nombre) throws BussinessException{
+    return grupoPruebasDAO.delete(nombre);
+    }
     
 }

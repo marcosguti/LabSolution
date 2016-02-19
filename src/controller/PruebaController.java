@@ -17,22 +17,26 @@ import java.util.List;
  */
 public class PruebaController {
     
-    PruebaDAO grupoPruebasDAO;
+    PruebaDAO pruebaDAO;
 
     public PruebaController() {
-        grupoPruebasDAO=new PruebaDAOImpl();
+        pruebaDAO=new PruebaDAOImpl();
     }
 
     public void guardar(Prueba grupoPruebas) throws BussinessException {
 
-    	grupoPruebasDAO.saveOrUpdate(grupoPruebas);
+    	pruebaDAO.saveOrUpdate(grupoPruebas);
     }
     
     public List< Prueba >getAll( ) throws BussinessException {
 
-    	return grupoPruebasDAO.findAll();
+    	return pruebaDAO.findAll();
     }
     public List<Prueba> getPruebas(String nombre) throws BussinessException{
-        return grupoPruebasDAO.getPruebas(nombre);
+        return pruebaDAO.getPruebas(nombre);
+    }
+    
+    public boolean delete(String nombre) throws BussinessException{
+    return pruebaDAO.delete(nombre);
     }
 }
