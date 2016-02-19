@@ -43,4 +43,32 @@ Session session = sessionFactory.getCurrentSession();
                 }    
         return null;
     }
+
+    @Override
+    public boolean delete(String nombre) throws BussinessException {
+        Session session = sessionFactory.getCurrentSession();
+                        session.beginTransaction();
+		try {
+			Query query = 
+					session.createQuery(
+							"SELECT e FROM Prueba e WHERE e.nombre = ?");
+			query.setParameter(0, nombre);
+			Prueba prueba = (Prueba)query.uniqueResult();
+                        session.getTransaction().commit();
+			if(prueba!=null)
+                        delete(prueba.getId());
+			
+			
+			
+//			session.beginTransaction();
+//			Paciente entity = (Paciente) session.get(, cedula);
+//			session.getTransaction().commit();
+//
+//			return entity;
+		} catch(Exception w){
+                  w.printStackTrace();
+                  return false;
+                }    
+       return true;
+    }
 }

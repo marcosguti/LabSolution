@@ -16,5 +16,5 @@ import java.util.List;
  * @author marcosguti
  */
 public interface GrupoPruebasDAO extends GenericDAO<GrupoPruebas, Integer> {
-   
+   public boolean delete(String nombre);
 }

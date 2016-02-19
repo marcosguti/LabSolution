@@ -299,6 +299,7 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
 						JOptionPane.INFORMATION_MESSAGE);
 				limpiar();
 				bloquear_cajas();
+                                Interfaz_principal.jScrollPane2.setViewportView(new JTablePacientes());
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(this,
 						"Error al registrar el cliente");
@@ -312,7 +313,9 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_registrarButtonActionPerformed
 
     private void salirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirButtonActionPerformed
-        Interfaz_buscarclientes.jButtonRegistrar.setEnabled(true);
+        if( Interfaz_BuscarPacientes.jButtonRegistrar!=null)
+        Interfaz_BuscarPacientes.jButtonRegistrar.setEnabled(true);
+        if( Interfaz_principal.jMenuItem4!=null)
         Interfaz_principal.jMenuItem4.setEnabled(true);
         this.dispose();
     }//GEN-LAST:event_salirButtonActionPerformed

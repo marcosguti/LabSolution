@@ -19,6 +19,35 @@ import org.hibernate.Session;
  */
 public class GrupoPruebasDAOImpl extends GenericDAOImplHibernate<GrupoPruebas, Integer> implements GrupoPruebasDAO  {
 
+    @Override
+    public boolean delete(String nombre) {
+      Session session = sessionFactory.getCurrentSession();
+                        session.beginTransaction();
+		try {
+			Query query = 
+					session.createQuery(
+							"SELECT e FROM GrupoPruebas e WHERE e.nombre = ?");
+			query.setParameter(0, nombre);
+			GrupoPruebas grupoPrueba = (GrupoPruebas)query.uniqueResult();
+                        session.getTransaction().commit();
+			if(grupoPrueba!=null)
+                        delete(grupoPrueba.getId());
+			
+			
+			
+//			session.beginTransaction();
+//			Paciente entity = (Paciente) session.get(, cedula);
+//			session.getTransaction().commit();
+//
+//			return entity;
+		} catch(Exception w){
+                  w.printStackTrace();
+                  return false;
+                }    
+       return true;
+        
+    }
+
     
     
 }
