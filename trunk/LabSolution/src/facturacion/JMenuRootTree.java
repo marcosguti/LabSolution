@@ -35,7 +35,7 @@ public class JMenuRootTree extends JPopupMenu {
      
     }
    private void jMenuItemActionPerformed(java.awt.event.ActionEvent evt) {                                           
-            
+        Interfaz_principal.jMenuItemPruebaNuevaArea.setEnabled(false);
         Interfaz_GrupoPruebas interfaz_GrupoPruebas= new Interfaz_GrupoPruebas();
        jDesktopPane1.add(interfaz_GrupoPruebas);
        interfaz_GrupoPruebas.show();          

@@ -17,4 +17,5 @@ import java.util.List;
 public interface PruebaDAO extends GenericDAO<Prueba, Integer>  {
      public List<Prueba> getPruebas(String nombreGrupoPruebas) throws BussinessException;
       public boolean delete(String nombre) throws BussinessException;
+      public Prueba get(String nombre) throws BussinessException;
 }

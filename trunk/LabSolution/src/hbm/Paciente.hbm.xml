@@ -31,5 +31,8 @@
 		<property name="telefono" type="string">
 			<column name="telefono" length="20" />
 		</property>
+                <property name="direccion" type="string">
+			<column name="direccion" length="250" />
+		</property>
 	</class>
 </hibernate-mapping>

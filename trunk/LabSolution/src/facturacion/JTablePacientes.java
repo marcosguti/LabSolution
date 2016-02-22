@@ -12,7 +12,7 @@ package facturacion;
 import clases.Paciente;
 import controller.PacienteController;
 import dao.PacienteDAOImpl;
-import static facturacion.Interfaz_principal.jMenuItem4;
+import static facturacion.Interfaz_principal.jMenuItemPacienteNuevo;
 import hibernateUtil.BussinessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -114,6 +114,7 @@ public class JTablePacientes extends javax.swing.JTable {
                 Interfaz_Resultado.jLabelSexoValor.setText(paciente.getSexo());
                 Interfaz_Resultado.jLabelTelefonoValor.setText(paciente.getTelefono());
                   Interfaz_Resultado.jLabelIDValor.setText(String.valueOf(paciente.getId()));
+                  Interfaz_Resultado.jLabelDireccionValor.setText(String.valueOf(paciente.getDireccion()));
                   jPopupMenu.add(jMenuItem);
                 jMenuItem.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {

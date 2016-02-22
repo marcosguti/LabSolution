@@ -62,23 +62,15 @@ public class Interfaz_principal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jMenuPrincipal = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
         jMenuItemResultadoNuevo = new javax.swing.JMenuItem();
         jMenuItemResultadoBuscar = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        Buscararticulos = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItemPacienteNuevo = new javax.swing.JMenuItem();
+        jMenuItemPacienteBuscar = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItemPruebaNuevaArea = new javax.swing.JMenuItem();
+        jMenuItemPruebaNuevaPrueba = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -97,12 +89,10 @@ public class Interfaz_principal extends javax.swing.JFrame {
 
         jLabel2.setText("PACIENTES");
 
+        jMenuPrincipal.setEnabled(false);
         jMenuPrincipal.setName(""); // NOI18N
 
-        jMenu3.setBorder(new javax.swing.border.MatteBorder(null));
-        jMenu3.setText("Resultado");
-        jMenu3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
-        jMenu3.setPreferredSize(new java.awt.Dimension(200, 50));
+        jMenu4.setText("Resultado");
 
         jMenuItemResultadoNuevo.setText("Nuevo");
         jMenuItemResultadoNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -110,145 +100,52 @@ public class Interfaz_principal extends javax.swing.JFrame {
                 jMenuItemResultadoNuevoActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItemResultadoNuevo);
+        jMenu4.add(jMenuItemResultadoNuevo);
 
         jMenuItemResultadoBuscar.setText("Buscar");
-        jMenuItemResultadoBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemResultadoBuscarActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItemResultadoBuscar);
-
-        jMenuPrincipal.add(jMenu3);
-
-        jMenu1.setBorder(new javax.swing.border.MatteBorder(null));
-        jMenu1.setText("Paciente");
-        jMenu1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
-        jMenu1.setPreferredSize(new java.awt.Dimension(200, 50));
-
-        jMenuItem4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jMenuItem4.setText("Registrar");
-        jMenuItem4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem4);
-
-        jMenuItem1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jMenuItem1.setText("Buscar ");
-        jMenuItem1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
-
-        jMenuPrincipal.add(jMenu1);
-
-        jMenu2.setBorder(new javax.swing.border.MatteBorder(null));
-        jMenu2.setText("Prueba");
-        jMenu2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
-        jMenu2.setPreferredSize(new java.awt.Dimension(200, 50));
-
-        jMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jMenuItem3.setText("Nueva Area");
-        jMenuItem3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem3);
-
-        jMenuItem9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jMenuItem9.setText("Nueva Prueba");
-        jMenuItem9.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem9);
-
-        Buscararticulos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Buscararticulos.setText("Editar");
-        Buscararticulos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Buscararticulos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscararticulosActionPerformed(evt);
-            }
-        });
-        jMenu2.add(Buscararticulos);
-
-        jMenuItem6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jMenuItem6.setText("Actualizar stock");
-        jMenuItem6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem6);
-
-        jMenuItem8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jMenuItem8.setText("Devoluciones");
-        jMenuItem8.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem8);
-
-        jMenuPrincipal.add(jMenu2);
-
-        jMenu4.setBorder(new javax.swing.border.MatteBorder(null));
-        jMenu4.setText("Consultas");
-        jMenu4.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
-        jMenu4.setPreferredSize(new java.awt.Dimension(200, 50));
-
-        jMenuItem7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jMenuItem7.setText("Consulta facturas clientes");
-        jMenuItem7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem7);
+        jMenu4.add(jMenuItemResultadoBuscar);
 
         jMenuPrincipal.add(jMenu4);
 
-        jMenu5.setBorder(new javax.swing.border.MatteBorder(null));
-        jMenu5.setText("Finanzas");
-        jMenu5.setFont(new java.awt.Font("Segoe UI Semibold", 1, 24)); // NOI18N
-        jMenu5.setPreferredSize(new java.awt.Dimension(200, 50));
+        jMenu5.setText("Paciente");
 
-        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jMenuItem2.setText("Registrar proveedor");
-        jMenuItem2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemPacienteNuevo.setText("Nuevo");
+        jMenuItemPacienteNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMenuItemPacienteNuevoActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem2);
+        jMenu5.add(jMenuItemPacienteNuevo);
 
-        jMenuItem5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jMenuItem5.setText("Lista proveedores");
-        jMenuItem5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemPacienteBuscar.setText("Buscar");
+        jMenuItemPacienteBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                jMenuItemPacienteBuscarActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem5);
+        jMenu5.add(jMenuItemPacienteBuscar);
 
         jMenuPrincipal.add(jMenu5);
+
+        jMenu6.setText("Prueba");
+
+        jMenuItemPruebaNuevaArea.setText("Nueva Area");
+        jMenuItemPruebaNuevaArea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPruebaNuevaAreaActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItemPruebaNuevaArea);
+
+        jMenuItemPruebaNuevaPrueba.setText("Nueva Prueba");
+        jMenuItemPruebaNuevaPrueba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPruebaNuevaPruebaActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItemPruebaNuevaPrueba);
+
+        jMenuPrincipal.add(jMenu6);
 
         setJMenuBar(jMenuPrincipal);
 
@@ -264,7 +161,9 @@ public class Interfaz_principal extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jButtonBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -279,11 +178,11 @@ public class Interfaz_principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 736, Short.MAX_VALUE)
+                    .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 759, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(27, 27, 27)
                         .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jtfBuscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonBuscar))
@@ -299,88 +198,42 @@ public class Interfaz_principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        Interfaz_BuscarPacientes buscar = new Interfaz_BuscarPacientes();
-        jDesktopPane1.add(buscar);
-        buscar.show();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-
-        Interfaz_Proveedor prov = new Interfaz_Proveedor();
-
-        jDesktopPane1.add(prov);
-        prov.show();
-
-
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-
-        Interfaz_GrupoPruebas gp = new Interfaz_GrupoPruebas();
-        jDesktopPane1.add(gp);
-        gp.show();
-
-
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-
-        jMenuItem4.setEnabled(false);
-        Interfaz_Pacientes cli = new Interfaz_Pacientes();
-        jDesktopPane1.add(cli);
-        cli.show();
-
-
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void BuscararticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscararticulosActionPerformed
-        interfaz_buscararticulos bus = new interfaz_buscararticulos();
-        jDesktopPane1.add(bus);
-        bus.show();
-    }//GEN-LAST:event_BuscararticulosActionPerformed
-
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        Interfaz_buscarproveedor proveedor = new Interfaz_buscarproveedor();
-        jDesktopPane1.add(proveedor);
-        proveedor.show();
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
-
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        Interfaz_Resultado stock = new Interfaz_Resultado();
-        jDesktopPane1.add(stock);
-        stock.show();
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
-
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        interfaz_consultas consulta = new interfaz_consultas();
-        jDesktopPane1.add(consulta);
-        consulta.show();
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
-
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        Interfaz_devoluciones dev = new Interfaz_devoluciones();
-        jDesktopPane1.add(dev);
-        dev.show();
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
-
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        Interfaz_Prueba interfaz_Prueba = new Interfaz_Prueba();
-        jDesktopPane1.add(interfaz_Prueba);
-        interfaz_Prueba.show();
-
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
-
-    private void jMenuItemResultadoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemResultadoBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemResultadoBuscarActionPerformed
-
     private void jMenuItemResultadoNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemResultadoNuevoActionPerformed
         jMenuItemResultadoNuevo.setEnabled(false);
         Interfaz_Resultado res = new Interfaz_Resultado();
         jDesktopPane1.add(res);
         res.show();          // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemResultadoNuevoActionPerformed
+
+    private void jMenuItemPacienteNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPacienteNuevoActionPerformed
+        // TODO add your handling code here:}
+        jMenuItemPacienteNuevo.setEnabled(false);
+        Interfaz_Pacientes cli = new Interfaz_Pacientes();
+        jDesktopPane1.add(cli);
+        cli.show();
+    }//GEN-LAST:event_jMenuItemPacienteNuevoActionPerformed
+
+    private void jMenuItemPacienteBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPacienteBuscarActionPerformed
+        Interfaz_BuscarPacientes buscar = new Interfaz_BuscarPacientes();
+        jDesktopPane1.add(buscar);
+        buscar.show();
+    }//GEN-LAST:event_jMenuItemPacienteBuscarActionPerformed
+
+    private void jMenuItemPruebaNuevaAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPruebaNuevaAreaActionPerformed
+        // TODO add your handling code here:
+        jMenuItemPruebaNuevaArea.setEnabled(false);
+        Interfaz_GrupoPruebas gp = new Interfaz_GrupoPruebas();
+        jDesktopPane1.add(gp);
+        gp.show();
+    }//GEN-LAST:event_jMenuItemPruebaNuevaAreaActionPerformed
+
+    private void jMenuItemPruebaNuevaPruebaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPruebaNuevaPruebaActionPerformed
+        jMenuItemPruebaNuevaPrueba.setEnabled(false);
+        Interfaz_Prueba interfaz_Prueba = new Interfaz_Prueba();
+        jDesktopPane1.add(interfaz_Prueba);
+        interfaz_Prueba.show();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemPruebaNuevaPruebaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -417,25 +270,17 @@ public class Interfaz_principal extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Buscararticulos;
     public static javax.swing.JButton jButtonBuscar;
     public static javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    public static javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenuItem jMenuItemPacienteBuscar;
+    public static javax.swing.JMenuItem jMenuItemPacienteNuevo;
+    public static javax.swing.JMenuItem jMenuItemPruebaNuevaArea;
+    public static javax.swing.JMenuItem jMenuItemPruebaNuevaPrueba;
     private javax.swing.JMenuItem jMenuItemResultadoBuscar;
     public static javax.swing.JMenuItem jMenuItemResultadoNuevo;
     private javax.swing.JMenuBar jMenuPrincipal;

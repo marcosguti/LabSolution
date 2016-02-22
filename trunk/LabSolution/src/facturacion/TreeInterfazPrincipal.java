@@ -87,7 +87,7 @@ public final class TreeInterfazPrincipal extends JTree {
                     Rectangle pathBounds = tree.getUI().getPathBounds(tree, path);
 
                     if (pathBounds != null && pathBounds.contains(e.getX(), e.getY())) {
-                        if (nodo.getLevel() == 0) {
+                        if (nodo.getLevel() == 0&&Interfaz_principal.jMenuItemPruebaNuevaArea.isEnabled()) {
                             String p = (String) nodo.getUserObject();
                             JMenuRootTree menu = new JMenuRootTree(p);
 
