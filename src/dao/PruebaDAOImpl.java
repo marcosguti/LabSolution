@@ -16,59 +16,79 @@ import org.hibernate.Session;
  *
  * @author marcosguti
  */
-public class PruebaDAOImpl  extends GenericDAOImplHibernate<Prueba, Integer> implements PruebaDAO {
+public class PruebaDAOImpl extends GenericDAOImplHibernate<Prueba, Integer> implements PruebaDAO {
+
     @Override
     public List<Prueba> getPruebas(String nombreGrupoPruebas) throws BussinessException {
-Session session = sessionFactory.getCurrentSession();
-                        session.beginTransaction();
-		try {
-			Query query = 
-					session.createQuery(
-							"SELECT e FROM Prueba e WHERE e.grupoPruebas.nombre = ?");
-			query.setParameter(0, nombreGrupoPruebas);
-			List<Prueba> pruebas = (List<Prueba>) query.list();
-                        session.getTransaction().commit();
-			if(pruebas!=null)
-                        return pruebas;
-			
-			
-			
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        try {
+            Query query
+                    = session.createQuery(
+                            "SELECT e FROM Prueba e WHERE e.grupoPruebas.nombre = ?");
+            query.setParameter(0, nombreGrupoPruebas);
+            List<Prueba> pruebas = (List<Prueba>) query.list();
+            session.getTransaction().commit();
+            if (pruebas != null) {
+                return pruebas;
+            }
+
 //			session.beginTransaction();
 //			Paciente entity = (Paciente) session.get(, cedula);
 //			session.getTransaction().commit();
 //
 //			return entity;
-		} catch(Exception w){
-                  w.printStackTrace();
-                }    
+        } catch (Exception w) {
+            w.printStackTrace();
+        }
         return null;
     }
 
     @Override
     public boolean delete(String nombre) throws BussinessException {
         Session session = sessionFactory.getCurrentSession();
-                        session.beginTransaction();
-		try {
-			Query query = 
-					session.createQuery(
-							"SELECT e FROM Prueba e WHERE e.nombre = ?");
-			query.setParameter(0, nombre);
-			Prueba prueba = (Prueba)query.uniqueResult();
-                        session.getTransaction().commit();
-			if(prueba!=null)
-                        delete(prueba.getId());
-			
-			
-			
+        session.beginTransaction();
+        try {
+            Query query
+                    = session.createQuery(
+                            "SELECT e FROM Prueba e WHERE e.nombre = ?");
+            query.setParameter(0, nombre);
+            Prueba prueba = (Prueba) query.uniqueResult();
+            session.getTransaction().commit();
+            if (prueba != null) {
+                delete(prueba.getId());
+            }
+
 //			session.beginTransaction();
 //			Paciente entity = (Paciente) session.get(, cedula);
 //			session.getTransaction().commit();
 //
 //			return entity;
-		} catch(Exception w){
-                  w.printStackTrace();
-                  return false;
-                }    
-       return true;
+        } catch (Exception w) {
+            w.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public Prueba get(String nombre) throws BussinessException {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        try {
+            Query query
+                    = session.createQuery(
+                            "SELECT e FROM Prueba e WHERE e.nombre = ?");
+            query.setParameter(0, nombre);
+            Prueba prueba = (Prueba) query.uniqueResult();
+            session.getTransaction().commit();
+            if (prueba != null) {
+                return prueba;
+            }
+
+        } catch (Exception w) {
+            w.printStackTrace();
+        }
+        return null;
     }
 }

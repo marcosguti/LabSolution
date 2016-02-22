@@ -12,24 +12,31 @@ public class Paciente {
 	private int id;
 	private String cedula;
 	private String nombres;
-	private String apellidos;
 	private String telefono;
 	private String sexo;
-
+        private String direccion;
 	private int edad;
 	
 	public Paciente(){}
+
+    public Paciente(String cedula, String nombres, String telefono, String sexo, String direccion, int edad) {
+        this.cedula = cedula;
+        this.nombres = nombres;
+        this.telefono = telefono;
+        this.sexo = sexo;
+        this.direccion = direccion;
+        this.edad = edad;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
 	
-	public Paciente(String cedula, String nombres, String apellidos,
-			String telefono,String sexo,  int edad) {
-		super();
-		this.cedula = cedula;
-		this.nombres = nombres;
-		this.apellidos = apellidos;
-		this.telefono = telefono;
-		this.edad = edad;
-		this.sexo = sexo;
-	}
+	
 	public int getId() {
 		return id;
 	}
@@ -47,12 +54,6 @@ public class Paciente {
 	}
 	public void setNombres(String nombres) {
 		this.nombres = nombres;
-	}
-	public String getApellidos() {
-		return apellidos;
-	}
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
 	}
 	public String getTelefono() {
 		return telefono;

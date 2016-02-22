@@ -7,7 +7,7 @@ package facturacion;
 import clases.Paciente;
 import controller.PacienteController;
 import dao.PacienteDAOImpl;
-import static facturacion.Interfaz_principal.jMenuItem4;
+import static facturacion.Interfaz_principal.jMenuItemPacienteNuevo;
 import hibernateUtil.BussinessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -204,7 +204,7 @@ public class Interfaz_BuscarPacientes extends javax.swing.JInternalFrame {
 
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
           jButtonRegistrar.setEnabled(false);
-           jMenuItem4.setEnabled(false);
+           jMenuItemPacienteNuevo.setEnabled(false);
           Interfaz_Pacientes cli = new Interfaz_Pacientes();       
           Interfaz_principal.jDesktopPane1.add(cli);
           cli.show();          

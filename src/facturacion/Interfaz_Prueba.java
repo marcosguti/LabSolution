@@ -321,6 +321,7 @@ public final class Interfaz_Prueba extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_registrarButtonActionPerformed
 
     private void salirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirButtonActionPerformed
+        Interfaz_principal.jMenuItemPruebaNuevaPrueba.setEnabled(true);
         this.dispose();
     }//GEN-LAST:event_salirButtonActionPerformed
 

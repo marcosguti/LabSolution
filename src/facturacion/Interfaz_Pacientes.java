@@ -46,8 +46,6 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
         jlbDocumento = new javax.swing.JLabel();
         jtfNombre = new javax.swing.JTextField();
         jlbNombre = new javax.swing.JLabel();
-        jtfApellido = new javax.swing.JTextField();
-        jlbApellido = new javax.swing.JLabel();
         comboTipoDoc = new javax.swing.JComboBox();
         comboEdad = new javax.swing.JComboBox();
         List<Integer> age = new ArrayList<Integer>();
@@ -61,6 +59,8 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
         jtfTelefono = new javax.swing.JTextField();
         jlbSexo = new javax.swing.JLabel();
         comboSexo = new javax.swing.JComboBox();
+        jtfDireccion = new javax.swing.JTextField();
+        jlbTelefono1 = new javax.swing.JLabel();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -104,14 +104,6 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
 
         jlbNombre.setText("Nombres");
 
-        jtfApellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfApellidoActionPerformed(evt);
-            }
-        });
-
-        jlbApellido.setText("Apellidos");
-
         comboTipoDoc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "V", "E", "J" }));
         comboTipoDoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,55 +137,55 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
             }
         });
 
+        jlbTelefono1.setText("Dirección");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlbNombre))
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(comboTipoDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtfDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jlbDocumento)))
+                    .addComponent(jtfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlbTelefono)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(comboSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(comboEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jlbSexo)
+                                .addGap(21, 21, 21)
+                                .addComponent(jlbComboEdad)))
+                        .addGap(71, 71, 71)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlbTelefono1)
+                            .addComponent(jtfDireccion))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(77, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlbDocumento)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(comboTipoDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jtfDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jlbNombre)))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlbApellido)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jlbTelefono)
-                                                .addGap(165, 165, 165)
-                                                .addComponent(jlbSexo))
-                                            .addComponent(jtfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(31, 31, 31)
-                                        .addComponent(jlbComboEdad))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jtfTelefono, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(registrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(cancelarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(salirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(224, 224, 224)
-                                        .addComponent(comboSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(comboEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(nuevoRegistroButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(203, 203, 203)
+                        .addComponent(registrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cancelarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(salirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nuevoRegistroButton))
+                .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,31 +193,37 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlbNombre)
-                    .addComponent(jlbApellido))
+                    .addComponent(jlbDocumento))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlbDocumento)
-                    .addComponent(jlbTelefono)
-                    .addComponent(jlbSexo)
-                    .addComponent(jlbComboEdad))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboTipoDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
+                    .addComponent(jtfDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlbSexo)
+                            .addComponent(jlbComboEdad)
+                            .addComponent(jlbTelefono1))
+                        .addGap(9, 9, 9)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(comboSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jtfDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jlbTelefono)
+                .addGap(8, 8, 8)
+                .addComponent(jtfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nuevoRegistroButton)
                     .addComponent(registrarButton)
                     .addComponent(cancelarButton)
                     .addComponent(salirButton))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
         );
 
         pack();
@@ -237,7 +235,7 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
        jtfDocumento.setText("");
        comboTipoDoc.setName("");
        jtfNombre.setText("");
-       jtfApellido.setText("");
+       
 //       dirclientejTextField4.setText("");
         
     }
@@ -249,7 +247,7 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
        jtfDocumento.setEnabled(false);
        comboTipoDoc.setEnabled(false);
        jtfNombre.setEnabled(false);
-       jtfApellido.setEnabled(false);
+       jtfDireccion.setEnabled(false);
 //       dirclientejTextField4.setEnabled(false);       
 //     comboEdadbo.setEnabled(false); 
        nuevoRegistroButton.setEnabled(true);
@@ -263,7 +261,7 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
        jtfDocumento.setEnabled(true);
        comboTipoDoc.setEnabled(true);
        jtfNombre.setEnabled(true);
-       jtfApellido.setEnabled(true);
+       jtfDireccion.setEnabled(true);
 //       dirclientejTextField4.setEnabled(true);       
 //     comboEdadbo.setEnabled(true); 
        jtfTelefono.setEnabled(true);
@@ -277,20 +275,20 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
        
        // GEN-FIRST:event_regclientejButton1ActionPerformed
 
-		String doc, nom, ape, sexo, tipo, tel;
+		String doc, nom, dir, sexo, tipo, tel;
 		int edad;
 		doc = jtfDocumento.getText();
 		tipo = comboTipoDoc.getSelectedItem().toString();
 		String cedula = tipo + "-" + doc;
 		nom = jtfNombre.getText();
-		ape = jtfApellido.getText();
+		dir = jtfDireccion.getText();
 		sexo = comboSexo.getSelectedItem().toString();
 		edad = Integer.parseInt(comboEdad.getSelectedItem().toString());
 		tel = jtfTelefono.getText();
 		PacienteController pacienteController = new PacienteController();
-		Paciente paciente = new Paciente(cedula, nom, ape, tel,sexo, edad);
+		Paciente paciente = new Paciente(cedula, nom, tel,sexo,dir, edad);
 		if (!doc.equals("") && !tipo.equals("") && !nom.equals("")
-				&& !ape.equals("")) {
+				&& !dir.equals("")) {
 			try {
 				pacienteController.guardar(paciente);
 
@@ -315,8 +313,8 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
     private void salirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirButtonActionPerformed
         if( Interfaz_BuscarPacientes.jButtonRegistrar!=null)
         Interfaz_BuscarPacientes.jButtonRegistrar.setEnabled(true);
-        if( Interfaz_principal.jMenuItem4!=null)
-        Interfaz_principal.jMenuItem4.setEnabled(true);
+        if( Interfaz_principal.jMenuItemPacienteNuevo!=null)
+        Interfaz_principal.jMenuItemPacienteNuevo.setEnabled(true);
         this.dispose();
     }//GEN-LAST:event_salirButtonActionPerformed
 
@@ -338,10 +336,6 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
     jtfNombre.transferFocus();
     }//GEN-LAST:event_jtfNombreActionPerformed
 
-    private void jtfApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfApellidoActionPerformed
-    jtfApellido.transferFocus();
-    }//GEN-LAST:event_jtfApellidoActionPerformed
-
     private void comboTipoDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTipoDocActionPerformed
         
 
@@ -360,13 +354,13 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox comboEdad;
     private javax.swing.JComboBox comboSexo;
     private javax.swing.JComboBox comboTipoDoc;
-    private javax.swing.JLabel jlbApellido;
     private javax.swing.JLabel jlbComboEdad;
     private javax.swing.JLabel jlbDocumento;
     private javax.swing.JLabel jlbNombre;
     private javax.swing.JLabel jlbSexo;
     private javax.swing.JLabel jlbTelefono;
-    private javax.swing.JTextField jtfApellido;
+    private javax.swing.JLabel jlbTelefono1;
+    private javax.swing.JTextField jtfDireccion;
     private javax.swing.JTextField jtfDocumento;
     private javax.swing.JTextField jtfNombre;
     private javax.swing.JTextField jtfTelefono;

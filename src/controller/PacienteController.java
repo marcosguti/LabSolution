@@ -26,9 +26,9 @@ public class PacienteController {
     	pacienteDAO.saveOrUpdate(paciente);
     }
     
-    public List< Paciente >getByCed(String cedula) throws BussinessException {
+    public Paciente getByNombreCedula(String nombre, String cedula) throws BussinessException {
 
-    	return pacienteDAO.getByCed(cedula);
+    	return pacienteDAO.getByNombreCedula(nombre,cedula);
     }
     public List< Paciente >getAll( ) throws BussinessException {
 
