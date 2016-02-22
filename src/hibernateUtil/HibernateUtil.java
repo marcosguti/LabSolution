@@ -2,10 +2,11 @@ package hibernateUtil;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.context.internal.ThreadLocalSessionContext;
 import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
+import org.hibernate.service.*;
 
 /**
  * Manejo de session
@@ -15,14 +16,15 @@ import org.hibernate.service.ServiceRegistryBuilder;
 public class HibernateUtil {
 
     private static SessionFactory sessionFactory;
-
+private static ServiceRegistry serviceRegistry;
     public static synchronized void buildSessionFactory() {
         if (sessionFactory == null) {
             Configuration configuration = new Configuration();
             configuration.configure();
             configuration.setProperty("hibernate.current_session_context_class", "thread");
-            ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
-            sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+               serviceRegistry = new StandardServiceRegistryBuilder().applySettings(
+            configuration.getProperties()).build();
+    sessionFactory = configuration.buildSessionFactory(serviceRegistry);
         }
     }
 
