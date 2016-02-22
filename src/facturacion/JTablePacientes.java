@@ -16,11 +16,16 @@ import static facturacion.Interfaz_principal.jMenuItem4;
 import hibernateUtil.BussinessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 import javax.swing.RowFilter;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -33,6 +38,11 @@ public class JTablePacientes extends javax.swing.JTable {
 
     private Object[][] datostabla;
 
+    private static JMenuItem jMenuItem = new JMenuItem("Agregar");
+    private static JPopupMenu jPopupMenu = new JPopupMenu();
+    private static String nombre, cedula;
+    PacienteController pacienteController = new PacienteController();
+
     public JTablePacientes() {
         initComponents();
         mostrar_tabla();
@@ -40,7 +50,7 @@ public class JTablePacientes extends javax.swing.JTable {
     }
 
     public void mostrar_tabla() {
-        PacienteController pacienteController = new PacienteController();
+        final PacienteController pacienteController = new PacienteController();
 //        control_cliente control = new control_cliente("Documento","Tipo de documento","Nombres","Apellidos","Direccion","Ciudad","telefono");       
         String[] columnas = {"Nombre", "Cedula"};
         List<Paciente> pacientes = new ArrayList<Paciente>();
@@ -81,12 +91,50 @@ public class JTablePacientes extends javax.swing.JTable {
         this.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                           
+//                if (SwingUtilities.isRightMouseButton(evt)) {
                 int row = rowAtPoint(evt.getPoint());
                 int col = columnAtPoint(evt.getPoint());
-                Object a=getModel().getValueAt(row, col);
-                System.out.println(a.toString()+" --row "+row+ " ,Column "+col);   
-                JMenuRootTree menu = new JMenuRootTree("");
+                Object n = getModel().getValueAt(row, 0);
+                Object c = getModel().getValueAt(row, 1);
+                String ced=c.toString().replaceAll(" ","");
+                System.out.println(n.toString() + "----- " + c.toString());
+                Paciente paciente = new Paciente();
+                try {
+                    paciente = pacienteController.getByNombreCedula("Marco Gutierrez", ced);
+                } catch (BussinessException ex) {
+                    Logger.getLogger(JTablePacientes.class.getName()).log(Level.SEVERE, null, ex);
+                }
+//                                
+                Interfaz_Resultado.jLabelNombreValor.setText(paciente.getNombres());
+                Interfaz_Resultado.jLabelCedulaValor.setText(paciente.getCedula());
+                Interfaz_Resultado.jLabelEdadValor.setText(String.valueOf(paciente.getEdad()));
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                String date = sdf.format(new Date()); 
+                Interfaz_Resultado.jLabelFechaValor.setText(date);
+                Interfaz_Resultado.jLabelSexoValor.setText(paciente.getSexo());
+                Interfaz_Resultado.jLabelTelefonoValor.setText(paciente.getTelefono());
+                  Interfaz_Resultado.jLabelIDValor.setText(String.valueOf(paciente.getId()));
+                  jPopupMenu.add(jMenuItem);
+                jMenuItem.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        try {
+                            Paciente paciente = pacienteController.getByNombreCedula(nombre, cedula);
+
+                            Interfaz_Resultado.jLabelNombreValor.setText(paciente.getNombres());
+//                                        jLabelCedulaValor
+//                                        jLabelDireccionValor
+//                                                jLabelEdadValor
+//                                                jLabelFechaValor
+//                                                        jLabelSexoValor
+//                                                        jLabelTelefonoValor
+                        } catch (BussinessException ex) {
+                            Logger.getLogger(JTablePacientes.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
+                    }
+
+                });
+//                }
             }
         });
 //        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);

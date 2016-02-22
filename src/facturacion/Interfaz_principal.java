@@ -21,8 +21,9 @@ import javax.swing.JScrollPane;
  * @author ANDRES
  */
 public class Interfaz_principal extends javax.swing.JFrame {
-control_existencias ctrl = new control_existencias();
-    
+
+    control_existencias ctrl = new control_existencias();
+
     /**
      * Creates new form Interfaz_principal
      */
@@ -62,7 +63,8 @@ control_existencias ctrl = new control_existencias();
         jLabel2 = new javax.swing.JLabel();
         jMenuPrincipal = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
-        item_venta = new javax.swing.JMenuItem();
+        jMenuItemResultadoNuevo = new javax.swing.JMenuItem();
+        jMenuItemResultadoBuscar = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -102,15 +104,21 @@ control_existencias ctrl = new control_existencias();
         jMenu3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
         jMenu3.setPreferredSize(new java.awt.Dimension(200, 50));
 
-        item_venta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        item_venta.setText("Crear");
-        item_venta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        item_venta.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemResultadoNuevo.setText("Nuevo");
+        jMenuItemResultadoNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                item_ventaActionPerformed(evt);
+                jMenuItemResultadoNuevoActionPerformed(evt);
             }
         });
-        jMenu3.add(item_venta);
+        jMenu3.add(jMenuItemResultadoNuevo);
+
+        jMenuItemResultadoBuscar.setText("Buscar");
+        jMenuItemResultadoBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemResultadoBuscarActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItemResultadoBuscar);
 
         jMenuPrincipal.add(jMenu3);
 
@@ -292,95 +300,87 @@ control_existencias ctrl = new control_existencias();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-       Interfaz_BuscarPacientes buscar = new Interfaz_BuscarPacientes();
+        Interfaz_BuscarPacientes buscar = new Interfaz_BuscarPacientes();
         jDesktopPane1.add(buscar);
-        buscar.show(); 
+        buscar.show();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-    
-           Interfaz_Proveedor prov = new Interfaz_Proveedor();
-       
+
+        Interfaz_Proveedor prov = new Interfaz_Proveedor();
+
         jDesktopPane1.add(prov);
         prov.show();
-       
+
 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-       
+
         Interfaz_GrupoPruebas gp = new Interfaz_GrupoPruebas();
         jDesktopPane1.add(gp);
-        gp.show();       
-            
-        
+        gp.show();
+
+
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-            
-          jMenuItem4.setEnabled(false);
-          Interfaz_Pacientes cli = new Interfaz_Pacientes();       
-          jDesktopPane1.add(cli);
-          cli.show();          
-            
-    
+
+        jMenuItem4.setEnabled(false);
+        Interfaz_Pacientes cli = new Interfaz_Pacientes();
+        jDesktopPane1.add(cli);
+        cli.show();
+
+
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void BuscararticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscararticulosActionPerformed
         interfaz_buscararticulos bus = new interfaz_buscararticulos();
         jDesktopPane1.add(bus);
-        bus.show(); 
+        bus.show();
     }//GEN-LAST:event_BuscararticulosActionPerformed
 
-    private void item_ventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_ventaActionPerformed
-
-Interfaz_BuscarPacientes buscar = new Interfaz_BuscarPacientes();
-        jDesktopPane1.add(buscar);
-        buscar.show(); 
-//     String venta = JOptionPane.showInputDialog(this,"Ingrese el documento del cliente: ",JOptionPane.OK_OPTION);
-//       if(ctrl.existe_cliente(venta))
-//       {
-//        Interfaz_factura fact = new Interfaz_factura(ctrl);
-//        jDesktopPane1.add(fact);
-//        fact.show(); 
-//       }
-//       else
-//       {
-//              
-//          JOptionPane.showMessageDialog(null,"El cliente no existe, debe registrarlo","Mensaje",JOptionPane.QUESTION_MESSAGE);  
-//       }
-    }//GEN-LAST:event_item_ventaActionPerformed
-
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-     Interfaz_buscarproveedor proveedor = new Interfaz_buscarproveedor();
+        Interfaz_buscarproveedor proveedor = new Interfaz_buscarproveedor();
         jDesktopPane1.add(proveedor);
-        proveedor.show(); 
+        proveedor.show();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-    Interfaz_actualizarstock stock = new Interfaz_actualizarstock();
-    jDesktopPane1.add(stock);
-    stock.show();
+        Interfaz_Resultado stock = new Interfaz_Resultado();
+        jDesktopPane1.add(stock);
+        stock.show();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-    interfaz_consultas consulta = new interfaz_consultas();
-    jDesktopPane1.add(consulta);
-    consulta.show();
+        interfaz_consultas consulta = new interfaz_consultas();
+        jDesktopPane1.add(consulta);
+        consulta.show();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-    Interfaz_devoluciones dev = new Interfaz_devoluciones();
-    jDesktopPane1.add(dev);
-    dev.show();
+        Interfaz_devoluciones dev = new Interfaz_devoluciones();
+        jDesktopPane1.add(dev);
+        dev.show();
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-       Interfaz_Prueba interfaz_Prueba= new Interfaz_Prueba();
-       jDesktopPane1.add(interfaz_Prueba);
-       interfaz_Prueba.show();
-      
+        Interfaz_Prueba interfaz_Prueba = new Interfaz_Prueba();
+        jDesktopPane1.add(interfaz_Prueba);
+        interfaz_Prueba.show();
+
     }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItemResultadoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemResultadoBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemResultadoBuscarActionPerformed
+
+    private void jMenuItemResultadoNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemResultadoNuevoActionPerformed
+        jMenuItemResultadoNuevo.setEnabled(false);
+        Interfaz_Resultado res = new Interfaz_Resultado();
+        jDesktopPane1.add(res);
+        res.show();          // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemResultadoNuevoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -418,7 +418,6 @@ Interfaz_BuscarPacientes buscar = new Interfaz_BuscarPacientes();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Buscararticulos;
-    private javax.swing.JMenuItem item_venta;
     public static javax.swing.JButton jButtonBuscar;
     public static javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
@@ -437,6 +436,8 @@ Interfaz_BuscarPacientes buscar = new Interfaz_BuscarPacientes();
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem jMenuItemResultadoBuscar;
+    public static javax.swing.JMenuItem jMenuItemResultadoNuevo;
     private javax.swing.JMenuBar jMenuPrincipal;
     public static javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JScrollPane jScrollPane2;
