@@ -6,6 +6,7 @@
 package facturacion;
 
 import clases.Prueba;
+import controller.GrupoPruebasController;
 import controller.PruebaController;
 import static facturacion.Interfaz_principal.jDesktopPane1;
 import hibernateUtil.BussinessException;
@@ -79,23 +80,36 @@ public class JMenuPruebaTree extends JPopupMenu {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {
         PruebaController pp = new PruebaController();
+        GrupoPruebasController gp = new GrupoPruebasController();
+
         try {
             Prueba treePrueba = pp.get(prueba);
             List<Prueba> temp = new ArrayList<Prueba>();
-
-                if (StaticVarsBusiness.mapPruebas.get("Hematologia") == null) {
-                    
+            List<Prueba> temp2 = new ArrayList<Prueba>();
+            temp2 = StaticVarsBusiness.mapPruebas.get(treePrueba.getGrupoPruebas().getNombre());
+//            System.err.println("");
+            if (StaticVarsBusiness.mapPruebas.get(treePrueba.getGrupoPruebas().getNombre()) == null) {
+                temp.add(treePrueba);
+                StaticVarsBusiness.PruebasEnTabla.add(treePrueba.getNombre());
+                StaticVarsBusiness.mapPruebas.put(treePrueba.getGrupoPruebas().getNombre(), new ArrayList<Prueba>(temp));
+            } else {
+//                 if ((StaticVarsBusiness.mapPruebas.get(treePrueba.getGrupoPruebas().getNombre())).indexOf(treePrueba)!=-1) {
+                temp = StaticVarsBusiness.mapPruebas.get(treePrueba.getGrupoPruebas().getNombre());
+                if (!StaticVarsBusiness.PruebasEnTabla.contains(treePrueba.getNombre())) {
                     temp.add(treePrueba);
-                    StaticVarsBusiness.mapPruebas.put("Hematologia", new ArrayList<Prueba>(temp));
+                    StaticVarsBusiness.PruebasEnTabla.add(treePrueba.getNombre());
+                    StaticVarsBusiness.mapPruebas.put(treePrueba.getGrupoPruebas().getNombre(), new ArrayList<Prueba>(temp));
                 } else {
-                   
-                    temp = StaticVarsBusiness.mapPruebas.get("Hematologia");
-                    temp.add(treePrueba);
-                    StaticVarsBusiness.mapPruebas.put("Hematologia", new ArrayList<Prueba>(temp));
+                    JOptionPane.showMessageDialog(null,
+                            "Ya agrego esta prueba ", "Mensaje",
+                            JOptionPane.INFORMATION_MESSAGE);
                 }
-                temp.clear();
+
+//                StaticVarsBusiness.mapPruebas.put(treePrueba.getGrupoPruebas().getNombre(), new ArrayList<Prueba>(temp));
+            }
+//            temp.clear();
             Interfaz_Resultado.jScrollPane1.setViewportView(new JTablePruebas());
-            
+
 //           JTablePruebas.dtm.addRow(new Object[]{treePrueba.getNombre(), "", treePrueba.getLimites()});
         } catch (BussinessException ex) {
             Logger.getLogger(JMenuPruebaTree.class.getName()).log(Level.SEVERE, null, ex);

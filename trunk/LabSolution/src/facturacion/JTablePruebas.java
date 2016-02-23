@@ -44,6 +44,7 @@ public class JTablePruebas extends javax.swing.JTable {
         initComponents();
         mostrar_tabla();
 
+    
     }
 
     public void mostrar_tabla() {
@@ -63,13 +64,14 @@ public class JTablePruebas extends javax.swing.JTable {
             for (Map.Entry<String, List<Prueba>> entry : StaticVarsBusiness.mapPruebas.entrySet()) {
                 dtm.addRow(new Object[]{"Area de "+entry.getKey()});
                 for (Prueba prueba : entry.getValue()) {
-                    dtm.addRow(new Object[]{prueba.getNombre(), "", prueba.getLimites()});
+                    dtm.addRow(new Object[]{"     "+prueba.getNombre(), "","("+prueba.getLimites()+") "+prueba.getUnidad()});
                 }
                 System.out.println(entry.getKey() + "/" + entry.getValue());
             }
         }
+        dtm.isCellEditable(0, 0);
         this.setModel(dtm);
-
+       
     }
 
     /**
@@ -93,5 +95,7 @@ public class JTablePruebas extends javax.swing.JTable {
 
 //        pack();
     }// </editor-fold>                        
-
+public boolean isCellEditable(int row, int column) {
+        return false;
+    }
 }
