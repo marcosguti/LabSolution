@@ -29,6 +29,7 @@ public class Prueba {
     @ManyToOne
     @JoinColumn(name = "grupopruebas_id")
     private GrupoPruebas grupoPruebas;
+
   
     public Prueba(){}
   
@@ -92,4 +93,11 @@ public class Prueba {
         this.precio = precio;
     }
 
+    public GrupoPruebas getGrupoPruebas() {
+        return grupoPruebas;
+    }
+
+    public void setGrupoPruebas(GrupoPruebas grupoPruebas) {
+        this.grupoPruebas = grupoPruebas;
+    }
 }
