@@ -34,6 +34,9 @@ public class PacienteController {
 
     	return pacienteDAO.findAll();
     }
- 
+ public List< Paciente >getAllOrdered( ) throws BussinessException {
+
+    	return pacienteDAO.getAllOrdered();
+    }
 
 }

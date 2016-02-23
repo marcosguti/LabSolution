@@ -33,7 +33,7 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements
 
 	SessionFactory sessionFactory;
 
-	private final static Logger LOGGER = Logger
+	static final Logger LOGGER = Logger
 			.getLogger(GenericDAOImplHibernate.class.getName());
 
 	public GenericDAOImplHibernate() {

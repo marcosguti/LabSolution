@@ -15,6 +15,7 @@ import controller.PacienteController;
 import dao.PacienteDAOImpl;
 import static facturacion.Interfaz_principal.jMenuItemPacienteNuevo;
 import hibernateUtil.BussinessException;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -55,10 +56,18 @@ public class JTablePruebas extends javax.swing.JTable {
 
 //        datostabla = control.consulta_clientes();
 //     ;
-        DefaultTableModel dtm = new DefaultTableModel(0, 0);
+        DefaultTableModel dtm = new DefaultTableModel(0, 0){
+         boolean[] editable = new boolean[] {
+                    false, true, false 
+                };
+            @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return editable[columnIndex];
+                }
+        };
 
         dtm.setColumnIdentifiers(columnas);
-
+  Font f1 = new Font("Times New Roman", Font.BOLD, 12);
 //        Map<String, String> map = ...
         if (StaticVarsBusiness.mapPruebas != null) {
             for (Map.Entry<String, List<Prueba>> entry : StaticVarsBusiness.mapPruebas.entrySet()) {
@@ -69,9 +78,8 @@ public class JTablePruebas extends javax.swing.JTable {
                 System.out.println(entry.getKey() + "/" + entry.getValue());
             }
         }
-        dtm.isCellEditable(0, 0);
-        this.setModel(dtm);
-       
+//        dtm.isCellEditable(0, 0);
+        this.setModel(dtm);  
     }
 
     /**
@@ -95,7 +103,7 @@ public class JTablePruebas extends javax.swing.JTable {
 
 //        pack();
     }// </editor-fold>                        
-public boolean isCellEditable(int row, int column) {
-        return false;
-    }
+//public boolean isCellEditable(int row, int column) {
+//        return false;
+//    }
 }

@@ -14,6 +14,7 @@ import controller.PacienteController;
 import dao.PacienteDAOImpl;
 import static facturacion.Interfaz_principal.jMenuItemPacienteNuevo;
 import hibernateUtil.BussinessException;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -27,6 +28,7 @@ import javax.swing.JPopupMenu;
 import javax.swing.RowFilter;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -55,7 +57,7 @@ public class JTablePacientes extends javax.swing.JTable {
         String[] columnas = {"Nombre", "Cedula"};
         List<Paciente> pacientes = new ArrayList<Paciente>();
         try {
-            pacientes = pacienteController.getAll();
+            pacientes = pacienteController.getAllOrdered();
         } catch (BussinessException ex) {
             Logger.getLogger(Interfaz_BuscarPacientes.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -83,8 +85,22 @@ public class JTablePacientes extends javax.swing.JTable {
                 }
                 return returnValue;
             }
+            boolean[] editable = new boolean[] {
+                    false, false 
+                };
+            @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return editable[columnIndex];
+                }
         };
         this.setModel(model);
+         Font f1 = new Font("Times New Roman", Font.BOLD, 12);
+         this.setFont(f1);
+//        for (int a = 0; i < this.getColumnCount(); a++) {
+//            TableColumn col = this.getColumnModel().getColumn(a);
+//            col.setCellEditor(new MyTableCellEditor());
+//            col.setHeaderValue("AS");
+//        }
         sorter.setModel(model);
         this.setRowSorter(sorter);
 
@@ -96,7 +112,7 @@ public class JTablePacientes extends javax.swing.JTable {
                 int col = columnAtPoint(evt.getPoint());
                 Object n = getModel().getValueAt(row, 0);
                 Object c = getModel().getValueAt(row, 1);
-                String ced=c.toString().replaceAll(" ","");
+                String ced = c.toString().replaceAll(" ", "");
                 System.out.println(n.toString() + "----- " + c.toString());
                 Paciente paciente = new Paciente();
                 try {
@@ -109,13 +125,13 @@ public class JTablePacientes extends javax.swing.JTable {
                 Interfaz_Resultado.jLabelCedulaValor.setText(paciente.getCedula());
                 Interfaz_Resultado.jLabelEdadValor.setText(String.valueOf(paciente.getEdad()));
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                String date = sdf.format(new Date()); 
+                String date = sdf.format(new Date());
                 Interfaz_Resultado.jLabelFechaValor.setText(date);
                 Interfaz_Resultado.jLabelSexoValor.setText(paciente.getSexo());
                 Interfaz_Resultado.jLabelTelefonoValor.setText(paciente.getTelefono());
-                  Interfaz_Resultado.jLabelIDValor.setText(String.valueOf(paciente.getId()));
-                  Interfaz_Resultado.jLabelDireccionValor.setText(String.valueOf(paciente.getDireccion()));
-                  jPopupMenu.add(jMenuItem);
+                Interfaz_Resultado.jLabelIDValor.setText(String.valueOf(paciente.getId()));
+                Interfaz_Resultado.jLabelDireccionValor.setText(String.valueOf(paciente.getDireccion()));
+                jPopupMenu.add(jMenuItem);
                 jMenuItem.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                         try {
