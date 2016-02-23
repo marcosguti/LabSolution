@@ -6,6 +6,7 @@
 package facturacion;
 
 import clases.Prueba;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,7 @@ import java.util.Map;
  */
 public class StaticVarsBusiness {
    public static Map<String, List<Prueba>> mapPruebas= new HashMap<String, List<Prueba>>();
+   public static List<String> PruebasEnTabla= new ArrayList<String>();
     public StaticVarsBusiness() {
     }
     

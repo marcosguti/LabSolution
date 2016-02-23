@@ -22,7 +22,6 @@ import javax.swing.JScrollPane;
  */
 public class Interfaz_principal extends javax.swing.JFrame {
 
-    control_existencias ctrl = new control_existencias();
 
     /**
      * Creates new form Interfaz_principal
