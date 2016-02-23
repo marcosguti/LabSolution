@@ -72,4 +72,53 @@ public class PacienteDAOImpl extends GenericDAOImplHibernate<Paciente, Integer> 
         }
     }
 
+   
+    public List<Paciente> getAllOrdered() throws BussinessException {
+        Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+                try {
+
+			Query query = session.createQuery("SELECT e FROM Paciente e ORDER BY e.nombres");
+			List<Paciente> pacientes = query.list();
+                        session.getTransaction().commit();
+			return pacientes;
+		} catch (javax.validation.ConstraintViolationException cve) {
+			try {
+				if (session.getTransaction().isActive()) {
+					session.getTransaction().rollback();
+				}
+			} catch (Exception exc) {
+				LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
+			}
+			throw new BussinessException(cve);
+		} catch (org.hibernate.exception.ConstraintViolationException cve) {
+			try {
+				if (session.getTransaction().isActive()) {
+					session.getTransaction().rollback();
+				}
+			} catch (Exception exc) {
+				LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
+			}
+			throw new BussinessException(cve);
+		} catch (RuntimeException ex) {
+			try {
+				if (session.getTransaction().isActive()) {
+					session.getTransaction().rollback();
+				}
+			} catch (Exception exc) {
+				LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
+			}
+			throw ex;
+		} catch (Exception ex) {
+			try {
+				if (session.getTransaction().isActive()) {
+					session.getTransaction().rollback();
+				}
+			} catch (Exception exc) {
+				LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
+			}
+			throw new RuntimeException(ex);
+		}
+    }
+
 }
