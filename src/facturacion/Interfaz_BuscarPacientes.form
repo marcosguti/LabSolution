@@ -28,22 +28,23 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Component id="jScrollPane1" alignment="0" min="-2" pref="478" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="jButtonBuscar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jtfBuscarPaciente" min="-2" pref="162" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="jButtonRegistrar" min="-2" pref="87" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="81" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jScrollPane1" min="-2" pref="478" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonEliminar" min="-2" pref="89" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="15" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jButtonEliminar" pref="89" max="32767" attributes="0"/>
+                      <Component id="jButtonModificar" max="32767" attributes="0"/>
+                      <Component id="jButtonRegistrar" min="-2" pref="87" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jButton1" min="-2" pref="87" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="23" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -53,13 +54,18 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" min="-2" pref="150" max="-2" attributes="0"/>
-                  <Component id="jButtonEliminar" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="jButtonModificar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jButtonEliminar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jButtonRegistrar" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="57" max="32767" attributes="0"/>
+              <EmptySpace pref="61" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jtfBuscarPaciente" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButtonRegistrar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -112,7 +118,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonRegistrar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Registrar"/>
+        <Property name="text" type="java.lang.String" value="Nuevo"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRegistrarActionPerformed"/>
@@ -125,6 +131,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEliminarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonBuscar">
       <Properties>
@@ -133,6 +142,11 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jButtonBuscar.addActionListener(new ActionListener() {&#xa;      public void actionPerformed(ActionEvent e) {&#xa;        String text = jtfBuscarPaciente.getText();&#xa;        if (text.length() == 0) {&#xa;          sorter.setRowFilter(null);&#xa;        } else {&#xa;          sorter.setRowFilter(RowFilter.regexFilter(text));&#xa;        }&#xa;      }&#xa;    });"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonModificar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Modificar"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

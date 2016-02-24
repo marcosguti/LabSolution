@@ -11,10 +11,13 @@ import static facturacion.Interfaz_principal.jMenuItemPacienteNuevo;
 import hibernateUtil.BussinessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -26,7 +29,9 @@ import javax.swing.table.TableRowSorter;
  */
 public class Interfaz_BuscarPacientes extends javax.swing.JInternalFrame {
 
+    PacienteController pacienteController = new PacienteController();
     private Object[][] datostabla;
+    public static Paciente paciente = null;
 
     public Interfaz_BuscarPacientes() {
         initComponents();
@@ -35,9 +40,9 @@ public class Interfaz_BuscarPacientes extends javax.swing.JInternalFrame {
     }
 
     public void mostrar_tabla() {
-        PacienteController pacienteController = new PacienteController();
+
 //        control_cliente control = new control_cliente("Documento","Tipo de documento","Nombres","Apellidos","Direccion","Ciudad","telefono");       
-        String[] columnas = {"Nombre", "Cedula","Edad","Sexo","Telefono","Direccion"};
+        String[] columnas = {"Nombre", "Cedula", "Edad", "Sexo", "Telefono", "Direccion"};
         List<Paciente> pacientes = new ArrayList<Paciente>();
         try {
             pacientes = pacienteController.getAllOrdered();
@@ -53,8 +58,8 @@ public class Interfaz_BuscarPacientes extends javax.swing.JInternalFrame {
             datostabla[i][0] = paciente.getNombres();
 //            datostabla[i][1] = paciente.getApellidos();
             datostabla[i][1] = paciente.getCedula();
-            datostabla[i][2]= paciente.getEdad();
-            datostabla[i][3]= paciente.getSexo();
+            datostabla[i][2] = paciente.getEdad();
+            datostabla[i][3] = paciente.getSexo();
             datostabla[i][4] = paciente.getTelefono();
             datostabla[i][5] = paciente.getDireccion();
 
@@ -78,6 +83,26 @@ public class Interfaz_BuscarPacientes extends javax.swing.JInternalFrame {
         jTable1.setModel(model);
         sorter.setModel(model);
         jTable1.setRowSorter(sorter);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+//                if (SwingUtilities.isRightMouseButton(evt)) {
+                int row = jTable1.rowAtPoint(evt.getPoint());
+                int col = jTable1.columnAtPoint(evt.getPoint());
+                Object n = jTable1.getModel().getValueAt(row, 0);
+                Object c = jTable1.getModel().getValueAt(row, 1);
+                String ced = c.toString().replaceAll(" ", "");
+                System.out.println(n.toString() + "----- " + c.toString());
+
+                try {
+                    paciente = pacienteController.getByNombreCedula("Marco Gutierrez", ced);
+                } catch (BussinessException ex) {
+                    Logger.getLogger(JTablePacientes.class.getName()).log(Level.SEVERE, null, ex);
+                }
+//                                
+
+            }
+        });
 //        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
 //        jTable1.setModel(datos);
 
@@ -97,6 +122,7 @@ public class Interfaz_BuscarPacientes extends javax.swing.JInternalFrame {
         jButtonRegistrar = new javax.swing.JButton();
         jButtonEliminar = new javax.swing.JButton();
         jButtonBuscar = new javax.swing.JButton();
+        jButtonModificar = new javax.swing.JButton();
 
         setIconifiable(true);
         setMaximizable(true);
@@ -134,7 +160,7 @@ public class Interfaz_BuscarPacientes extends javax.swing.JInternalFrame {
             }
         });
 
-        jButtonRegistrar.setText("Registrar");
+        jButtonRegistrar.setText("Nuevo");
         jButtonRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRegistrarActionPerformed(evt);
@@ -142,6 +168,11 @@ public class Interfaz_BuscarPacientes extends javax.swing.JInternalFrame {
         });
 
         jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarActionPerformed(evt);
+            }
+        });
 
         jButtonBuscar.setText("Buscar");
         jButtonBuscar.addActionListener(new ActionListener() {
@@ -155,6 +186,8 @@ public class Interfaz_BuscarPacientes extends javax.swing.JInternalFrame {
             }
         });
 
+        jButtonModificar.setText("Modificar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -162,19 +195,19 @@ public class Interfaz_BuscarPacientes extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButtonBuscar)
                         .addGap(18, 18, 18)
-                        .addComponent(jtfBuscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(jButtonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(142, 142, 142)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                        .addComponent(jtfBuscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButtonEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                        .addComponent(jButtonModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,12 +215,16 @@ public class Interfaz_BuscarPacientes extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonEliminar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonModificar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonRegistrar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfBuscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
-                    .addComponent(jButtonRegistrar)
                     .addComponent(jButtonBuscar))
                 .addGap(27, 27, 27))
         );
@@ -216,10 +253,33 @@ public class Interfaz_BuscarPacientes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
+    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+
+        if (paciente != null) {
+            int respuesta = JOptionPane.showConfirmDialog(null, "Desea Eliminar el elemento Seleccionado", "", dialogButton);
+            if (respuesta == 0) {
+                try {
+                    pacienteController.delete(paciente.getId());
+                    mostrar_tabla();
+                    Interfaz_principal.jScrollPane2.add(new JTablePacientes());
+                } catch (BussinessException ex) {
+                    JOptionPane.showMessageDialog(this,
+                            "Error al eliminar el paciente");
+                    Logger.getLogger(Interfaz_BuscarPacientes.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "Por Favor Seleccione un Registro");
+        }
+    }//GEN-LAST:event_jButtonEliminarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonEliminar;
+    private javax.swing.JButton jButtonModificar;
     public static javax.swing.JButton jButtonRegistrar;
     private javax.swing.JScrollPane jScrollPane1;
     private final javax.swing.JTable jTable1 = new javax.swing.JTable();

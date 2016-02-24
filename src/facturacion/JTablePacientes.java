@@ -131,26 +131,21 @@ public class JTablePacientes extends javax.swing.JTable {
                 Interfaz_Resultado.jLabelTelefonoValor.setText(paciente.getTelefono());
                 Interfaz_Resultado.jLabelIDValor.setText(String.valueOf(paciente.getId()));
                 Interfaz_Resultado.jLabelDireccionValor.setText(String.valueOf(paciente.getDireccion()));
-                jPopupMenu.add(jMenuItem);
-                jMenuItem.addActionListener(new java.awt.event.ActionListener() {
-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        try {
-                            Paciente paciente = pacienteController.getByNombreCedula(nombre, cedula);
-
-                            Interfaz_Resultado.jLabelNombreValor.setText(paciente.getNombres());
-//                                        jLabelCedulaValor
-//                                        jLabelDireccionValor
-//                                                jLabelEdadValor
-//                                                jLabelFechaValor
-//                                                        jLabelSexoValor
-//                                                        jLabelTelefonoValor
-                        } catch (BussinessException ex) {
-                            Logger.getLogger(JTablePacientes.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-
-                    }
-
-                });
+//                jPopupMenu.add(jMenuItem);
+//                jMenuItem.addActionListener(new java.awt.event.ActionListener() {
+//                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                        try {
+//                            Paciente paciente = pacienteController.getByNombreCedula(nombre, cedula);
+//
+//                            Interfaz_Resultado.jLabelNombreValor.setText(paciente.getNombres());
+//
+//                        } catch (BussinessException ex) {
+//                            Logger.getLogger(JTablePacientes.class.getName()).log(Level.SEVERE, null, ex);
+//                        }
+//
+//                    }
+//
+//                });
 //                }
             }
         });
