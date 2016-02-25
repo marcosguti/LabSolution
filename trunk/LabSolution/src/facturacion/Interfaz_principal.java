@@ -80,7 +80,7 @@ public class Interfaz_principal extends javax.swing.JFrame {
         jScrollPane1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jScrollPane2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jScrollPane2.setViewportView(new JTablePacientes());
+        jScrollPane2.setViewportView(new JTablePacientes(true));
 
         jButtonBuscar.setText("Buscar");
 

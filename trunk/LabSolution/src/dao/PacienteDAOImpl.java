@@ -20,9 +20,10 @@ public class PacienteDAOImpl extends GenericDAOImplHibernate<Paciente, Integer> 
         try {
             Query query
                     = session.createQuery(
-                            "SELECT e FROM Paciente e WHERE e.cedula = ?");
+                            "SELECT e FROM Paciente e WHERE e.nombres = ? AND e.cedula=?");
 //            query.setParameter(0, nombre);
-            query.setParameter(0, cedula);
+            query.setParameter(0, nombre);
+            query.setParameter(1, cedula);
             Paciente paciente = (Paciente) query.uniqueResult();
             session.getTransaction().commit();
             if (paciente != null) {

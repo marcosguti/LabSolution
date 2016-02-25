@@ -10,6 +10,7 @@ import clases.Prueba;
 import controller.GrupoPruebasController;
 import controller.PruebaController;
 import hibernateUtil.BussinessException;
+import java.awt.Component;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,15 +19,18 @@ import java.awt.event.MouseEvent;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import javax.swing.JSeparator;
 import javax.swing.JTree;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
@@ -76,7 +80,24 @@ public final class TreeInterfazPrincipal extends JTree {
         TreeModel treeModel = new DefaultTreeModel(root);
         this.setModel(treeModel);
 //        this.addTreeSelectionListener(createSelectionListener());
-
+        this.setCellRenderer(new DefaultTreeCellRenderer() {
+            private Icon loadIcon = UIManager.getIcon("OptionPane.errorIcon");
+            private Icon saveIcon = UIManager.getIcon("OptionPane.informationIcon");
+            
+            @Override
+            public Component getTreeCellRendererComponent(JTree tree,
+                    Object value, boolean selected, boolean expanded,
+                    boolean isLeaf, int row, boolean focused) {
+                Component c = super.getTreeCellRendererComponent(tree, value,
+                        selected, expanded, isLeaf, row, focused);
+                if (selected) {
+                    setIcon(loadIcon);
+                } else {
+                    setIcon(saveIcon);
+                }
+                return c;
+            }
+        });
         this.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (SwingUtilities.isRightMouseButton(e)) {
@@ -87,7 +108,7 @@ public final class TreeInterfazPrincipal extends JTree {
                     Rectangle pathBounds = tree.getUI().getPathBounds(tree, path);
 
                     if (pathBounds != null && pathBounds.contains(e.getX(), e.getY())) {
-                        if (nodo.getLevel() == 0&&Interfaz_principal.jMenuItemPruebaNuevaArea.isEnabled()) {
+                        if (nodo.getLevel() == 0 && Interfaz_principal.jMenuItemPruebaNuevaArea.isEnabled()) {
                             String p = (String) nodo.getUserObject();
                             JMenuRootTree menu = new JMenuRootTree(p);
 
@@ -99,7 +120,7 @@ public final class TreeInterfazPrincipal extends JTree {
 
                             menu.show(tree, pathBounds.x + pathBounds.width, pathBounds.y);
                         }
-                         if (nodo.getLevel() == 2) {
+                        if (nodo.getLevel() == 2) {
                             String p = (String) nodo.getUserObject();
                             JMenuPruebaTree menu = new JMenuPruebaTree(p);
 

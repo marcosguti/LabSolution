@@ -297,7 +297,10 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
 						JOptionPane.INFORMATION_MESSAGE);
 				limpiar();
 				bloquear_cajas();
-                                Interfaz_principal.jScrollPane2.setViewportView(new JTablePacientes());
+                                Interfaz_principal.jScrollPane2.setViewportView(new JTablePacientes(true));
+                                 Interfaz_BuscarPacientes.jScrollPane2.setViewportView(new JTablePacientes(false));
+               
+//                                Interfaz_BuscarPacientes.mostrar
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(this,
 						"Error al registrar el cliente");
