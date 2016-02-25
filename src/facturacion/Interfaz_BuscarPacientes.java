@@ -31,82 +31,82 @@ public class Interfaz_BuscarPacientes extends javax.swing.JInternalFrame {
 
     PacienteController pacienteController = new PacienteController();
     private Object[][] datostabla;
-    public static Paciente paciente = null;
+//    public static PacieSnte paciente = null;
 
     public Interfaz_BuscarPacientes() {
         initComponents();
-        mostrar_tabla();
+//        mostrar_tabla();
 
     }
 
-    public void mostrar_tabla() {
-
-//        control_cliente control = new control_cliente("Documento","Tipo de documento","Nombres","Apellidos","Direccion","Ciudad","telefono");       
-        String[] columnas = {"Nombre", "Cedula", "Edad", "Sexo", "Telefono", "Direccion"};
-        List<Paciente> pacientes = new ArrayList<Paciente>();
-        try {
-            pacientes = pacienteController.getAllOrdered();
-        } catch (BussinessException ex) {
-            Logger.getLogger(Interfaz_BuscarPacientes.class.getName()).log(Level.SEVERE, null, ex);
-        }
-//        datostabla = control.consulta_clientes();
-//     ;
-        datostabla = new Object[pacientes.size()][6];
-        int i = 0;
-        for (Paciente paciente : pacientes) {
-
-            datostabla[i][0] = paciente.getNombres();
-//            datostabla[i][1] = paciente.getApellidos();
-            datostabla[i][1] = paciente.getCedula();
-            datostabla[i][2] = paciente.getEdad();
-            datostabla[i][3] = paciente.getSexo();
-            datostabla[i][4] = paciente.getTelefono();
-            datostabla[i][5] = paciente.getDireccion();
-
-            i++;
-        }
-        DefaultTableModel model = new DefaultTableModel(datostabla, columnas) {
-            public Class getColumnClass(int column) {
-                Class returnValue;
-                if ((column >= 0) && (column < getColumnCount())) {
-                    returnValue = getValueAt(0, column).getClass();
-                } else {
-                    returnValue = Object.class;
-                }
-                return returnValue;
-            }
-
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-        jTable1.setModel(model);
-        sorter.setModel(model);
-        jTable1.setRowSorter(sorter);
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-//                if (SwingUtilities.isRightMouseButton(evt)) {
-                int row = jTable1.rowAtPoint(evt.getPoint());
-                int col = jTable1.columnAtPoint(evt.getPoint());
-                Object n = jTable1.getModel().getValueAt(row, 0);
-                Object c = jTable1.getModel().getValueAt(row, 1);
-                String ced = c.toString().replaceAll(" ", "");
-                System.out.println(n.toString() + "----- " + c.toString());
-
-                try {
-                    paciente = pacienteController.getByNombreCedula("Marco Gutierrez", ced);
-                } catch (BussinessException ex) {
-                    Logger.getLogger(JTablePacientes.class.getName()).log(Level.SEVERE, null, ex);
-                }
-//                                
-
-            }
-        });
-//        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
-//        jTable1.setModel(datos);
-
-    }
+//    public void mostrar_tabla() {
+//
+////        control_cliente control = new control_cliente("Documento","Tipo de documento","Nombres","Apellidos","Direccion","Ciudad","telefono");       
+//        String[] columnas = {"Nombre", "Cedula", "Edad", "Sexo", "Telefono", "Direccion"};
+//        List<Paciente> pacientes = new ArrayList<Paciente>();
+//        try {
+//            pacientes = pacienteController.getAllOrdered();
+//        } catch (BussinessException ex) {
+//            Logger.getLogger(Interfaz_BuscarPacientes.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+////        datostabla = control.consulta_clientes();
+////     ;
+//        datostabla = new Object[pacientes.size()][6];
+//        int i = 0;
+//        for (Paciente paciente : pacientes) {
+//
+//            datostabla[i][0] = paciente.getNombres();
+////            datostabla[i][1] = paciente.getApellidos();
+//            datostabla[i][1] = paciente.getCedula();
+//            datostabla[i][2] = paciente.getEdad();
+//            datostabla[i][3] = paciente.getSexo();
+//            datostabla[i][4] = paciente.getTelefono();
+//            datostabla[i][5] = paciente.getDireccion();
+//
+//            i++;
+//        }
+//        DefaultTableModel model = new DefaultTableModel(datostabla, columnas) {
+//            public Class getColumnClass(int column) {
+//                Class returnValue;
+//                if ((column >= 0) && (column < getColumnCount())) {
+//                    returnValue = getValueAt(0, column).getClass();
+//                } else {
+//                    returnValue = Object.class;
+//                }
+//                return returnValue;
+//            }
+//
+//            public boolean isCellEditable(int row, int column) {
+//                return false;
+//            }
+//        };
+//        jTable1.setModel(model);
+//        sorter.setModel(model);
+//        jTable1.setRowSorter(sorter);
+//        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+//            @Override
+//            public void mouseClicked(java.awt.event.MouseEvent evt) {
+////                if (SwingUtilities.isRightMouseButton(evt)) {
+//                int row = jTable1.rowAtPoint(evt.getPoint());
+//                int col = jTable1.columnAtPoint(evt.getPoint());
+//                Object n = jTable1.getModel().getValueAt(row, 0);
+//                Object c = jTable1.getModel().getValueAt(row, 1);
+//                String ced = c.toString().replaceAll(" ", "");
+//                System.out.println(n.toString() + "----- " + c.toString());
+//
+//                try {
+//                    paciente = pacienteController.getByNombreCedula("Marco Gutierrez", ced);
+//                } catch (BussinessException ex) {
+//                    Logger.getLogger(JTablePacientes.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+////                                
+//
+//            }
+//        });
+////        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
+////        jTable1.setModel(datos);
+//
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -117,30 +117,17 @@ public class Interfaz_BuscarPacientes extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
         jButton1 = new javax.swing.JButton();
         jButtonRegistrar = new javax.swing.JButton();
         jButtonEliminar = new javax.swing.JButton();
         jButtonBuscar = new javax.swing.JButton();
         jButtonModificar = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
 
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Buscar Pacientes");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -188,40 +175,45 @@ public class Interfaz_BuscarPacientes extends javax.swing.JInternalFrame {
 
         jButtonModificar.setText("Modificar");
 
+        jScrollPane2.setViewportView(new JTablePacientes(false));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
                         .addComponent(jButtonBuscar)
                         .addGap(18, 18, 18)
-                        .addComponent(jtfBuscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                        .addComponent(jtfBuscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 476, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2)
+                        .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButtonEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                        .addComponent(jButtonEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGap(76, 76, 76))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButtonModificar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonRegistrar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                        .addComponent(jButtonRegistrar))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfBuscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
@@ -256,13 +248,15 @@ public class Interfaz_BuscarPacientes extends javax.swing.JInternalFrame {
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
         int dialogButton = JOptionPane.YES_NO_OPTION;
 
-        if (paciente != null) {
+        if (JTablePacientes.paciente != null) {
             int respuesta = JOptionPane.showConfirmDialog(null, "Desea Eliminar el elemento Seleccionado", "", dialogButton);
             if (respuesta == 0) {
                 try {
-                    pacienteController.delete(paciente.getId());
-                    mostrar_tabla();
-                    Interfaz_principal.jScrollPane2.add(new JTablePacientes());
+                    pacienteController.delete(JTablePacientes.paciente.getId());
+//                    mostrar_tabla();
+                    
+                    Interfaz_principal.jScrollPane2.setViewportView(new JTablePacientes(true));
+                    jScrollPane2.setViewportView(new JTablePacientes(false));
                 } catch (BussinessException ex) {
                     JOptionPane.showMessageDialog(this,
                             "Error al eliminar el paciente");
@@ -281,8 +275,7 @@ public class Interfaz_BuscarPacientes extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonModificar;
     public static javax.swing.JButton jButtonRegistrar;
-    private javax.swing.JScrollPane jScrollPane1;
-    private final javax.swing.JTable jTable1 = new javax.swing.JTable();
+    public static javax.swing.JScrollPane jScrollPane2;
     private final javax.swing.JTextField jtfBuscarPaciente = new javax.swing.JTextField();
     // End of variables declaration//GEN-END:variables
 private final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>();
