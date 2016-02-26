@@ -90,14 +90,14 @@ public class JMenuPruebaTree extends JPopupMenu {
 //            System.err.println("");
             if (StaticVarsBusiness.mapPruebas.get(treePrueba.getGrupoPruebas().getNombre()) == null) {
                 temp.add(treePrueba);
-                StaticVarsBusiness.PruebasEnTabla.add(treePrueba.getNombre());
+                StaticVarsBusiness.PruebasEnTabla.add(treePrueba.getId());
                 StaticVarsBusiness.mapPruebas.put(treePrueba.getGrupoPruebas().getNombre(), new ArrayList<Prueba>(temp));
             } else {
 //                 if ((StaticVarsBusiness.mapPruebas.get(treePrueba.getGrupoPruebas().getNombre())).indexOf(treePrueba)!=-1) {
                 temp = StaticVarsBusiness.mapPruebas.get(treePrueba.getGrupoPruebas().getNombre());
                 if (!StaticVarsBusiness.PruebasEnTabla.contains(treePrueba.getNombre())) {
                     temp.add(treePrueba);
-                    StaticVarsBusiness.PruebasEnTabla.add(treePrueba.getNombre());
+                    StaticVarsBusiness.PruebasEnTabla.add(treePrueba.getId());
                     StaticVarsBusiness.mapPruebas.put(treePrueba.getGrupoPruebas().getNombre(), new ArrayList<Prueba>(temp));
                 } else {
                     JOptionPane.showMessageDialog(null,
@@ -107,6 +107,7 @@ public class JMenuPruebaTree extends JPopupMenu {
 
 //                StaticVarsBusiness.mapPruebas.put(treePrueba.getGrupoPruebas().getNombre(), new ArrayList<Prueba>(temp));
             }
+            
 //            temp.clear();
             Interfaz_Resultado.jScrollPane1.setViewportView(new JTablePruebas());
 

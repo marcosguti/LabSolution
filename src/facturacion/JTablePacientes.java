@@ -135,7 +135,7 @@ public class JTablePacientes extends javax.swing.JTable {
                     Interfaz_Resultado.jLabelTelefonoValor.setText(paciente.getTelefono());
                     Interfaz_Resultado.jLabelIDValor.setText(String.valueOf(paciente.getId()));
                     Interfaz_Resultado.jLabelDireccionValor.setText(String.valueOf(paciente.getDireccion()));
-
+//                    StaticVarsBusiness.mapPruebas.put
                 }
             });
 //        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);

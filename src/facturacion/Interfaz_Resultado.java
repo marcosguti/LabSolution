@@ -4,9 +4,14 @@
  */
 package facturacion;
 
+import dao.ReportDaoImpl;
 import java.awt.BorderLayout;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,7 +19,7 @@ import javax.swing.JOptionPane;
  * @author ANDRES
  */
 public class Interfaz_Resultado extends javax.swing.JInternalFrame {
-
+    ReportDaoImpl reporDaoImpl= new ReportDaoImpl();
     /**
      * Creates new form Interfaz_actualizarstock
      */
@@ -333,7 +338,20 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 
     private void jButtonImrimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonImrimirActionPerformed
-        // TODO add your handling code here:
+    HashMap<String,Object> reportMap = new HashMap<String,Object>();
+    String sqlQuery="";
+        for (Object p : StaticVarsBusiness.PruebasEnTabla) {
+            sqlQuery+=p+",";
+        }
+    sqlQuery=sqlQuery.substring(0, sqlQuery.length()-1);
+   
+    reportMap.put("query",sqlQuery);
+    reportMap.put("paciente_id",Integer.parseInt(jLabelIDValor.getText()) );
+        try {
+            reporDaoImpl.generatePdfReport(getClass().getResource("/reports/LabReport.jrxml").getPath(), reportMap);        // TODO add your handling code here:
+        } catch (SQLException ex) {
+            Logger.getLogger(Interfaz_Resultado.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonImrimirActionPerformed
 
     private void jButtonBorrarDatosPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarDatosPacienteActionPerformed
