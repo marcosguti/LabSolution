@@ -4,6 +4,7 @@
  */
 package dao;
 
+import facturacion.Interfaz_principal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -29,7 +30,8 @@ public class ReportDaoImpl implements ReportDao {
         try {
             JasperReport report = JasperCompileManager.compileReport(contextPath);
             JasperPrint print = JasperFillManager.fillReport(report, param, coneccionSQL());
-            JasperViewer.viewReport(print, false);
+          
+//            JasperViewer.viewReport(print, false);
             return print;
         } catch (JRException jRException) {
             System.out.println(jRException.getMessage());
