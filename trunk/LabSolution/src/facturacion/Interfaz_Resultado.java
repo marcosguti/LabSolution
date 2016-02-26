@@ -5,6 +5,7 @@
 package facturacion;
 
 import dao.ReportDaoImpl;
+import static facturacion.Interfaz_principal.jDesktopPane1;
 import java.awt.BorderLayout;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -12,14 +13,20 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JRViewer;
 
 /**
  *
  * @author ANDRES
  */
 public class Interfaz_Resultado extends javax.swing.JInternalFrame {
-    ReportDaoImpl reporDaoImpl= new ReportDaoImpl();
+
+    ReportDaoImpl reporDaoImpl = new ReportDaoImpl();
+
     /**
      * Creates new form Interfaz_actualizarstock
      */
@@ -328,9 +335,9 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
         this.dispose();
         Interfaz_principal.jMenuItemResultadoNuevo.setEnabled(true);
-         StaticVarsBusiness.mapPruebas.clear();
-          StaticVarsBusiness.PruebasEnTabla.clear();
-          Interfaz_principal.jButtonNuevoResultado.setEnabled(true);
+        StaticVarsBusiness.mapPruebas.clear();
+        StaticVarsBusiness.PruebasEnTabla.clear();
+        Interfaz_principal.jButtonNuevoResultado.setEnabled(true);
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
@@ -338,17 +345,29 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 
     private void jButtonImrimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonImrimirActionPerformed
-    HashMap<String,Object> reportMap = new HashMap<String,Object>();
-    String sqlQuery="";
+        HashMap<String, Object> reportMap = new HashMap<String, Object>();
+        String sqlQuery = "";
         for (Object p : StaticVarsBusiness.PruebasEnTabla) {
-            sqlQuery+=p+",";
+            sqlQuery += p + ",";
         }
-    sqlQuery=sqlQuery.substring(0, sqlQuery.length()-1);
-   
-    reportMap.put("query",sqlQuery);
-    reportMap.put("paciente_id",Integer.parseInt(jLabelIDValor.getText()) );
+        sqlQuery = sqlQuery.substring(0, sqlQuery.length() - 1);
+
+        reportMap.put("query", sqlQuery);
+        reportMap.put("paciente_id", Integer.parseInt(jLabelIDValor.getText()));
         try {
-            reporDaoImpl.generatePdfReport(getClass().getResource("/reports/LabReport.jrxml").getPath(), reportMap);        // TODO add your handling code here:
+//            JInternalFrame jInternalFrame = new JInternalFrame();
+            JFrame jInternalFrame=new JFrame();
+            JasperPrint print = reporDaoImpl.generatePdfReport(getClass().getResource("/reports/LabReport.jrxml").getPath(), reportMap);
+//              Interfaz_principal.jDesktopPane1.add(new JRViewer(print));
+            jInternalFrame.getContentPane().add(new JRViewer(print));
+            
+//            Interfaz_principal.jDesktopPane1.add(jInternalFrame);
+//            jInternalFrame.show();
+            jInternalFrame.pack();
+            jInternalFrame.setVisible(true);
+            jInternalFrame.setSize(1000, 800);
+
+//            reporDaoImpl.generatePdfReport(getClass().getResource("/reports/LabReport.jrxml").getPath(), reportMap);        // TODO add your handling code here:
         } catch (SQLException ex) {
             Logger.getLogger(Interfaz_Resultado.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -372,10 +391,10 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextFieldObservacionesValorActionPerformed
 
     private void jButtonBorrarDatosResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarDatosResultadoActionPerformed
-                // TODO add your handling code here:
-                StaticVarsBusiness.mapPruebas.clear();
-                 StaticVarsBusiness.PruebasEnTabla.clear();
-                Interfaz_Resultado.jScrollPane1.setViewportView(new JTablePruebas());
+        // TODO add your handling code here:
+        StaticVarsBusiness.mapPruebas.clear();
+        StaticVarsBusiness.PruebasEnTabla.clear();
+        Interfaz_Resultado.jScrollPane1.setViewportView(new JTablePruebas());
     }//GEN-LAST:event_jButtonBorrarDatosResultadoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
