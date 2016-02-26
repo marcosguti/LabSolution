@@ -318,6 +318,7 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
         Interfaz_BuscarPacientes.jButtonRegistrar.setEnabled(true);
         if( Interfaz_principal.jMenuItemPacienteNuevo!=null)
         Interfaz_principal.jMenuItemPacienteNuevo.setEnabled(true);
+         Interfaz_principal.jMenuItemPacienteBuscar.setEnabled(true);
         this.dispose();
     }//GEN-LAST:event_salirButtonActionPerformed
 

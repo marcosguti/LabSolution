@@ -7,6 +7,7 @@ package facturacion;
 import clases.Paciente;
 import controller.PacienteController;
 import dao.PacienteDAOImpl;
+import static facturacion.Interfaz_principal.jMenuItemPacienteBuscar;
 import static facturacion.Interfaz_principal.jMenuItemPacienteNuevo;
 import hibernateUtil.BussinessException;
 import java.awt.event.ActionEvent;
@@ -225,6 +226,8 @@ public class Interfaz_BuscarPacientes extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Interfaz_principal.jMenuItemPacienteNuevo.setEnabled(true);
+         Interfaz_principal.jMenuItemPacienteBuscar.setEnabled(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

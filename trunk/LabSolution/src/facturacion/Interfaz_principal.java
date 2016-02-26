@@ -6,11 +6,13 @@ package facturacion;
 
 import hibernateUtil.BussinessException;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -21,7 +23,6 @@ import javax.swing.JScrollPane;
  * @author ANDRES
  */
 public class Interfaz_principal extends javax.swing.JFrame {
-
 
     /**
      * Creates new form Interfaz_principal
@@ -41,18 +42,17 @@ public class Interfaz_principal extends javax.swing.JFrame {
 
         jDesktopPane1 = new javax.swing.JDesktopPane(){
 
-            ImageIcon icon = new ImageIcon("dinero.jpg");
+            ImageIcon icon = new ImageIcon("../faturacion/imagenes/lab.png");
             Image image = icon.getImage();
 
-            //    Image newimage = image.getScaledInstance(400, 300, Image.SCALE_SMOOTH);
+            Image newimage = image.getScaledInstance(1200, 855, Image.SCALE_SMOOTH);
 
             @Override
             protected void paintComponent(Graphics g)
             {
                 super.paintComponent(g);
-                g.drawImage(image, 0, 0, this);
+                g.drawImage(newimage, 0, 0, this);
             }
-
         };
         jScrollPane1 = new javax.swing.JScrollPane(new TreeInterfazPrincipal());
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -60,6 +60,7 @@ public class Interfaz_principal extends javax.swing.JFrame {
         jtfBuscarPaciente = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButtonNuevoResultado = new javax.swing.JButton();
         jMenuPrincipal = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
         jMenuItemResultadoNuevo = new javax.swing.JMenuItem();
@@ -72,6 +73,8 @@ public class Interfaz_principal extends javax.swing.JFrame {
         jMenuItemPruebaNuevaPrueba = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("LabSolution");
+        setAlwaysOnTop(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setPreferredSize(new java.awt.Dimension(1500, 800));
 
@@ -83,10 +86,29 @@ public class Interfaz_principal extends javax.swing.JFrame {
         jScrollPane2.setViewportView(new JTablePacientes(true));
 
         jButtonBuscar.setText("Buscar");
+        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("PRUEBAS");
 
         jLabel2.setText("PACIENTES");
+
+        jButtonNuevoResultado.setToolTipText("Nuevo Resultado");
+        jButtonNuevoResultado.setBorder(null);
+        jButtonNuevoResultado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNuevoResultadoActionPerformed(evt);
+            }
+        });
+        try{
+            Image img = ImageIO.read(getClass().getResource("../facturacion/imagenes/add.png"));
+            jButtonNuevoResultado.setIcon(new ImageIcon(img));
+        }catch(Exception e){
+
+        }
 
         jMenuPrincipal.setEnabled(false);
         jMenuPrincipal.setName(""); // NOI18N
@@ -156,30 +178,38 @@ public class Interfaz_principal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButtonBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jtfBuscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(26, 26, 26))
-                    .addComponent(jScrollPane1)
-                    .addComponent(jScrollPane2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1247, Short.MAX_VALUE))
+                                        .addGap(6, 6, 6)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel2)
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jButtonBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jtfBuscarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(26, 26, 26))
+                            .addComponent(jScrollPane1)
+                            .addComponent(jScrollPane2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonNuevoResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1259, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 759, Short.MAX_VALUE)
+                    .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 836, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
+                        .addGap(7, 7, 7)
+                        .addComponent(jButtonNuevoResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -207,12 +237,15 @@ public class Interfaz_principal extends javax.swing.JFrame {
     private void jMenuItemPacienteNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPacienteNuevoActionPerformed
         // TODO add your handling code here:}
         jMenuItemPacienteNuevo.setEnabled(false);
+        jMenuItemPacienteBuscar.setEnabled(false);
         Interfaz_Pacientes cli = new Interfaz_Pacientes();
         jDesktopPane1.add(cli);
         cli.show();
     }//GEN-LAST:event_jMenuItemPacienteNuevoActionPerformed
 
     private void jMenuItemPacienteBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPacienteBuscarActionPerformed
+        jMenuItemPacienteNuevo.setEnabled(false);
+        jMenuItemPacienteBuscar.setEnabled(false);
         Interfaz_BuscarPacientes buscar = new Interfaz_BuscarPacientes();
         jDesktopPane1.add(buscar);
         buscar.show();
@@ -233,6 +266,19 @@ public class Interfaz_principal extends javax.swing.JFrame {
         interfaz_Prueba.show();
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemPruebaNuevaPruebaActionPerformed
+
+    private void jButtonNuevoResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoResultadoActionPerformed
+        // TODO add your handling code here:
+        jMenuItemResultadoNuevo.setEnabled(false);
+        Interfaz_Resultado res = new Interfaz_Resultado();
+        jDesktopPane1.add(res);
+        res.show();
+        jButtonNuevoResultado.setEnabled(false);
+    }//GEN-LAST:event_jButtonNuevoResultadoActionPerformed
+
+    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,13 +316,14 @@ public class Interfaz_principal extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton jButtonBuscar;
+    public static javax.swing.JButton jButtonNuevoResultado;
     public static javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenuItem jMenuItemPacienteBuscar;
+    public static javax.swing.JMenuItem jMenuItemPacienteBuscar;
     public static javax.swing.JMenuItem jMenuItemPacienteNuevo;
     public static javax.swing.JMenuItem jMenuItemPruebaNuevaArea;
     public static javax.swing.JMenuItem jMenuItemPruebaNuevaPrueba;
