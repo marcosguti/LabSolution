@@ -80,24 +80,24 @@ public final class TreeInterfazPrincipal extends JTree {
         TreeModel treeModel = new DefaultTreeModel(root);
         this.setModel(treeModel);
 //        this.addTreeSelectionListener(createSelectionListener());
-        this.setCellRenderer(new DefaultTreeCellRenderer() {
-            private Icon loadIcon = UIManager.getIcon("OptionPane.errorIcon");
-            private Icon saveIcon = UIManager.getIcon("OptionPane.informationIcon");
-            
-            @Override
-            public Component getTreeCellRendererComponent(JTree tree,
-                    Object value, boolean selected, boolean expanded,
-                    boolean isLeaf, int row, boolean focused) {
-                Component c = super.getTreeCellRendererComponent(tree, value,
-                        selected, expanded, isLeaf, row, focused);
-                if (selected) {
-                    setIcon(loadIcon);
-                } else {
-                    setIcon(saveIcon);
-                }
-                return c;
-            }
-        });
+//        this.setCellRenderer(new DefaultTreeCellRenderer() {
+//            private Icon loadIcon = UIManager.getIcon("OptionPane.errorIcon");
+//            private Icon saveIcon = UIManager.getIcon("OptionPane.informationIcon");
+//            
+//            @Override
+//            public Component getTreeCellRendererComponent(JTree tree,
+//                    Object value, boolean selected, boolean expanded,
+//                    boolean isLeaf, int row, boolean focused) {
+//                Component c = super.getTreeCellRendererComponent(tree, value,
+//                        selected, expanded, isLeaf, row, focused);
+//                if (selected) {
+//                    setIcon(loadIcon);
+//                } else {
+//                    setIcon(saveIcon);
+//                }
+//                return c;
+//            }
+//        });
         this.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (SwingUtilities.isRightMouseButton(e)) {

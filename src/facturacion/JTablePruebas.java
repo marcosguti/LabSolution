@@ -73,7 +73,7 @@ public class JTablePruebas extends javax.swing.JTable {
             for (Map.Entry<String, List<Prueba>> entry : StaticVarsBusiness.mapPruebas.entrySet()) {
                 dtm.addRow(new Object[]{"Area de "+entry.getKey()});
                 for (Prueba prueba : entry.getValue()) {
-                    dtm.addRow(new Object[]{"     "+prueba.getNombre(), "","("+prueba.getLimites()+") "+prueba.getUnidad()});
+                    dtm.addRow(new Object[]{"     "+prueba.getNombre(),"","("+prueba.getLimites()+") "+prueba.getUnidad()});
                 }
                 System.out.println(entry.getKey() + "/" + entry.getValue());
             }
