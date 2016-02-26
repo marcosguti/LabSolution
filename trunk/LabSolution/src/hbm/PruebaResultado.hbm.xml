@@ -24,6 +24,9 @@
         <many-to-one name="grupoPruebas" class="clases.GrupoPruebas"  access="field" fetch="join" >
             <column name="grupopruebas_id" />
         </many-to-one>
+        <many-to-one name="prueba" class="clases.Prueba"  access="field" fetch="join" >
+            <column name="prueba_id" />
+        </many-to-one>
     </joined-subclass>
   
 

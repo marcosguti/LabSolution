@@ -45,7 +45,6 @@ public class JTablePruebas extends javax.swing.JTable {
         initComponents();
         mostrar_tabla();
 
-    
     }
 
     public void mostrar_tabla() {
@@ -56,30 +55,31 @@ public class JTablePruebas extends javax.swing.JTable {
 
 //        datostabla = control.consulta_clientes();
 //     ;
-        DefaultTableModel dtm = new DefaultTableModel(0, 0){
-         boolean[] editable = new boolean[] {
-                    false, true, false 
-                };
+        DefaultTableModel dtm = new DefaultTableModel(0, 0) {
+            boolean[] editable = new boolean[]{
+                false, true, false
+            };
+
             @Override
-                public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return editable[columnIndex];
-                }
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return editable[columnIndex];
+            }
         };
 
         dtm.setColumnIdentifiers(columnas);
-  Font f1 = new Font("Times New Roman", Font.BOLD, 12);
+        Font f1 = new Font("Times New Roman", Font.BOLD, 12);
 //        Map<String, String> map = ...
         if (StaticVarsBusiness.mapPruebas != null) {
             for (Map.Entry<String, List<Prueba>> entry : StaticVarsBusiness.mapPruebas.entrySet()) {
-                dtm.addRow(new Object[]{"Area de "+entry.getKey()});
+                dtm.addRow(new Object[]{"Area de " + entry.getKey()});
                 for (Prueba prueba : entry.getValue()) {
-                    dtm.addRow(new Object[]{"     "+prueba.getNombre(),"","("+prueba.getLimites()+") "+prueba.getUnidad()});
+                    dtm.addRow(new Object[]{"     " + prueba.getNombre(), "", "(" + prueba.getLimites() + ") " + prueba.getUnidad()});
                 }
                 System.out.println(entry.getKey() + "/" + entry.getValue());
             }
         }
 //        dtm.isCellEditable(0, 0);
-        this.setModel(dtm);  
+        this.setModel(dtm);
     }
 
     /**

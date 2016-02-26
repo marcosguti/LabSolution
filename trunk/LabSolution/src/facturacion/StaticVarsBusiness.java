@@ -16,8 +16,9 @@ import java.util.Map;
  * @author marcosguti
  */
 public class StaticVarsBusiness {
-   public static Map<String, List<Prueba>> mapPruebas= new HashMap<String, List<Prueba>>();
-   public static List<String> PruebasEnTabla= new ArrayList<String>();
+   public static HashMap<String, List<Prueba>> mapPruebas= new HashMap<String, List<Prueba>>();
+   public static List<Integer> PruebasEnTabla= new ArrayList<Integer>();
+
     public StaticVarsBusiness() {
     }
     

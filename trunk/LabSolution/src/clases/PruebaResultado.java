@@ -11,20 +11,30 @@ import javax.persistence.Id;
  *
  * @author marcosguti
  */
-public class PruebaResultado extends Prueba{
+public class PruebaResultado {
  
     private int id;
     private String valor;
     private Resultado resultado;
+    private Prueba prueba;
 
     public PruebaResultado(){}
-    
-    public PruebaResultado(int id, String valor, Resultado resultado) {
-        super();
-        this.id = id;
+
+    public Prueba getPrueba() {
+        return prueba;
+    }
+
+    public void setPrueba(Prueba prueba) {
+        this.prueba = prueba;
+    }
+
+    public PruebaResultado( String valor, Resultado resultado, Prueba prueba) {  
         this.valor = valor;
         this.resultado = resultado;
+        this.prueba = prueba;
     }
+    
+    
 
     public int getId() {
         return id;
