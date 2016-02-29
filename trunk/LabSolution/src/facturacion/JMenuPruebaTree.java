@@ -95,7 +95,7 @@ public class JMenuPruebaTree extends JPopupMenu {
             } else {
 //                 if ((StaticVarsBusiness.mapPruebas.get(treePrueba.getGrupoPruebas().getNombre())).indexOf(treePrueba)!=-1) {
                 temp = StaticVarsBusiness.mapPruebas.get(treePrueba.getGrupoPruebas().getNombre());
-                if (!StaticVarsBusiness.PruebasEnTabla.contains(treePrueba.getNombre())) {
+                if (!StaticVarsBusiness.PruebasEnTabla.contains(treePrueba.getId())) {
                     temp.add(treePrueba);
                     StaticVarsBusiness.PruebasEnTabla.add(treePrueba.getId());
                     StaticVarsBusiness.mapPruebas.put(treePrueba.getGrupoPruebas().getNombre(), new ArrayList<Prueba>(temp));

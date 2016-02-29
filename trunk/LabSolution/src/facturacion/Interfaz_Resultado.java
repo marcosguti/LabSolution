@@ -357,7 +357,7 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
         try {
 //            JInternalFrame jInternalFrame = new JInternalFrame();
             JFrame jInternalFrame=new JFrame();
-            JasperPrint print = reporDaoImpl.generatePdfReport(getClass().getResource("/reports/LabReport.jrxml").getPath(), reportMap);
+            JasperPrint print = reporDaoImpl.generatePdfReport(getClass().getResource("../reports/LabReport.jrxml").getPath(), reportMap);
 //              Interfaz_principal.jDesktopPane1.add(new JRViewer(print));
             jInternalFrame.getContentPane().add(new JRViewer(print));
             
