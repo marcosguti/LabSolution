@@ -11,6 +11,7 @@ package facturacion;
  */
 import clases.Paciente;
 import clases.Prueba;
+import com.sun.org.apache.xml.internal.dtm.DTM;
 import controller.PacienteController;
 import dao.PacienteDAOImpl;
 import static facturacion.Interfaz_principal.jMenuItemPacienteNuevo;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JMenuItem;
@@ -56,12 +58,23 @@ public class JTablePruebas extends javax.swing.JTable {
 //        datostabla = control.consulta_clientes();
 //     ;
         DefaultTableModel dtm = new DefaultTableModel(0, 0) {
+
+            @Override
+            public void addColumn(Object o) {
+                super.addColumn(o); //To change body of generated methods, choose Tools | Templates.
+            }
             boolean[] editable = new boolean[]{
                 false, true, false
+            };
+            boolean[] editable2 = new boolean[]{
+                false, false, false
             };
 
             @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
+                if (this.getValueAt(rowIndex, columnIndex).toString().contains("Area")) {
+                    return editable2[columnIndex];
+                }
                 return editable[columnIndex];
             }
         };
@@ -71,6 +84,8 @@ public class JTablePruebas extends javax.swing.JTable {
 //        Map<String, String> map = ...
         if (StaticVarsBusiness.mapPruebas != null) {
             for (Map.Entry<String, List<Prueba>> entry : StaticVarsBusiness.mapPruebas.entrySet()) {
+                Vector vector = new Vector();
+
                 dtm.addRow(new Object[]{"Area de " + entry.getKey()});
                 for (Prueba prueba : entry.getValue()) {
                     dtm.addRow(new Object[]{"     " + prueba.getNombre(), "", "(" + prueba.getLimites() + ") " + prueba.getUnidad()});
@@ -80,6 +95,12 @@ public class JTablePruebas extends javax.swing.JTable {
         }
 //        dtm.isCellEditable(0, 0);
         this.setModel(dtm);
+        this.getColumn("Valor").setMaxWidth(100);
+        this.getColumn("Valor").setMinWidth(100);
+        this.getColumn("Valor").setWidth(100);
+        this.getColumn("Limites").setMaxWidth(200);
+        this.getColumn("Limites").setMinWidth(200);
+        this.getColumn("Limites").setWidth(200);
     }
 
     /**

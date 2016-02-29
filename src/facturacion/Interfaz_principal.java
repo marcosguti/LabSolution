@@ -74,7 +74,6 @@ public class Interfaz_principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LabSolution");
-        setAlwaysOnTop(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setPreferredSize(new java.awt.Dimension(1500, 800));
 
@@ -111,6 +110,7 @@ public class Interfaz_principal extends javax.swing.JFrame {
         }
 
         jMenuPrincipal.setEnabled(false);
+        jMenuPrincipal.setFocusable(false);
         jMenuPrincipal.setName(""); // NOI18N
 
         jMenu4.setText("Resultado");
