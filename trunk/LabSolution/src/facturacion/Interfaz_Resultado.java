@@ -393,23 +393,23 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
 //
         reportMap.put("resultado_id", resultado.getId());
         reportMap.put("paciente_id", Integer.parseInt(jLabelIDValor.getText()));
-//        try {
-////            JInternalFrame jInternalFrame = new JInternalFrame();
-//            JFrame jInternalFrame=new JFrame();
-//            JasperPrint print = reporDaoImpl.generatePdfReport(getClass().getResource("../reports/LabReport.jrxml").getPath(), reportMap);
-////              Interfaz_principal.jDesktopPane1.add(new JRViewer(print));
-//            jInternalFrame.getContentPane().add(new JRViewer(print));
-//            
-////            Interfaz_principal.jDesktopPane1.add(jInternalFrame);
-////            jInternalFrame.show();
-//            jInternalFrame.pack();
-//            jInternalFrame.setVisible(true);
-//            jInternalFrame.setSize(1000, 800);
-//
-////            reporDaoImpl.generatePdfReport(getClass().getResource("/reports/LabReport.jrxml").getPath(), reportMap);        // TODO add your handling code here:
-//        } catch (SQLException ex) {
-//            Logger.getLogger(Interfaz_Resultado.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try {
+//            JInternalFrame jInternalFrame = new JInternalFrame();
+            JFrame jInternalFrame=new JFrame();
+            JasperPrint print = reporDaoImpl.generatePdfReport(getClass().getResource("../reports/LabReport.jrxml").getPath(), reportMap);
+//              Interfaz_principal.jDesktopPane1.add(new JRViewer(print));
+            jInternalFrame.getContentPane().add(new JRViewer(print));
+            
+//            Interfaz_principal.jDesktopPane1.add(jInternalFrame);
+//            jInternalFrame.show();
+            jInternalFrame.pack();
+            jInternalFrame.setVisible(true);
+            jInternalFrame.setSize(1000, 800);
+
+//            reporDaoImpl.generatePdfReport(getClass().getResource("/reports/LabReport.jrxml").getPath(), reportMap);        // TODO add your handling code here:
+        } catch (SQLException ex) {
+            Logger.getLogger(Interfaz_Resultado.class.getName()).log(Level.SEVERE, null, ex);
+        }
         } catch (BussinessException ex) {
             Logger.getLogger(Interfaz_Resultado.class.getName()).log(Level.SEVERE, null, ex);
         }
