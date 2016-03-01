@@ -90,14 +90,14 @@ public class JMenuPruebaTree extends JPopupMenu {
 //            System.err.println("");
             if (StaticVarsBusiness.mapPruebas.get(treePrueba.getGrupoPruebas().getNombre()) == null) {
                 temp.add(treePrueba);
-                StaticVarsBusiness.PruebasEnTabla.add(treePrueba.getId());
+                StaticVarsBusiness.PruebasEnTabla.put(treePrueba.getNombre(),treePrueba);
                 StaticVarsBusiness.mapPruebas.put(treePrueba.getGrupoPruebas().getNombre(), new ArrayList<Prueba>(temp));
             } else {
 //                 if ((StaticVarsBusiness.mapPruebas.get(treePrueba.getGrupoPruebas().getNombre())).indexOf(treePrueba)!=-1) {
                 temp = StaticVarsBusiness.mapPruebas.get(treePrueba.getGrupoPruebas().getNombre());
-                if (!StaticVarsBusiness.PruebasEnTabla.contains(treePrueba.getId())) {
+                if (StaticVarsBusiness.PruebasEnTabla.get(treePrueba.getNombre())==null) {
                     temp.add(treePrueba);
-                    StaticVarsBusiness.PruebasEnTabla.add(treePrueba.getId());
+                    StaticVarsBusiness.PruebasEnTabla.put(treePrueba.getNombre(),treePrueba);
                     StaticVarsBusiness.mapPruebas.put(treePrueba.getGrupoPruebas().getNombre(), new ArrayList<Prueba>(temp));
                 } else {
                     JOptionPane.showMessageDialog(null,

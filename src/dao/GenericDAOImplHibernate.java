@@ -9,6 +9,7 @@ import hibernateUtil.BussinessMessage;
 import hibernateUtil.HibernateUtil;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
+import java.util.Collection;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -258,5 +259,9 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements
 	private Class<T> getEntityClass() {
 		return (Class<T>) ((ParameterizedType) getClass()
 				.getGenericSuperclass()).getActualTypeArguments()[0];
+	}
+        public void saveOrUpdate(Collection T) throws BussinessException {
+           
+		
 	}
 }

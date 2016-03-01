@@ -5,20 +5,39 @@
  */
 package clases;
 
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  *
  * @author marcosguti
  */
+/*@Entity
+ @Table(name = "prueba")
+ public class Prueba {
+ @Id
+ @Column(name = "id")
+ @GeneratedValue
+ private int id;
+ @Column(name = "nombre")*/
+@Entity
+@Table(name = "pruebaresultado")
 public class PruebaResultado {
- 
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue
     private int id;
+    @Column(name = "valor")
     private String valor;
+    @ManyToOne
+    @JoinColumn(name = "resultado_id")
     private Resultado resultado;
+    @ManyToOne
+    @JoinColumn(name = "prueba_id")
     private Prueba prueba;
 
-    public PruebaResultado(){}
+    public PruebaResultado() {
+    }
 
     public Prueba getPrueba() {
         return prueba;
@@ -28,13 +47,11 @@ public class PruebaResultado {
         this.prueba = prueba;
     }
 
-    public PruebaResultado( String valor, Resultado resultado, Prueba prueba) {  
+    public PruebaResultado(String valor, Resultado resultado, Prueba prueba) {
         this.valor = valor;
         this.resultado = resultado;
         this.prueba = prueba;
     }
-    
-    
 
     public int getId() {
         return id;
@@ -43,9 +60,6 @@ public class PruebaResultado {
     public void setId(int ids) {
         this.id = ids;
     }
-
-   
-   
 
     public String getValor() {
         return valor;
@@ -63,9 +77,4 @@ public class PruebaResultado {
         this.resultado = resultado;
     }
 
- 
-    
-    
-    
-    
 }

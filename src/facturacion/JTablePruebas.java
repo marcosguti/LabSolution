@@ -29,6 +29,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
+import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
@@ -57,7 +58,7 @@ public class JTablePruebas extends javax.swing.JTable {
 
 //        datostabla = control.consulta_clientes();
 //     ;
-        DefaultTableModel dtm = new DefaultTableModel(0, 0) {
+         dtm = new DefaultTableModel(0, 0) {
 
             @Override
             public void addColumn(Object o) {
@@ -78,7 +79,7 @@ public class JTablePruebas extends javax.swing.JTable {
                 return editable[columnIndex];
             }
         };
-
+        this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         dtm.setColumnIdentifiers(columnas);
         Font f1 = new Font("Times New Roman", Font.BOLD, 12);
 //        Map<String, String> map = ...
