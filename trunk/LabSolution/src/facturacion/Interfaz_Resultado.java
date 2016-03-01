@@ -4,10 +4,17 @@
  */
 package facturacion;
 
+import clases.PruebaResultado;
+import clases.Resultado;
+import controller.PacienteController;
+import controller.PruebaResultadoController;
+import controller.ResultadoController;
 import dao.ReportDaoImpl;
 import static facturacion.Interfaz_principal.jDesktopPane1;
+import hibernateUtil.BussinessException;
 import java.awt.BorderLayout;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -24,8 +31,6 @@ import net.sf.jasperreports.view.JRViewer;
  * @author ANDRES
  */
 public class Interfaz_Resultado extends javax.swing.JInternalFrame {
-
-    ReportDaoImpl reporDaoImpl = new ReportDaoImpl();
 
     /**
      * Creates new form Interfaz_actualizarstock
@@ -257,8 +262,8 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jButtonBorrarDatosResultado.setText("Borrar");
@@ -273,33 +278,34 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButtonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonImrimir, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(134, 134, 134)
-                                .addComponent(jButtonSalir)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonBorrarDatosResultado)
-                                .addContainerGap(34, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanelDatosPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonBorrarDatosPaciente)
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonImrimir, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(134, 134, 134)
+                                .addComponent(jButtonSalir)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jButtonBorrarDatosResultado)
+                                        .addContainerGap(49, Short.MAX_VALUE))))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,16 +323,16 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonImrimir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(233, 233, 233)
                         .addComponent(jButtonBorrarDatosResultado)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonImrimir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -345,30 +351,66 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 
     private void jButtonImrimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonImrimirActionPerformed
-        HashMap<String, Object> reportMap = new HashMap<String, Object>();
-        String sqlQuery = "";
-        for (Object p : StaticVarsBusiness.PruebasEnTabla) {
-            sqlQuery += p + ",";
-        }
-        sqlQuery = sqlQuery.substring(0, sqlQuery.length() - 1);
-
-        reportMap.put("query", sqlQuery);
-        reportMap.put("paciente_id", Integer.parseInt(jLabelIDValor.getText()));
         try {
-//            JInternalFrame jInternalFrame = new JInternalFrame();
-            JFrame jInternalFrame=new JFrame();
-            JasperPrint print = reporDaoImpl.generatePdfReport(getClass().getResource("../reports/LabReport.jrxml").getPath(), reportMap);
-//              Interfaz_principal.jDesktopPane1.add(new JRViewer(print));
-            jInternalFrame.getContentPane().add(new JRViewer(print));
-            
-//            Interfaz_principal.jDesktopPane1.add(jInternalFrame);
-//            jInternalFrame.show();
-            jInternalFrame.pack();
-            jInternalFrame.setVisible(true);
-            jInternalFrame.setSize(1000, 800);
+            PruebaResultadoController pruebaResultadoController = new PruebaResultadoController();
+            PacienteController pacienteController = new PacienteController();
+            ReportDaoImpl reporDaoImpl = new ReportDaoImpl();
+            ResultadoController resultadoController = new ResultadoController();
+            HashMap<String, Object> reportMap = new HashMap<String, Object>();
+            String sqlQuery = "";
 
-//            reporDaoImpl.generatePdfReport(getClass().getResource("/reports/LabReport.jrxml").getPath(), reportMap);        // TODO add your handling code here:
-        } catch (SQLException ex) {
+//        StaticVarsBusiness.PruebasEnTabla
+//        JTablePruebas.dtm
+            Resultado resultado = new Resultado();
+            resultado.setObservaciones(jTextFieldObservacionesValor.getText());
+            resultado.setPaciente(pacienteController.getByNombreCedula(jLabelNombreValor.getText(), jLabelCedulaValor.getText()));
+            java.util.Date date = new java.util.Date();
+            Timestamp ts_now = new Timestamp(date.getTime());
+            resultado.setFecha(ts_now);
+            resultadoController.guardar(resultado);
+            int precioTotal = 0;
+            for (int i = 0; i < JTablePruebas.dtm.getRowCount(); i++) {
+                PruebaResultado pruebaResultado = new PruebaResultado();
+                if (JTablePruebas.dtm.getValueAt(i, 0).toString().contains("Area")) {
+                    continue;
+                } else {
+                    String prueba = JTablePruebas.dtm.getValueAt(i, 0).toString();
+                    prueba = prueba.replaceAll("     ", "");
+                    pruebaResultado.setPrueba(StaticVarsBusiness.PruebasEnTabla.get(prueba));
+                    pruebaResultado.setValor(JTablePruebas.dtm.getValueAt(i, 1).toString());
+                    pruebaResultado.setResultado(resultado);
+                    precioTotal += StaticVarsBusiness.PruebasEnTabla.get(prueba).getPrecio();
+                }
+                pruebaResultadoController.guardar(pruebaResultado);
+            }
+            resultado.setPrecio(precioTotal);
+            resultadoController.guardar(resultado);
+//        for (Object p : StaticVarsBusiness.PruebasEnTabla) {
+//            sqlQuery += p + ",";
+//        }
+
+//        sqlQuery = sqlQuery.substring(0, sqlQuery.length() - 1);
+//
+        reportMap.put("resultado_id", resultado.getId());
+        reportMap.put("paciente_id", Integer.parseInt(jLabelIDValor.getText()));
+//        try {
+////            JInternalFrame jInternalFrame = new JInternalFrame();
+//            JFrame jInternalFrame=new JFrame();
+//            JasperPrint print = reporDaoImpl.generatePdfReport(getClass().getResource("../reports/LabReport.jrxml").getPath(), reportMap);
+////              Interfaz_principal.jDesktopPane1.add(new JRViewer(print));
+//            jInternalFrame.getContentPane().add(new JRViewer(print));
+//            
+////            Interfaz_principal.jDesktopPane1.add(jInternalFrame);
+////            jInternalFrame.show();
+//            jInternalFrame.pack();
+//            jInternalFrame.setVisible(true);
+//            jInternalFrame.setSize(1000, 800);
+//
+////            reporDaoImpl.generatePdfReport(getClass().getResource("/reports/LabReport.jrxml").getPath(), reportMap);        // TODO add your handling code here:
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Interfaz_Resultado.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        } catch (BussinessException ex) {
             Logger.getLogger(Interfaz_Resultado.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonImrimirActionPerformed
