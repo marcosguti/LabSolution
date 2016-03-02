@@ -29,6 +29,8 @@ public class ReportDaoImpl implements ReportDao {
 //        param.put("id_paciente", 5);
         try {
             JasperReport report = JasperCompileManager.compileReport(contextPath);
+            param.put("SUBREPORT_DIR", getClass().getResource("../reports/").getPath());
+            
             JasperPrint print = JasperFillManager.fillReport(report, param, coneccionSQL());
           
 //            JasperViewer.viewReport(print, false);

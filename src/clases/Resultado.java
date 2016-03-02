@@ -6,6 +6,7 @@
 package clases;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,7 +38,7 @@ public class Resultado {
     @Column(name = "observaciones")
     private String observaciones;
     @Column(name = "fecha")
-    private Timestamp fecha;
+    private Date fecha;
 
     public Resultado() {
     }
@@ -81,11 +82,11 @@ public class Resultado {
         this.observaciones = observaciones;
     }
 
-    public Timestamp getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(Timestamp fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 

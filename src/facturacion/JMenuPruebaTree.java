@@ -90,15 +90,29 @@ public class JMenuPruebaTree extends JPopupMenu {
 //            System.err.println("");
             if (StaticVarsBusiness.mapPruebas.get(treePrueba.getGrupoPruebas().getNombre()) == null) {
                 temp.add(treePrueba);
-                StaticVarsBusiness.PruebasEnTabla.put(treePrueba.getNombre(),treePrueba);
+                StaticVarsBusiness.PruebasEnTabla.put(treePrueba.getNombre(), treePrueba);
                 StaticVarsBusiness.mapPruebas.put(treePrueba.getGrupoPruebas().getNombre(), new ArrayList<Prueba>(temp));
+                if (Interfaz_Resultado.jLabelTotalValor.getText().equals("0 Bs")) {
+                    Interfaz_Resultado.jLabelTotalValor.setText(String.valueOf(treePrueba.getPrecio()+" Bs"));
+                } else {
+                    int precio = Integer.parseInt(Interfaz_Resultado.jLabelTotalValor.getText().replaceAll(" Bs", ""));
+                    precio += treePrueba.getPrecio();
+                    Interfaz_Resultado.jLabelTotalValor.setText(String.valueOf(precio)+" Bs");
+                }
             } else {
 //                 if ((StaticVarsBusiness.mapPruebas.get(treePrueba.getGrupoPruebas().getNombre())).indexOf(treePrueba)!=-1) {
                 temp = StaticVarsBusiness.mapPruebas.get(treePrueba.getGrupoPruebas().getNombre());
-                if (StaticVarsBusiness.PruebasEnTabla.get(treePrueba.getNombre())==null) {
+                if (StaticVarsBusiness.PruebasEnTabla.get(treePrueba.getNombre()) == null) {
                     temp.add(treePrueba);
-                    StaticVarsBusiness.PruebasEnTabla.put(treePrueba.getNombre(),treePrueba);
+                    StaticVarsBusiness.PruebasEnTabla.put(treePrueba.getNombre(), treePrueba);
                     StaticVarsBusiness.mapPruebas.put(treePrueba.getGrupoPruebas().getNombre(), new ArrayList<Prueba>(temp));
+                   if (Interfaz_Resultado.jLabelTotalValor.getText().equals("0 Bs")) {
+                    Interfaz_Resultado.jLabelTotalValor.setText(String.valueOf(treePrueba.getPrecio()+" Bs"));
+                } else {
+                    int precio = Integer.parseInt(Interfaz_Resultado.jLabelTotalValor.getText().replaceAll(" Bs", ""));
+                    precio += treePrueba.getPrecio();
+                    Interfaz_Resultado.jLabelTotalValor.setText(String.valueOf(precio)+" Bs");
+                }
                 } else {
                     JOptionPane.showMessageDialog(null,
                             "Ya agrego esta prueba ", "Mensaje",
@@ -107,7 +121,7 @@ public class JMenuPruebaTree extends JPopupMenu {
 
 //                StaticVarsBusiness.mapPruebas.put(treePrueba.getGrupoPruebas().getNombre(), new ArrayList<Prueba>(temp));
             }
-            
+
 //            temp.clear();
             Interfaz_Resultado.jScrollPane1.setViewportView(new JTablePruebas());
 
