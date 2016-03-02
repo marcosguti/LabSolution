@@ -10,6 +10,7 @@ import controller.PruebaController;
 import facturacion.Interfaz_principal;
 import hibernateUtil.BussinessException;
 import java.util.List;
+import javax.swing.UIManager;
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 /**
@@ -21,9 +22,8 @@ public class Aplication {
     /**
      * @param args the command line arguments
      */
-   
     public static void main(String[] args) throws BussinessException {
-       new Interfaz_principal().setVisible(true);
+        new Interfaz_principal().setVisible(true);
 //            GrupoPruebasController grupoPruebasController = new GrupoPruebasController();
 //        PruebaController pruebaController=new PruebaController();
 //            GrupoPruebas grupoPruebas= new GrupoPruebas("HEMATOLOGIA");
@@ -36,5 +36,4 @@ public class Aplication {
 //                pruebaController.guardar(prueba);
     }
 
-   
 }

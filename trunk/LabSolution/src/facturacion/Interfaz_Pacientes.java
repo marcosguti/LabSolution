@@ -1,4 +1,3 @@
-
 package facturacion;
 
 import clases.Paciente;
@@ -8,17 +7,17 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
- * 
+ *
  * @author eimar
  */
 public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
 
 //    control_existencias ctrl = new control_existencias();
     public Interfaz_Pacientes() {
-        initComponents();    
+        initComponents();
         limpiar();
         bloquear_cajas();
-        
+
 //        Object[] tipo_doc = ctrl.combox("tipo_de_documento","id_tipo_documento");
 //        comboTipoDoc.removeAllItems();
 //        for(int i=0;i<tipo_doc.length;i++){
@@ -34,7 +33,6 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
 //    }
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -229,119 +227,120 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void limpiar()
-    {
-        
-       jtfDocumento.setText("");
-       comboTipoDoc.setName("");
-       jtfNombre.setText("");
-       
+    public void limpiar() {
+
+        jtfDocumento.setText("");
+        comboTipoDoc.setName("");
+        jtfNombre.setText("");
+
 //       dirclientejTextField4.setText("");
-        
     }
-   public void habilitarMenu(javax.swing.JMenuItem jmenu) {
-       jmenu.setEnabled(true);
-   }
-    public void  bloquear_cajas()
-    {
-       jtfDocumento.setEnabled(false);
-       comboTipoDoc.setEnabled(false);
-       jtfNombre.setEnabled(false);
-       jtfDireccion.setEnabled(false);
+
+    public void habilitarMenu(javax.swing.JMenuItem jmenu) {
+        jmenu.setEnabled(true);
+    }
+
+    public void bloquear_cajas() {
+        jtfDocumento.setEnabled(false);
+        comboTipoDoc.setEnabled(false);
+        jtfNombre.setEnabled(false);
+        jtfDireccion.setEnabled(false);
 //       dirclientejTextField4.setEnabled(false);       
 //     comboEdadbo.setEnabled(false); 
-       nuevoRegistroButton.setEnabled(true);
-       registrarButton.setEnabled(false);
-       cancelarButton.setEnabled(false);
-       jtfTelefono.setEnabled(false);
-       
+        nuevoRegistroButton.setEnabled(true);
+        registrarButton.setEnabled(false);
+        cancelarButton.setEnabled(false);
+        jtfTelefono.setEnabled(false);
+
     }
-    public void  desbloquear()
-    {
-       jtfDocumento.setEnabled(true);
-       comboTipoDoc.setEnabled(true);
-       jtfNombre.setEnabled(true);
-       jtfDireccion.setEnabled(true);
+
+    public void desbloquear() {
+        jtfDocumento.setEnabled(true);
+        comboTipoDoc.setEnabled(true);
+        jtfNombre.setEnabled(true);
+        jtfDireccion.setEnabled(true);
 //       dirclientejTextField4.setEnabled(true);       
 //     comboEdadbo.setEnabled(true); 
-       jtfTelefono.setEnabled(true);
-       nuevoRegistroButton.setEnabled(false);
-       registrarButton.setEnabled(true);
-       cancelarButton.setEnabled(true);
-       
+        jtfTelefono.setEnabled(true);
+        nuevoRegistroButton.setEnabled(false);
+        registrarButton.setEnabled(true);
+        cancelarButton.setEnabled(true);
+
     }
-    
+
     private void registrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarButtonActionPerformed
-       
+
        // GEN-FIRST:event_regclientejButton1ActionPerformed
+        String doc, nom, dir, sexo, tipo, tel;
+        int edad;
+        doc = jtfDocumento.getText();
+        tipo = comboTipoDoc.getSelectedItem().toString();
+        String cedula = tipo + "-" + doc;
+        nom = jtfNombre.getText();
+        dir = jtfDireccion.getText();
+        sexo = comboSexo.getSelectedItem().toString();
+        edad = Integer.parseInt(comboEdad.getSelectedItem().toString());
+        tel = jtfTelefono.getText();
+        PacienteController pacienteController = new PacienteController();
+        Paciente paciente = new Paciente(cedula, nom, tel, sexo, dir, edad);
+        if (!doc.equals("") && !tipo.equals("") && !nom.equals("")
+                && !dir.equals("")) {
+            try {
+                pacienteController.guardar(paciente);
 
-		String doc, nom, dir, sexo, tipo, tel;
-		int edad;
-		doc = jtfDocumento.getText();
-		tipo = comboTipoDoc.getSelectedItem().toString();
-		String cedula = tipo + "-" + doc;
-		nom = jtfNombre.getText();
-		dir = jtfDireccion.getText();
-		sexo = comboSexo.getSelectedItem().toString();
-		edad = Integer.parseInt(comboEdad.getSelectedItem().toString());
-		tel = jtfTelefono.getText();
-		PacienteController pacienteController = new PacienteController();
-		Paciente paciente = new Paciente(cedula, nom, tel,sexo,dir, edad);
-		if (!doc.equals("") && !tipo.equals("") && !nom.equals("")
-				&& !dir.equals("")) {
-			try {
-				pacienteController.guardar(paciente);
+                JOptionPane.showMessageDialog(null,
+                        "El cliente se registro con exito ", "Mensaje",
+                        JOptionPane.INFORMATION_MESSAGE);
+                limpiar();
+                bloquear_cajas();
+                Interfaz_principal.jScrollPane2.setViewportView(new JTablePacientes(true));
+                if(Interfaz_BuscarPacientes.jScrollPane2!=null)
+                Interfaz_BuscarPacientes.jScrollPane2.setViewportView(new JTablePacientes(false));
 
-				JOptionPane.showMessageDialog(null,
-						"El cliente se registro con exito ", "Mensaje",
-						JOptionPane.INFORMATION_MESSAGE);
-				limpiar();
-				bloquear_cajas();
-                                Interfaz_principal.jScrollPane2.setViewportView(new JTablePacientes(true));
-                                 Interfaz_BuscarPacientes.jScrollPane2.setViewportView(new JTablePacientes(false));
-               
 //                                Interfaz_BuscarPacientes.mostrar
-			} catch (Exception e) {
-				JOptionPane.showMessageDialog(this,
-						"Error al registrar el cliente");
-			}
-		} else {
-			JOptionPane.showMessageDialog(this, "Hay campos obligatorios");
-		}
+            } catch (Exception e) {
+                System.out.println(e.getMessage()+" asdasds");
+                JOptionPane.showMessageDialog(this,
+                        "Error al registrar el cliente");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Hay campos obligatorios");
+        }
 
-	
-               
+
     }//GEN-LAST:event_registrarButtonActionPerformed
 
     private void salirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirButtonActionPerformed
-        if( Interfaz_BuscarPacientes.jButtonRegistrar!=null)
-        Interfaz_BuscarPacientes.jButtonRegistrar.setEnabled(true);
-        if( Interfaz_principal.jMenuItemPacienteNuevo!=null)
-        Interfaz_principal.jMenuItemPacienteNuevo.setEnabled(true);
-         Interfaz_principal.jMenuItemPacienteBuscar.setEnabled(true);
+        if (Interfaz_BuscarPacientes.jButtonRegistrar != null) {
+            Interfaz_BuscarPacientes.jButtonRegistrar.setEnabled(true);
+        }
+        if (Interfaz_principal.jMenuItemPacienteNuevo != null) {
+            Interfaz_principal.jMenuItemPacienteNuevo.setEnabled(true);
+        }
+        Interfaz_principal.jMenuItemPacienteBuscar.setEnabled(true);
         this.dispose();
     }//GEN-LAST:event_salirButtonActionPerformed
 
     private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
-    bloquear_cajas();  
-    limpiar();
+        bloquear_cajas();
+        limpiar();
     }//GEN-LAST:event_cancelarButtonActionPerformed
 
     private void nuevoRegistroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoRegistroButtonActionPerformed
-    desbloquear();
-    jtfDocumento.requestFocus();
+        desbloquear();
+        jtfDocumento.requestFocus();
     }//GEN-LAST:event_nuevoRegistroButtonActionPerformed
 
     private void jtfDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfDocumentoActionPerformed
-    jtfDocumento.transferFocus();
+        jtfDocumento.transferFocus();
     }//GEN-LAST:event_jtfDocumentoActionPerformed
 
     private void jtfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNombreActionPerformed
-    jtfNombre.transferFocus();
+        jtfNombre.transferFocus();
     }//GEN-LAST:event_jtfNombreActionPerformed
 
     private void comboTipoDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTipoDocActionPerformed
-        
+
 
     }//GEN-LAST:event_comboTipoDocActionPerformed
 

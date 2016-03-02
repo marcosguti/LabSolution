@@ -7,13 +7,14 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT nombre, valor, limites
+		<![CDATA[SELECT nombre, valor, limites, UNIDAD
     FROM prueba, pruebaresultado
     WHERE pruebaresultado.resultado_id = $P!{resultado_id} AND prueba.id= pruebaresultado.prueba_id;]]>
 	</queryString>
 	<field name="nombre" class="java.lang.String"/>
 	<field name="valor" class="java.lang.String"/>
 	<field name="limites" class="java.lang.String"/>
+	<field name="unidad" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -42,21 +43,22 @@
 	<detail>
 		<band height="28" splitType="Stretch">
 			<textField>
-				<reportElement uuid="172a9adf-d7c0-4d7d-a262-697d0eafc8d3" x="54" y="4" width="100" height="20"/>
+				<reportElement uuid="172a9adf-d7c0-4d7d-a262-697d0eafc8d3" x="54" y="4" width="154" height="20"/>
 				<box topPadding="3" leftPadding="3" bottomPadding="1" rightPadding="1"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="6e4b7e59-0948-4f21-9d5d-e9fcf91a5744" x="371" y="4" width="100" height="20"/>
+				<reportElement uuid="6e4b7e59-0948-4f21-9d5d-e9fcf91a5744" x="371" y="4" width="186" height="20"/>
 				<box topPadding="3" leftPadding="3" bottomPadding="1" rightPadding="1"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{limites}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["("+$F{limites}+") "+$F{unidad}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="795a53e7-7829-4645-b956-eff87b83ecae" x="229" y="4" width="100" height="20"/>
+				<reportElement uuid="795a53e7-7829-4645-b956-eff87b83ecae" x="229" y="4" width="142" height="20"/>
+				<box topPadding="3" leftPadding="3" bottomPadding="1" rightPadding="1"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{valor}+" "+ $F{unidad}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

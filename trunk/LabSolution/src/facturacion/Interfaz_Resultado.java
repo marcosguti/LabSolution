@@ -75,6 +75,9 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jButtonBorrarDatosResultado = new javax.swing.JButton();
+        jLabelTotal = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabelTotalValor = new javax.swing.JLabel();
 
         setBackground(java.awt.Color.white);
         setTitle("Resultado");
@@ -93,8 +96,9 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
             }
         });
 
-        jPanelDatosPaciente.setBackground(java.awt.Color.white);
         jPanelDatosPaciente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanelDatosPaciente.setMaximumSize(new java.awt.Dimension(602, 160));
+        jPanelDatosPaciente.setMinimumSize(new java.awt.Dimension(602, 160));
 
         jLabelCedulaValor.setToolTipText("");
         jLabelCedulaValor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -186,13 +190,13 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabelIDValor, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDatosPacienteLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                                 .addComponent(jLabelTelefonoValor, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanelDatosPacienteLayout.createSequentialGroup()
                         .addComponent(jLabelObservaciones)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextFieldObservacionesValor)))
-                .addContainerGap())
+                .addGap(6, 6, 6))
         );
         jPanelDatosPacienteLayout.setVerticalGroup(
             jPanelDatosPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,10 +246,11 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
             }
         });
 
-        jPanel1.setBackground(java.awt.Color.white);
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setMaximumSize(new java.awt.Dimension(602, 383));
+        jPanel1.setMinimumSize(new java.awt.Dimension(602, 383));
+        jPanel1.setPreferredSize(new java.awt.Dimension(602, 383));
         jPanel1.setLayout(new BorderLayout());
-        jPanel1.add(new JPanelPruebas(), BorderLayout.CENTER);
 
         jScrollPane1.setViewportView(new JTablePruebas());
 
@@ -255,14 +260,14 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -273,39 +278,40 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabelTotal.setText("Total:");
+
+        jLabelTotalValor.setText("0");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanelDatosPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
+                            .addComponent(jPanelDatosPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonBorrarDatosPaciente)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButtonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonImrimir, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(134, 134, 134)
-                                .addComponent(jButtonSalir)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButtonBorrarDatosResultado)
-                                        .addContainerGap(49, Short.MAX_VALUE))))))))
+                            .addComponent(jButtonBorrarDatosPaciente)
+                            .addComponent(jButtonBorrarDatosResultado))
+                        .addGap(0, 49, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonImrimir, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(134, 134, 134)
+                        .addComponent(jButtonSalir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelTotalValor, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(73, 73, 73)
+                        .addComponent(jLabel2)
+                        .addGap(39, 39, 39))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,26 +319,32 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
-                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
+                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
                         .addComponent(jButtonBorrarDatosPaciente))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanelDatosPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonImrimir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                        .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(233, 233, 233)
+                        .addGap(177, 177, 177)
                         .addComponent(jButtonBorrarDatosResultado)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonImrimir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabelTotalValor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                        .addComponent(jLabelTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -364,9 +376,15 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
             Resultado resultado = new Resultado();
             resultado.setObservaciones(jTextFieldObservacionesValor.getText());
             resultado.setPaciente(pacienteController.getByNombreCedula(jLabelNombreValor.getText(), jLabelCedulaValor.getText()));
-            java.util.Date date = new java.util.Date();
-            Timestamp ts_now = new Timestamp(date.getTime());
-            resultado.setFecha(ts_now);
+//            java.util.Date date = new java.util.Date();
+//            Timestamp ts_now = new Timestamp(date.getTime());
+            String output;
+            SimpleDateFormat formatter;
+
+            formatter = new SimpleDateFormat("dd/MM/yyyy");
+            Date today = new Date();
+            output = formatter.format(today);
+            resultado.setFecha(today);
             resultadoController.guardar(resultado);
             int precioTotal = 0;
             for (int i = 0; i < JTablePruebas.dtm.getRowCount(); i++) {
@@ -385,31 +403,33 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
             }
             resultado.setPrecio(precioTotal);
             resultadoController.guardar(resultado);
+            jLabelTotalValor.setText(String.valueOf(precioTotal));
 //        for (Object p : StaticVarsBusiness.PruebasEnTabla) {
 //            sqlQuery += p + ",";
 //        }
 
 //        sqlQuery = sqlQuery.substring(0, sqlQuery.length() - 1);
 //
-        reportMap.put("resultado_id", resultado.getId());
-        reportMap.put("paciente_id", Integer.parseInt(jLabelIDValor.getText()));
-        try {
+            reportMap.put("resultado_id", resultado.getId());
+            reportMap.put("paciente_id", Integer.parseInt(jLabelIDValor.getText()));
+            reportMap.put("observaciones", jTextFieldObservacionesValor.getText());
+            reportMap.put("fecha", output);
+            try {
 //            JInternalFrame jInternalFrame = new JInternalFrame();
-            JFrame jInternalFrame=new JFrame();
-            JasperPrint print = reporDaoImpl.generatePdfReport(getClass().getResource("../reports/LabReport.jrxml").getPath(), reportMap);
-//              Interfaz_principal.jDesktopPane1.add(new JRViewer(print));
-            jInternalFrame.getContentPane().add(new JRViewer(print));
-            
+                JFrame jInternalFrame = new JFrame();
+                JasperPrint print = reporDaoImpl.generatePdfReport(getClass().getResource("../reports/LabReport.jrxml").getPath(), reportMap);//              Interfaz_principal.jDesktopPane1.add(new JRViewer(print));
+                jInternalFrame.getContentPane().add(new JRViewer(print));
+
 //            Interfaz_principal.jDesktopPane1.add(jInternalFrame);
 //            jInternalFrame.show();
-            jInternalFrame.pack();
-            jInternalFrame.setVisible(true);
-            jInternalFrame.setSize(1000, 800);
+                jInternalFrame.pack();
+                jInternalFrame.setVisible(true);
+                jInternalFrame.setSize(1000, 800);
 
 //            reporDaoImpl.generatePdfReport(getClass().getResource("/reports/LabReport.jrxml").getPath(), reportMap);        // TODO add your handling code here:
-        } catch (SQLException ex) {
-            Logger.getLogger(Interfaz_Resultado.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            } catch (SQLException ex) {
+                Logger.getLogger(Interfaz_Resultado.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (BussinessException ex) {
             Logger.getLogger(Interfaz_Resultado.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -437,6 +457,7 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
         StaticVarsBusiness.mapPruebas.clear();
         StaticVarsBusiness.PruebasEnTabla.clear();
         Interfaz_Resultado.jScrollPane1.setViewportView(new JTablePruebas());
+        jLabelTotalValor.setText("0 Bs");
     }//GEN-LAST:event_jButtonBorrarDatosResultadoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -446,6 +467,7 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtonGuardar;
     private javax.swing.JButton jButtonImrimir;
     private javax.swing.JButton jButtonSalir;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelCedula;
     public static javax.swing.JLabel jLabelCedulaValor;
     private javax.swing.JLabel jLabelDireccion;
@@ -463,9 +485,11 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
     public static javax.swing.JLabel jLabelSexoValor;
     private javax.swing.JLabel jLabelTelefono;
     public static javax.swing.JLabel jLabelTelefonoValor;
+    private javax.swing.JLabel jLabelTotal;
+    public static javax.swing.JLabel jLabelTotalValor;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelDatosPaciente;
     public static javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextFieldObservacionesValor;
+    public static javax.swing.JTextField jTextFieldObservacionesValor;
     // End of variables declaration//GEN-END:variables
 }

@@ -2,12 +2,14 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="result" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="76395d23-f885-4fa9-90d9-ed65ab9e5657">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="376"/>
+	<property name="ireport.y" value="109"/>
 	<parameter name="paciente_id" class="java.lang.Integer"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["/home/marcosguti/NetBeansProjects/facturacion/src/reports/"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="resultado_id" class="java.lang.String"/>
+	<parameter name="observaciones" class="java.lang.String"/>
+	<parameter name="fecha" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select * from paciente where paciente.id= $P{paciente_id}]]>
 	</queryString>
@@ -32,13 +34,10 @@
 	<pageHeader>
 		<band height="30" splitType="Stretch"/>
 	</pageHeader>
-	<columnHeader>
-		<band height="61" splitType="Stretch"/>
-	</columnHeader>
 	<detail>
-		<band height="166" splitType="Stretch">
+		<band height="139" splitType="Stretch">
 			<frame>
-				<reportElement uuid="aadb63cc-b3a3-49db-a4ad-3cee07118d9a" x="0" y="0" width="572" height="99"/>
+				<reportElement uuid="aadb63cc-b3a3-49db-a4ad-3cee07118d9a" x="0" y="0" width="572" height="136"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -202,20 +201,6 @@
 					<textElement/>
 					<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 				</textField>
-				<textField pattern="d/M/yyyy">
-					<reportElement uuid="64d5b3c0-37c5-429b-bb1d-3b3881753ddb" x="473" y="37" width="78" height="23"/>
-					<box topPadding="3" leftPadding="3" bottomPadding="1" rightPadding="1">
-						<pen lineWidth="0.5"/>
-						<topPen lineWidth="0.5"/>
-						<leftPen lineWidth="0.5"/>
-						<bottomPen lineWidth="0.5"/>
-						<rightPen lineWidth="0.5"/>
-					</box>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font size="12"/>
-					</textElement>
-					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-				</textField>
 				<staticText>
 					<reportElement uuid="bca116d6-a802-489c-b461-37b56de67146" x="425" y="40" width="48" height="20"/>
 					<box topPadding="3" leftPadding="3" bottomPadding="1" rightPadding="1">
@@ -228,18 +213,64 @@
 					<textElement/>
 					<text><![CDATA[Fecha]]></text>
 				</staticText>
+				<staticText>
+					<reportElement uuid="10a4910d-4ad7-49f9-a9b4-b6bd438a8feb" x="10" y="106" width="90" height="20"/>
+					<box topPadding="3" leftPadding="3" bottomPadding="1" rightPadding="1"/>
+					<textElement/>
+					<text><![CDATA[Observaciones]]></text>
+				</staticText>
+				<textField>
+					<reportElement uuid="629261cf-8967-4992-84ee-9fd38d7cf8d8" x="100" y="106" width="453" height="20"/>
+					<box topPadding="3" leftPadding="3" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement/>
+					<textFieldExpression><![CDATA[$P{observaciones}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="ccb61d5c-15c6-4446-ac08-78edfc22fc92" x="472" y="40" width="79" height="20"/>
+					<box topPadding="3" leftPadding="3" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement/>
+					<textFieldExpression><![CDATA[$P{fecha}]]></textFieldExpression>
+				</textField>
 			</frame>
 		</band>
 	</detail>
 	<summary>
 		<band height="117" splitType="Stretch">
 			<subreport>
-				<reportElement uuid="4447597a-b1e7-4af1-962c-2d88a9a17bea" x="10" y="31" width="541" height="33"/>
+				<reportElement uuid="4447597a-b1e7-4af1-962c-2d88a9a17bea" x="10" y="12" width="541" height="58"/>
 				<subreportParameter name="resultado_id">
 					<subreportParameterExpression><![CDATA[$P{resultado_id}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["LabReport_subreport2.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR}+"/LabReport_subreport2.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement uuid="f90d1b6e-b7a5-4f6c-bd1f-9af1ac706341" x="29" y="12" width="200" height="31"/>
+				<subreportParameter name="resultado_id">
+					<subreportParameterExpression><![CDATA[$P{resultado_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "/LabReport_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement uuid="64027a7e-339b-4634-86c6-441364279d3d" x="444" y="20" width="61" height="19"/>
+				<subreportParameter name="resultado_id">
+					<subreportParameterExpression><![CDATA[$P{resultado_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "/LabReport_subreport3.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</summary>
