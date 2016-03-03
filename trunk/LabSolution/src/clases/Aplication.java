@@ -8,6 +8,7 @@ import controller.GrupoPruebasController;
 import controller.PacienteController;
 import controller.PruebaController;
 import facturacion.Interfaz_principal;
+import facturacion.SplashScreen;
 import hibernateUtil.BussinessException;
 import java.util.List;
 import javax.swing.UIManager;
@@ -23,7 +24,11 @@ public class Aplication {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws BussinessException {
-        new Interfaz_principal().setVisible(true);
+        
+        SplashScreen sp = new SplashScreen();
+        sp.setSize(700, 500);
+        sp.setLocationRelativeTo(null);
+        sp.setVisible(true);
 //            GrupoPruebasController grupoPruebasController = new GrupoPruebasController();
 //        PruebaController pruebaController=new PruebaController();
 //            GrupoPruebas grupoPruebas= new GrupoPruebas("HEMATOLOGIA");
@@ -35,5 +40,5 @@ public class Aplication {
 //                Prueba prueba=new Prueba("TGP", "lb/s", "21-22", b, 2000);
 //                pruebaController.guardar(prueba);
     }
-
+    
 }
