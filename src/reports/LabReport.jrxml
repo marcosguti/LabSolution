@@ -27,7 +27,7 @@
 		<band height="66" splitType="Stretch">
 			<image>
 				<reportElement uuid="f34cfb4a-e24b-49d3-8d5c-cb8dfcc9332f" x="0" y="4" width="253" height="62"/>
-				<imageExpression><![CDATA["/home/marcosguti/NetBeansProjects/facturacion/src/reports/LAB.png"]]></imageExpression>
+				<imageExpression><![CDATA[$P{SUBREPORT_DIR} +"/LAB.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>
