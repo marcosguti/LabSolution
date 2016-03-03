@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import sun.net.www.content.image.jpeg;
 import facturacion.Interfaz_principal;
+
 /**
  *
  * @author PC
@@ -21,34 +22,35 @@ public class SplashScreen extends javax.swing.JFrame {
      * Creates new form SplashScreen
      */
     private Timer t;
-    private ActionListener al; 
+    private ActionListener al;
+
     public SplashScreen() {
-        al= new ActionListener() {
+        al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jProgressBar1.setStringPainted(true);
-                
-                if(jProgressBar1.getValue()<100){
-                    jProgressBar1.setValue(jProgressBar1.getValue()+5);
-                    jProgressBar1.setString("Cargando Datos");
-                    if(jProgressBar1.getValue()>90){
+                jProgressBar1.setString("Cargando Datos");
+                if (jProgressBar1.getValue() < 100) {
+                    jProgressBar1.setValue(jProgressBar1.getValue() + 5);
+                     if (jProgressBar1.getValue() == 80)
                          new Interfaz_principal().setVisible(true);
-                        jProgressBar1.setString("Listo");}
-                }else{
-                    
-                t.stop();
-                
-               
-                dispose();
+                    if (jProgressBar1.getValue() > 80) {
+                        jProgressBar1.setString("Abriendo Interfaz Principal");
+                    }
+                } else {
+                    new Interfaz_principal().setVisible(true);
+
+                    t.stop();
+
+                    dispose();
                 }
             }
         };
-        t= new Timer(100, al);
+        t = new Timer(100, al);
         initComponents();
-                AWTUtilities.setWindowOpaque(this, false);
+        AWTUtilities.setWindowOpaque(this, false);
         t.start();
 
-       
     }
 
     /**
@@ -65,12 +67,14 @@ public class SplashScreen extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
+        setMaximumSize(new java.awt.Dimension(589, 204));
+        setMinimumSize(new java.awt.Dimension(589, 204));
         setUndecorated(true);
         getContentPane().setLayout(null);
 
         jProgressBar1.setName(""); // NOI18N
         getContentPane().add(jProgressBar1);
-        jProgressBar1.setBounds(210, 180, 340, 20);
+        jProgressBar1.setBounds(200, 180, 340, 20);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/reports/LAB.png"))); // NOI18N
         getContentPane().add(jLabel1);

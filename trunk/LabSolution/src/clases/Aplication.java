@@ -26,7 +26,7 @@ public class Aplication {
     public static void main(String[] args) throws BussinessException {
         
         SplashScreen sp = new SplashScreen();
-        sp.setSize(700, 500);
+//        sp.setSize(700, 500);
         sp.setLocationRelativeTo(null);
         sp.setVisible(true);
 //            GrupoPruebasController grupoPruebasController = new GrupoPruebasController();
