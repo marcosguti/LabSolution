@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="result" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="76395d23-f885-4fa9-90d9-ed65ab9e5657">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="192"/>
+	<property name="ireport.y" value="264"/>
 	<parameter name="paciente_id" class="java.lang.Integer"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["/home/marcosguti/NetBeansProjects/facturacion/src/reports/"]]></defaultValueExpression>
@@ -32,7 +32,7 @@
 		</band>
 	</title>
 	<detail>
-		<band height="186" splitType="Stretch">
+		<band height="189" splitType="Stretch">
 			<frame>
 				<reportElement uuid="aadb63cc-b3a3-49db-a4ad-3cee07118d9a" x="25" y="19" width="511" height="136"/>
 				<box>
@@ -246,7 +246,7 @@
 				</elementGroup>
 			</frame>
 			<subreport>
-				<reportElement uuid="fdaabad5-9384-4785-af35-1aaf257c9fb2" x="25" y="155" width="511" height="31"/>
+				<reportElement uuid="fdaabad5-9384-4785-af35-1aaf257c9fb2" x="25" y="157" width="522" height="31"/>
 				<subreportParameter name="resultado_id">
 					<subreportParameterExpression><![CDATA[$P{resultado_id}]]></subreportParameterExpression>
 				</subreportParameter>

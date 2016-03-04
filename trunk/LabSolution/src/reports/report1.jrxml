@@ -34,11 +34,11 @@ WHERE
 				<textField>
 					<reportElement uuid="bd7d102e-664c-4be0-9b4f-3600d09312db" x="-19" y="1" width="505" height="18"/>
 					<box topPadding="4" leftPadding="4" bottomPadding="1" rightPadding="1">
-						<pen lineWidth="1.25"/>
-						<topPen lineWidth="1.25"/>
-						<leftPen lineWidth="1.25"/>
-						<bottomPen lineWidth="1.25"/>
-						<rightPen lineWidth="1.25"/>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
 					</box>
 					<textElement>
 						<font isBold="true" isItalic="true"/>
@@ -48,11 +48,11 @@ WHERE
 				<staticText>
 					<reportElement uuid="b0047e57-481b-4741-aa89-f481d7318a97" x="182" y="19" width="150" height="19"/>
 					<box topPadding="4" leftPadding="4" bottomPadding="1" rightPadding="1">
-						<pen lineWidth="1.25"/>
-						<topPen lineWidth="1.25"/>
-						<leftPen lineWidth="1.25"/>
-						<bottomPen lineWidth="1.25"/>
-						<rightPen lineWidth="1.25"/>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
 					</box>
 					<textElement>
 						<font isBold="true" isItalic="true"/>
@@ -62,11 +62,11 @@ WHERE
 				<staticText>
 					<reportElement uuid="e0fc11d4-f3bb-4cf0-9df4-c5d72d5d52c3" x="332" y="19" width="154" height="19"/>
 					<box topPadding="4" leftPadding="4" bottomPadding="1" rightPadding="1">
-						<pen lineWidth="1.25"/>
-						<topPen lineWidth="1.25"/>
-						<leftPen lineWidth="1.25"/>
-						<bottomPen lineWidth="1.25"/>
-						<rightPen lineWidth="1.25"/>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
 					</box>
 					<textElement>
 						<font isBold="true" isItalic="true"/>
@@ -76,11 +76,11 @@ WHERE
 				<staticText>
 					<reportElement uuid="f26345a6-82a1-4f9b-bc99-d98d136641ad" x="-19" y="19" width="201" height="19"/>
 					<box topPadding="4" leftPadding="4" bottomPadding="1" rightPadding="1">
-						<pen lineWidth="1.25"/>
-						<topPen lineWidth="1.25"/>
-						<leftPen lineWidth="1.25"/>
-						<bottomPen lineWidth="1.25"/>
-						<rightPen lineWidth="1.25"/>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
 					</box>
 					<textElement>
 						<font isBold="true" isItalic="true"/>
@@ -95,11 +95,11 @@ WHERE
 			<textField>
 				<reportElement uuid="f7a08504-c8d2-44ae-a994-21aacc3fd0eb" x="-19" y="0" width="201" height="20"/>
 				<box topPadding="4" leftPadding="4" bottomPadding="1" rightPadding="1">
-					<pen lineWidth="1.25"/>
-					<topPen lineWidth="1.25"/>
-					<leftPen lineWidth="1.25"/>
-					<bottomPen lineWidth="1.25"/>
-					<rightPen lineWidth="1.25"/>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
@@ -107,11 +107,11 @@ WHERE
 			<textField>
 				<reportElement uuid="0c8361a6-e00f-45b5-9238-9eee433ecfbd" x="182" y="0" width="150" height="20"/>
 				<box topPadding="4" leftPadding="4" bottomPadding="1" rightPadding="1">
-					<pen lineWidth="1.25"/>
-					<topPen lineWidth="1.25"/>
-					<leftPen lineWidth="1.25"/>
-					<bottomPen lineWidth="1.25"/>
-					<rightPen lineWidth="1.25"/>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement>
 					<font isBold="false"/>
@@ -121,11 +121,11 @@ WHERE
 			<textField>
 				<reportElement uuid="d79a6feb-86cf-4185-8454-5d93bbd1cd76" x="332" y="0" width="154" height="20"/>
 				<box topPadding="4" leftPadding="4" bottomPadding="1" rightPadding="1">
-					<pen lineWidth="1.25"/>
-					<topPen lineWidth="1.25"/>
-					<leftPen lineWidth="1.25"/>
-					<bottomPen lineWidth="1.25"/>
-					<rightPen lineWidth="1.25"/>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement/>
 				<textFieldExpression><![CDATA["("+$F{limites}+") "+$F{unidad}]]></textFieldExpression>
