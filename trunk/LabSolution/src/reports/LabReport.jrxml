@@ -246,7 +246,7 @@
 				</elementGroup>
 			</frame>
 			<subreport>
-				<reportElement uuid="fdaabad5-9384-4785-af35-1aaf257c9fb2" x="25" y="157" width="522" height="31"/>
+				<reportElement uuid="fdaabad5-9384-4785-af35-1aaf257c9fb2" x="25" y="157" width="511" height="31"/>
 				<subreportParameter name="resultado_id">
 					<subreportParameterExpression><![CDATA[$P{resultado_id}]]></subreportParameterExpression>
 				</subreportParameter>
