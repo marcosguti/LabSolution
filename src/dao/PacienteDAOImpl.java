@@ -122,4 +122,6 @@ public class PacienteDAOImpl extends GenericDAOImplHibernate<Paciente, Integer> 
 		}
     }
 
+  
+
 }

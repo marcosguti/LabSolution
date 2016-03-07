@@ -9,8 +9,10 @@ import clases.Paciente;
 import clases.Prueba;
 import clases.PruebaResultado;
 import clases.Resultado;
+import static dao.GenericDAOImplHibernate.LOGGER;
 import hibernateUtil.BussinessException;
 import java.util.List;
+import java.util.logging.Level;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -34,7 +36,7 @@ public class ResultadoDAOImpl extends GenericDAOImplHibernate<Resultado, Integer
             Resultado resultado = (Resultado) query.uniqueResult();
             session.getTransaction().commit();
             if (resultado != null) {
-                delete(resultado.getId());
+                delete(resultado);
             }
 
 //			session.beginTransaction();
@@ -68,6 +70,55 @@ public class ResultadoDAOImpl extends GenericDAOImplHibernate<Resultado, Integer
             w.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public List<Resultado> getAllOrdered() throws BussinessException {
+         Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
+                try {
+
+			Query query = session.createQuery("SELECT e FROM Resultado e ORDER BY e.fecha");
+			List<Resultado> resultados = query.list();
+                        session.getTransaction().commit();
+			return resultados;
+		} catch (javax.validation.ConstraintViolationException cve) {
+			try {
+				if (session.getTransaction().isActive()) {
+					session.getTransaction().rollback();
+				}
+			} catch (Exception exc) {
+				LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
+			}
+			throw new BussinessException(cve);
+		} catch (org.hibernate.exception.ConstraintViolationException cve) {
+			try {
+				if (session.getTransaction().isActive()) {
+					session.getTransaction().rollback();
+				}
+			} catch (Exception exc) {
+				LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
+			}
+			throw new BussinessException(cve);
+		} catch (RuntimeException ex) {
+			try {
+				if (session.getTransaction().isActive()) {
+					session.getTransaction().rollback();
+				}
+			} catch (Exception exc) {
+				LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
+			}
+			throw ex;
+		} catch (Exception ex) {
+			try {
+				if (session.getTransaction().isActive()) {
+					session.getTransaction().rollback();
+				}
+			} catch (Exception exc) {
+				LOGGER.log(Level.WARNING, "Falló al hacer un rollback", exc);
+			}
+			throw new RuntimeException(ex);
+		}
     }
 
 

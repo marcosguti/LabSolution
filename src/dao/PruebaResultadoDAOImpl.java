@@ -57,7 +57,7 @@ public class PruebaResultadoDAOImpl extends GenericDAOImplHibernate<PruebaResult
             PruebaResultado pruebaResultado = (PruebaResultado) query.uniqueResult();
             session.getTransaction().commit();
             if (pruebaResultado != null) {
-                delete(pruebaResultado.getId());
+                delete(pruebaResultado);
             }
 
 //			session.beginTransaction();

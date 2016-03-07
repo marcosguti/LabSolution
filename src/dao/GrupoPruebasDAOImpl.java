@@ -31,7 +31,7 @@ public class GrupoPruebasDAOImpl extends GenericDAOImplHibernate<GrupoPruebas, I
 			GrupoPruebas grupoPrueba = (GrupoPruebas)query.uniqueResult();
                         session.getTransaction().commit();
 			if(grupoPrueba!=null)
-                        delete(grupoPrueba.getId());
+                        delete(grupoPrueba);
 			
 			
 			
