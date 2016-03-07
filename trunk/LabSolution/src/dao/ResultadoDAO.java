@@ -18,4 +18,5 @@ public interface ResultadoDAO extends GenericDAO<Resultado, Integer>  {
   
       public boolean delete(String id) throws BussinessException;
       public Resultado get(String id) throws BussinessException;
+      public List<Resultado>getAllOrdered() throws BussinessException;
 }
