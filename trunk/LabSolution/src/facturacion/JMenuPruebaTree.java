@@ -25,8 +25,8 @@ import javax.swing.JPopupMenu;
  */
 public class JMenuPruebaTree extends JPopupMenu {
 
-    private static String prueba;
-    private static PruebaController pruebaController = new PruebaController();
+    public static String prueba;
+    public static PruebaController pruebaController = new PruebaController();
 
     public JMenuPruebaTree(String Prueba) {
         prueba = Prueba;

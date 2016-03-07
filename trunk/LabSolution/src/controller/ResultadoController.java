@@ -13,7 +13,7 @@ import dao.ResultadoDAOImpl;
 
 public class ResultadoController {
 
-           ResultadoDAO resultadoDAO;
+    ResultadoDAO resultadoDAO;
 
     public ResultadoController() {
         resultadoDAO = new ResultadoDAOImpl();
@@ -23,12 +23,20 @@ public class ResultadoController {
 
         resultadoDAO.saveOrUpdate(resultado);
     }
-  public List<Resultado> getAll() throws BussinessException {
+
+    public List<Resultado> getAll() throws BussinessException {
         return resultadoDAO.findAll();
     }
 
-
     public void delete(String id) throws BussinessException {
         resultadoDAO.delete(id);
+    }
+
+    public List<Resultado> gelAllOrdered() throws BussinessException {
+        return resultadoDAO.getAllOrdered();
+    }
+
+    public Resultado get(Integer id) throws BussinessException {
+        return resultadoDAO.get(id);
     }
 }

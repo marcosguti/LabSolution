@@ -16,12 +16,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.JSeparator;
 import javax.swing.JTree;
@@ -127,6 +129,65 @@ public final class TreeInterfazPrincipal extends JTree {
                             menu.show(tree, pathBounds.x + pathBounds.width, pathBounds.y);
                         }
                     }
+                }
+                if (e.getClickCount() == 2 && !e.isConsumed()) {
+                    TreePath path = tree.getPathForLocation(e.getX(), e.getY());
+
+//                        DefaultMutableTreeNode nodo= (DefaultMutableTreeNode) path.getLastPathComponent();
+                    DefaultMutableTreeNode nodo = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
+                    Rectangle pathBounds = tree.getUI().getPathBounds(tree, path);
+                    if (pathBounds != null && pathBounds.contains(e.getX(), e.getY())) {
+                        if (nodo.getLevel() == 2) {
+                             String p = (String) nodo.getUserObject();
+                            PruebaController pp = new PruebaController();
+                            GrupoPruebasController gp = new GrupoPruebasController();
+
+                            Prueba treePrueba = null;
+                            try {
+                                treePrueba = pp.get(p);
+                            } catch (BussinessException ex) {
+                                Logger.getLogger(TreeInterfazPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            List<Prueba> temp = new ArrayList<Prueba>();
+                            List<Prueba> temp2 = new ArrayList<Prueba>();
+//                            temp2 = StaticVarsBusiness.mapPruebas.get(treePrueba.getGrupoPruebas().getNombre());
+                            if (StaticVarsBusiness.mapPruebas.get(treePrueba.getGrupoPruebas().getNombre()) == null) {
+                                temp.add(treePrueba);
+                                StaticVarsBusiness.PruebasEnTabla.put(treePrueba.getNombre(), treePrueba);
+                                StaticVarsBusiness.mapPruebas.put(treePrueba.getGrupoPruebas().getNombre(), new ArrayList<Prueba>(temp));
+                                if (Interfaz_Resultado.jLabelTotalValor.getText().equals("0 Bs")) {
+                                    Interfaz_Resultado.jLabelTotalValor.setText(String.valueOf(treePrueba.getPrecio() + " Bs"));
+                                } else {
+                                    int precio = Integer.parseInt(Interfaz_Resultado.jLabelTotalValor.getText().replaceAll(" Bs", ""));
+                                    precio += treePrueba.getPrecio();
+                                    Interfaz_Resultado.jLabelTotalValor.setText(String.valueOf(precio) + " Bs");
+                                }
+                            } else {
+//                 if ((StaticVarsBusiness.mapPruebas.get(treePrueba.getGrupoPruebas().getNombre())).indexOf(treePrueba)!=-1) {
+                                temp = StaticVarsBusiness.mapPruebas.get(treePrueba.getGrupoPruebas().getNombre());
+                                if (StaticVarsBusiness.PruebasEnTabla.get(treePrueba.getNombre()) == null) {
+                                    temp.add(treePrueba);
+                                    StaticVarsBusiness.PruebasEnTabla.put(treePrueba.getNombre(), treePrueba);
+                                    StaticVarsBusiness.mapPruebas.put(treePrueba.getGrupoPruebas().getNombre(), new ArrayList<Prueba>(temp));
+                                    if (Interfaz_Resultado.jLabelTotalValor.getText().equals("0 Bs")) {
+                                        Interfaz_Resultado.jLabelTotalValor.setText(String.valueOf(treePrueba.getPrecio() + " Bs"));
+                                    } else {
+                                        int precio = Integer.parseInt(Interfaz_Resultado.jLabelTotalValor.getText().replaceAll(" Bs", ""));
+                                        precio += treePrueba.getPrecio();
+                                        Interfaz_Resultado.jLabelTotalValor.setText(String.valueOf(precio) + " Bs");
+                                    }
+                                } else {
+                                    JOptionPane.showMessageDialog(null,
+                                            "Ya agrego esta prueba ", "Mensaje",
+                                            JOptionPane.INFORMATION_MESSAGE);
+                                }
+
+//                StaticVarsBusiness.mapPruebas.put(treePrueba.getGrupoPruebas().getNombre(), new ArrayList<Prueba>(temp));
+                            }
+                            Interfaz_Resultado.jScrollPane1.setViewportView(new JTablePruebas());
+                        }
+                    }
+                    e.isConsumed();
                 }
             }
         });

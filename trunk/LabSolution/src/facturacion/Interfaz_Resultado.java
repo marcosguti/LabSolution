@@ -369,8 +369,6 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
             ReportDaoImpl reporDaoImpl = new ReportDaoImpl();
             ResultadoController resultadoController = new ResultadoController();
             HashMap<String, Object> reportMap = new HashMap<String, Object>();
-            String sqlQuery = "";
-
 //        StaticVarsBusiness.PruebasEnTabla
 //        JTablePruebas.dtm
             Resultado resultado = new Resultado();
