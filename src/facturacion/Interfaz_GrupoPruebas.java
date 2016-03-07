@@ -41,12 +41,21 @@ public final class Interfaz_GrupoPruebas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        menuBar1 = new java.awt.MenuBar();
+        menu1 = new java.awt.Menu();
+        menu2 = new java.awt.Menu();
         registrarButton = new javax.swing.JButton();
         cancelarButton = new javax.swing.JButton();
         salirButton = new javax.swing.JButton();
         jtfNombre = new javax.swing.JTextField();
         jlbNombre = new javax.swing.JLabel();
         nuevoRegistroButton = new javax.swing.JButton();
+
+        menu1.setLabel("File");
+        menuBar1.add(menu1);
+
+        menu2.setLabel("Edit");
+        menuBar1.add(menu2);
 
         setIconifiable(true);
         setMaximizable(true);
@@ -216,6 +225,9 @@ public final class Interfaz_GrupoPruebas extends javax.swing.JInternalFrame {
     private javax.swing.JButton cancelarButton;
     private javax.swing.JLabel jlbNombre;
     private javax.swing.JTextField jtfNombre;
+    private java.awt.Menu menu1;
+    private java.awt.Menu menu2;
+    private java.awt.MenuBar menuBar1;
     private javax.swing.JButton nuevoRegistroButton;
     private javax.swing.JButton registrarButton;
     private javax.swing.JButton salirButton;

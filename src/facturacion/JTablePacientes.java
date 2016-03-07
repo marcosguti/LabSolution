@@ -45,7 +45,7 @@ public class JTablePacientes extends javax.swing.JTable {
     private static JPopupMenu jPopupMenu = new JPopupMenu();
     private static String nombre, cedula;
     PacienteController pacienteController = new PacienteController();
-    public static Paciente paciente = null;
+    public static Paciente paciente =null;
 
     public JTablePacientes(boolean isPrincipalTable) {
         initComponents();
@@ -114,29 +114,31 @@ public class JTablePacientes extends javax.swing.JTable {
                 @Override
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
 //                if (SwingUtilities.isRightMouseButton(evt)) {
-                    int row = rowAtPoint(evt.getPoint());
-                    int col = columnAtPoint(evt.getPoint());
-                    Object n = getModel().getValueAt(row, 0);
-                    Object c = getModel().getValueAt(row, 1);
-                    Paciente paciente = new Paciente();
-                    try {
-                        paciente = pacienteController.getByNombreCedula(n.toString(), c.toString());
-                    } catch (BussinessException ex) {
-                        Logger.getLogger(JTablePacientes.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+                        int row = rowAtPoint(evt.getPoint());
+                        int col = columnAtPoint(evt.getPoint());
+                        Object n = getModel().getValueAt(row, 0);
+                        Object c = getModel().getValueAt(row, 1);
+                        paciente = new Paciente();
+                        try {
+                            paciente = pacienteController.getByNombreCedula(n.toString(), c.toString());
+                        } catch (BussinessException ex) {
+                            Logger.getLogger(JTablePacientes.class.getName()).log(Level.SEVERE, null, ex);
+                        }
 //                                
-                    Interfaz_Resultado.jLabelNombreValor.setText(paciente.getNombres());
-                    Interfaz_Resultado.jLabelCedulaValor.setText(paciente.getCedula());
-                    Interfaz_Resultado.jLabelEdadValor.setText(String.valueOf(paciente.getEdad()));
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                    String date = sdf.format(new Date());
-                    Interfaz_Resultado.jLabelFechaValor.setText(date);
-                    Interfaz_Resultado.jLabelSexoValor.setText(paciente.getSexo());
-                    Interfaz_Resultado.jLabelTelefonoValor.setText(paciente.getTelefono());
-                    Interfaz_Resultado.jLabelIDValor.setText(String.valueOf(paciente.getId()));
-                    Interfaz_Resultado.jLabelDireccionValor.setText(String.valueOf(paciente.getDireccion()));
-                    Interfaz_Resultado.jTextFieldObservacionesValor.setText("");
+                        Interfaz_Resultado.jLabelNombreValor.setText(paciente.getNombres());
+                        Interfaz_Resultado.jLabelCedulaValor.setText(paciente.getCedula());
+                        Interfaz_Resultado.jLabelEdadValor.setText(String.valueOf(paciente.getEdad()));
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                        String date = sdf.format(new Date());
+                        Interfaz_Resultado.jLabelFechaValor.setText(date);
+                        Interfaz_Resultado.jLabelSexoValor.setText(paciente.getSexo());
+                        Interfaz_Resultado.jLabelTelefonoValor.setText(paciente.getTelefono());
+                        Interfaz_Resultado.jLabelIDValor.setText(String.valueOf(paciente.getId()));
+                        Interfaz_Resultado.jLabelDireccionValor.setText(String.valueOf(paciente.getDireccion()));
+                        Interfaz_Resultado.jTextFieldObservacionesValor.setText("");
 //                    StaticVarsBusiness.mapPruebas.put
+                    }
                 }
             });
 //        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
@@ -183,7 +185,7 @@ public class JTablePacientes extends javax.swing.JTable {
                     int col = columnAtPoint(evt.getPoint());
                     Object n = getModel().getValueAt(row, 0);
                     Object c = getModel().getValueAt(row, 1);
-
+                    paciente=new Paciente();
                     try {
                         paciente = pacienteController.getByNombreCedula(n.toString(), c.toString());
                     } catch (BussinessException ex) {

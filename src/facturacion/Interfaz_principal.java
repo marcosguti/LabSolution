@@ -132,6 +132,11 @@ public class Interfaz_principal extends javax.swing.JFrame {
         jMenu4.add(jMenuItemResultadoNuevo);
 
         jMenuItemResultadoBuscar.setText("Buscar");
+        jMenuItemResultadoBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemResultadoBuscarActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItemResultadoBuscar);
 
         jMenuPrincipal.add(jMenu4);
@@ -249,6 +254,7 @@ public class Interfaz_principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemPacienteNuevoActionPerformed
 
     private void jMenuItemPacienteBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPacienteBuscarActionPerformed
+        jScrollPane2.setEnabled(false);
         jMenuItemPacienteNuevo.setEnabled(false);
         jMenuItemPacienteBuscar.setEnabled(false);
         Interfaz_BuscarPacientes buscar = new Interfaz_BuscarPacientes();
@@ -284,6 +290,14 @@ public class Interfaz_principal extends javax.swing.JFrame {
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonBuscarActionPerformed
+
+    private void jMenuItemResultadoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemResultadoBuscarActionPerformed
+        jMenuItemResultadoBuscar.setEnabled(false);
+//        jMenuItemResultadoNuevo.setEnabled(false);
+        Interfaz_BuscarResultados buscar = new Interfaz_BuscarResultados();
+        jDesktopPane1.add(buscar);
+        buscar.show();        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemResultadoBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -332,7 +346,7 @@ public class Interfaz_principal extends javax.swing.JFrame {
     public static javax.swing.JMenuItem jMenuItemPacienteNuevo;
     public static javax.swing.JMenuItem jMenuItemPruebaNuevaArea;
     public static javax.swing.JMenuItem jMenuItemPruebaNuevaPrueba;
-    private javax.swing.JMenuItem jMenuItemResultadoBuscar;
+    public static javax.swing.JMenuItem jMenuItemResultadoBuscar;
     public static javax.swing.JMenuItem jMenuItemResultadoNuevo;
     private javax.swing.JMenuBar jMenuPrincipal;
     public static javax.swing.JScrollPane jScrollPane1;

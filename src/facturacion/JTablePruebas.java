@@ -85,8 +85,6 @@ public class JTablePruebas extends javax.swing.JTable {
 //        Map<String, String> map = ...
         if (StaticVarsBusiness.mapPruebas != null) {
             for (Map.Entry<String, List<Prueba>> entry : StaticVarsBusiness.mapPruebas.entrySet()) {
-                Vector vector = new Vector();
-
                 dtm.addRow(new Object[]{"Area de " + entry.getKey()});
                 for (Prueba prueba : entry.getValue()) {
                     dtm.addRow(new Object[]{"     " + prueba.getNombre(), "", "(" + prueba.getLimites() + ") " + prueba.getUnidad()});

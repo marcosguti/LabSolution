@@ -30,15 +30,15 @@ public class SplashScreen extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 jProgressBar1.setStringPainted(true);
                 jProgressBar1.setString("Cargando Datos");
-                if (jProgressBar1.getValue() < 100) {
+                if (jProgressBar1.getValue() < 80) {
                     jProgressBar1.setValue(jProgressBar1.getValue() + 5);
-                     if (jProgressBar1.getValue() == 80)
+                     if (jProgressBar1.getValue() == 50)
                          new Interfaz_principal().setVisible(true);
-                    if (jProgressBar1.getValue() > 80) {
+                    if (jProgressBar1.getValue() > 50) {
                         jProgressBar1.setString("Abriendo Interfaz Principal");
                     }
                 } else {
-                    new Interfaz_principal().setVisible(true);
+//                    new Interfaz_principal().setVisible(true);
 
                     t.stop();
 
@@ -46,7 +46,7 @@ public class SplashScreen extends javax.swing.JFrame {
                 }
             }
         };
-        t = new Timer(100, al);
+        t = new Timer(80, al);
         initComponents();
         AWTUtilities.setWindowOpaque(this, false);
         t.start();

@@ -251,7 +251,8 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
         registrarButton.setEnabled(false);
         cancelarButton.setEnabled(false);
         jtfTelefono.setEnabled(false);
-
+         comboSexo.setEnabled(false);
+         comboEdad.setEnabled(false);
     }
 
     public void desbloquear() {
@@ -265,7 +266,8 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
         nuevoRegistroButton.setEnabled(false);
         registrarButton.setEnabled(true);
         cancelarButton.setEnabled(true);
-
+       comboSexo.setEnabled(true);
+         comboEdad.setEnabled(true);
     }
 
     private void registrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarButtonActionPerformed

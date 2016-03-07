@@ -36,7 +36,7 @@ public class PacienteController {
         return pacienteDAO.getAllOrdered();
     }
 
-    public void delete(int id) throws BussinessException {
-        pacienteDAO.delete(id);
+    public void delete(Paciente paciente) throws BussinessException {
+        pacienteDAO.delete(paciente);
     }
 }
