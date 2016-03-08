@@ -78,7 +78,7 @@ public class ResultadoDAOImpl extends GenericDAOImplHibernate<Resultado, Integer
 		session.beginTransaction();
                 try {
 
-			Query query = session.createQuery("SELECT e FROM Resultado e ORDER BY e.fecha");
+			Query query = session.createQuery("SELECT e FROM Resultado e ORDER BY e.fecha DESC");
 			List<Resultado> resultados = query.list();
                         session.getTransaction().commit();
 			return resultados;

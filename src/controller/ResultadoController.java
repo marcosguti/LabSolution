@@ -32,6 +32,10 @@ public class ResultadoController {
         resultadoDAO.delete(id);
     }
 
+    public void delete(Resultado resultado) throws BussinessException {
+        resultadoDAO.delete(resultado);
+    }
+
     public List<Resultado> gelAllOrdered() throws BussinessException {
         return resultadoDAO.getAllOrdered();
     }

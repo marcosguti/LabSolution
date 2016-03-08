@@ -46,7 +46,7 @@ public class JTableResultados extends javax.swing.JTable {
     private static JMenuItem jMenuItem = new JMenuItem("Agregar");
     private static JPopupMenu jPopupMenu = new JPopupMenu();
     private static String nombre, cedula;
-    final ResultadoController resultadoController = new ResultadoController();
+     private static ResultadoController resultadoController = new ResultadoController();
     public static Resultado resultado = null;
 
     public JTableResultados() {
@@ -81,17 +81,17 @@ public class JTableResultados extends javax.swing.JTable {
             i++;
         }
         DefaultTableModel model = new DefaultTableModel(datostabla, columnas) {
-//                public Class getColumnClass(int column) {
-//                    Class returnValue;
-//                    if ((column >= 0) && (column < getColumnCount())) {
-//                        returnValue = getValueAt(0, column).getClass();
-//                    } else {
-//                        returnValue = Object.class;
-//                    }
-//                    return returnValue;
-//                }
+                public Class getColumnClass(int column) {
+                    Class returnValue;
+                    if ((column >= 0) && (column < getColumnCount())) {
+                        returnValue = getValueAt(0, column).getClass();
+                    } else {
+                        returnValue = Object.class;
+                    }
+                    return returnValue;
+                }
             boolean[] editable = new boolean[]{
-                false, false, false
+                false, false, false,false,false
             };
 
             @Override
@@ -102,15 +102,18 @@ public class JTableResultados extends javax.swing.JTable {
         this.setModel(model);
         Font f1 = new Font("Times New Roman", Font.BOLD, 12);
         this.setFont(f1);
-        this.getColumn("Fecha").setMaxWidth(70);
-        this.getColumn("Fecha").setMinWidth(70);
-        this.getColumn("Fecha").setWidth(70);
-        this.getColumn("Nombre").setMaxWidth(140);
-        this.getColumn("Nombre").setMinWidth(140);
-        this.getColumn("Nombre").setWidth(140);
+        this.getColumn("Fecha").setMaxWidth(90);
+        this.getColumn("Fecha").setMinWidth(90);
+        this.getColumn("Fecha").setWidth(90);
+        this.getColumn("Nombre").setMaxWidth(200);
+        this.getColumn("Nombre").setMinWidth(200);
+        this.getColumn("Nombre").setWidth(200);
         this.getColumn("Cedula").setMaxWidth(100);
         this.getColumn("Cedula").setMinWidth(100);
         this.getColumn("Cedula").setMinWidth(100);
+        this.getColumn("Precio").setMaxWidth(70);
+        this.getColumn("Precio").setMinWidth(70);
+        this.getColumn("Precio").setMinWidth(70);
 //        for (int a = 0; i < this.getColumnCount(); a++) {
 //            TableColumn col = this.getColumnModel().getColumn(a);
 //            col.setCellEditor(new MyTableCellEditor());
@@ -122,20 +125,20 @@ public class JTableResultados extends javax.swing.JTable {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
 //                if (SwingUtilities.isRightMouseButton(evt)) {
-                if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+//                if (evt.getClickCount() == 2 && !evt.isConsumed()) {
                     int row = rowAtPoint(evt.getPoint());
 //                    int col = columnAtPoint(evt.getPoint());
 //                    Object n = getModel().getValueAt(row, 0);
-                    Object c = getModel().getValueAt(row, 4);
-                    Resultado resultado = new Resultado();
+                    Object id = getModel().getValueAt(row, 4);
+                     resultado = new Resultado();
                     try {
-                        resultado = resultadoController.get(2);
+                        resultado = resultadoController.get(Integer.parseInt(id.toString()));
                     } catch (BussinessException ex) {
                         Logger.getLogger(JTableResultados.class.getName()).log(Level.SEVERE, null, ex);
                     }
 //                                
 //                    StaticVarsBusiness.mapPruebas.put
-                }
+//                }
             }
         });
 //        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);

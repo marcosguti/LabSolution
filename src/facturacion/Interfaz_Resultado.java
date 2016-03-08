@@ -376,12 +376,9 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
             resultado.setPaciente(pacienteController.getByNombreCedula(jLabelNombreValor.getText(), jLabelCedulaValor.getText()));
 //            java.util.Date date = new java.util.Date();
 //            Timestamp ts_now = new Timestamp(date.getTime());
-            String output;
             SimpleDateFormat formatter;
-
             formatter = new SimpleDateFormat("dd/MM/yyyy");
             Date today = new Date();
-            output = formatter.format(today);
             resultado.setFecha(today);
             resultadoController.guardar(resultado);
             int precioTotal = 0;
@@ -402,29 +399,18 @@ public class Interfaz_Resultado extends javax.swing.JInternalFrame {
             resultado.setPrecio(precioTotal);
             resultadoController.guardar(resultado);
             jLabelTotalValor.setText(String.valueOf(precioTotal));
-//        for (Object p : StaticVarsBusiness.PruebasEnTabla) {
-//            sqlQuery += p + ",";
-//        }
-
-//        sqlQuery = sqlQuery.substring(0, sqlQuery.length() - 1);
-//
             reportMap.put("resultado_id", resultado.getId());
             reportMap.put("paciente_id", Integer.parseInt(jLabelIDValor.getText()));
-            reportMap.put("observaciones", jTextFieldObservacionesValor.getText());
-            reportMap.put("fecha", output);
+            reportMap.put("observaciones", resultado.getObservaciones());
+            reportMap.put("fecha", formatter.format(resultado.getFecha()));
             try {
-//            JInternalFrame jInternalFrame = new JInternalFrame();
                 JFrame jInternalFrame = new JFrame();
+                 jInternalFrame.setTitle("Resultado");
                 JasperPrint print = reporDaoImpl.generatePdfReport(getClass().getResource("../reports/LabReport.jrxml").getPath(), reportMap);//              Interfaz_principal.jDesktopPane1.add(new JRViewer(print));
                 jInternalFrame.getContentPane().add(new JRViewer(print));
-
-//            Interfaz_principal.jDesktopPane1.add(jInternalFrame);
-//            jInternalFrame.show();
                 jInternalFrame.pack();
                 jInternalFrame.setVisible(true);
                 jInternalFrame.setSize(1000, 800);
-
-//            reporDaoImpl.generatePdfReport(getClass().getResource("/reports/LabReport.jrxml").getPath(), reportMap);        // TODO add your handling code here:
             } catch (SQLException ex) {
                 Logger.getLogger(Interfaz_Resultado.class.getName()).log(Level.SEVERE, null, ex);
             }
