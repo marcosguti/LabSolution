@@ -33,82 +33,11 @@ public class Interfaz_BuscarPacientes extends javax.swing.JInternalFrame {
 
     PacienteController pacienteController = new PacienteController();
     private Object[][] datostabla;
-//    public static PacieSnte paciente = null;
 
     public Interfaz_BuscarPacientes() {
         initComponents();
-//        mostrar_tabla();
 
     }
-
-//    public void mostrar_tabla() {
-//
-////        control_cliente control = new control_cliente("Documento","Tipo de documento","Nombres","Apellidos","Direccion","Ciudad","telefono");       
-//        String[] columnas = {"Nombre", "Cedula", "Edad", "Sexo", "Telefono", "Direccion"};
-//        List<Paciente> pacientes = new ArrayList<Paciente>();
-//        try {
-//            pacientes = pacienteController.getAllOrdered();
-//        } catch (BussinessException ex) {
-//            Logger.getLogger(Interfaz_BuscarPacientes.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-////        datostabla = control.consulta_clientes();
-////     ;
-//        datostabla = new Object[pacientes.size()][6];
-//        int i = 0;
-//        for (Paciente paciente : pacientes) {
-//
-//            datostabla[i][0] = paciente.getNombres();
-////            datostabla[i][1] = paciente.getApellidos();
-//            datostabla[i][1] = paciente.getCedula();
-//            datostabla[i][2] = paciente.getEdad();
-//            datostabla[i][3] = paciente.getSexo();
-//            datostabla[i][4] = paciente.getTelefono();
-//            datostabla[i][5] = paciente.getDireccion();
-//
-//            i++;
-//        }
-//        DefaultTableModel model = new DefaultTableModel(datostabla, columnas) {
-//            public Class getColumnClass(int column) {
-//                Class returnValue;
-//                if ((column >= 0) && (column < getColumnCount())) {
-//                    returnValue = getValueAt(0, column).getClass();
-//                } else {
-//                    returnValue = Object.class;
-//                }
-//                return returnValue;
-//            }
-//
-//            public boolean isCellEditable(int row, int column) {
-//                return false;
-//            }
-//        };
-//        jTable1.setModel(model);
-//        sorter.setModel(model);
-//        jTable1.setRowSorter(sorter);
-//        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-//            @Override
-//            public void mouseClicked(java.awt.event.MouseEvent evt) {
-////                if (SwingUtilities.isRightMouseButton(evt)) {
-//                int row = jTable1.rowAtPoint(evt.getPoint());
-//                int col = jTable1.columnAtPoint(evt.getPoint());
-//                Object n = jTable1.getModel().getValueAt(row, 0);
-//                Object c = jTable1.getModel().getValueAt(row, 1);
-//                String ced = c.toString().replaceAll(" ", "");
-//                System.out.println(n.toString() + "----- " + c.toString());
-//
-//                try {
-//                    paciente = pacienteController.getByNombreCedula("Marco Gutierrez", ced);
-//                } catch (BussinessException ex) {
-//                    Logger.getLogger(JTablePacientes.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-////                                
-//
-//            }
-//        });
-////        DefaultTableModel datos = new DefaultTableModel(datostabla,columnas);
-////        jTable1.setModel(datos);
-//
-//    }
 
     /**
      * This method is called from within the constructor to initialize the form.

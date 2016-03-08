@@ -44,7 +44,7 @@ public class JTablePacientes extends javax.swing.JTable {
     private static JMenuItem jMenuItem = new JMenuItem("Agregar");
     private static JPopupMenu jPopupMenu = new JPopupMenu();
     private static String nombre, cedula;
-    PacienteController pacienteController = new PacienteController();
+    private static PacienteController pacienteController = new PacienteController();
     public static Paciente paciente =null;
 
     public JTablePacientes(boolean isPrincipalTable) {
@@ -63,7 +63,7 @@ public class JTablePacientes extends javax.swing.JTable {
         this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         if (isPrincipalTable) {
 
-            final PacienteController pacienteController = new PacienteController();
+//            final PacienteController pacienteController = new PacienteController();
 //        control_cliente control = new control_cliente("Documento","Tipo de documento","Nombres","Apellidos","Direccion","Ciudad","telefono");       
             String[] columnas = {"Nombre", "Cedula"};
 
