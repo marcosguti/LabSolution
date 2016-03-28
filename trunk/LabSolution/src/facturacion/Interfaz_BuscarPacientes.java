@@ -7,6 +7,7 @@ package facturacion;
 import clases.Paciente;
 import controller.PacienteController;
 import dao.PacienteDAOImpl;
+import static facturacion.Interfaz_principal.jDesktopPane1;
 import static facturacion.Interfaz_principal.jMenuItemPacienteBuscar;
 import static facturacion.Interfaz_principal.jMenuItemPacienteNuevo;
 import hibernateUtil.BussinessException;
@@ -105,6 +106,11 @@ public class Interfaz_BuscarPacientes extends javax.swing.JInternalFrame {
         });
 
         jButtonModificar.setText("Modificar");
+        jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModificarActionPerformed(evt);
+            }
+        });
 
         jScrollPane2.setViewportView(new JTablePacientes(false));
 
@@ -205,6 +211,15 @@ public class Interfaz_BuscarPacientes extends javax.swing.JInternalFrame {
                     "Por Favor Seleccione un Registro");
         }
     }//GEN-LAST:event_jButtonEliminarActionPerformed
+
+    private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
+        jMenuItemPacienteNuevo.setEnabled(false);
+        jMenuItemPacienteBuscar.setEnabled(false);
+        Interfaz_Pacientes cli = new Interfaz_Pacientes(JTablePacientes.paciente);
+      //  JTablePacientes.paciente;
+        jDesktopPane1.add(cli);
+        cli.show();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonModificarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

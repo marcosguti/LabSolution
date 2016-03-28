@@ -11,8 +11,24 @@ import javax.swing.JOptionPane;
  * @author eimar
  */
 public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
-
+PacienteController pacienteController = new PacienteController();
+private static Paciente paciente=null;
 //    control_existencias ctrl = new control_existencias();
+    public Interfaz_Pacientes(Paciente p) {
+        this.paciente=p;
+        initComponents();
+        jtfNombre.setText(p.getNombres());
+        jtfDocumento.setText(p.getCedula().substring(2));
+        jtfTelefono.setText(p.getTelefono());
+        jtfDireccion.setText(p.getDireccion());
+        //"V", "E", "J"
+        comboTipoDoc.setSelectedItem(paciente.getCedula().substring(0, 1));
+        comboEdad.setSelectedItem(paciente.getEdad());
+        comboSexo.setSelectedItem(paciente.getSexo());
+        remove(nuevoRegistroButton); 
+       remove(cancelarButton);
+       registrarButton.setText("Guardar");     
+    }
     public Interfaz_Pacientes() {
         initComponents();
         limpiar();
@@ -159,15 +175,13 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
                     .addComponent(jlbTelefono)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(comboSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(comboEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jlbSexo)
-                                .addGap(21, 21, 21)
-                                .addComponent(jlbComboEdad)))
-                        .addGap(71, 71, 71)
+                            .addComponent(comboSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlbSexo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlbComboEdad)
+                            .addComponent(comboEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(51, 51, 51)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlbTelefono1)
                             .addComponent(jtfDireccion))))
@@ -197,7 +211,6 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
                     .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboTipoDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -215,7 +228,7 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
                 .addComponent(jlbTelefono)
                 .addGap(8, 8, 8)
                 .addComponent(jtfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nuevoRegistroButton)
                     .addComponent(registrarButton)
@@ -273,6 +286,11 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
     private void registrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarButtonActionPerformed
 
        // GEN-FIRST:event_regclientejButton1ActionPerformed
+       if(registrarButton.getText().equals("Guardar")){
+       Paciente paciente = new Paciente();
+       paciente.setNombres(title);
+       }
+       
         String doc, nom, dir, sexo, tipo, tel;
         int edad;
         doc = jtfDocumento.getText();
@@ -283,7 +301,7 @@ public final class Interfaz_Pacientes extends javax.swing.JInternalFrame {
         sexo = comboSexo.getSelectedItem().toString();
         edad = Integer.parseInt(comboEdad.getSelectedItem().toString());
         tel = jtfTelefono.getText();
-        PacienteController pacienteController = new PacienteController();
+        
         Paciente paciente = new Paciente(cedula, nom, tel, sexo, dir, edad);
         if (!doc.equals("") && !tipo.equals("") && !nom.equals("")
                 && !dir.equals("")) {

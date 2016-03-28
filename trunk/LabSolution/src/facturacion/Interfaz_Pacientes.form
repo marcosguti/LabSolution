@@ -47,18 +47,15 @@
                   <Component id="jlbTelefono" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="comboSexo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="comboEdad" min="-2" pref="63" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jlbSexo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="jlbComboEdad" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="comboSexo" alignment="0" min="-2" pref="44" max="-2" attributes="0"/>
+                          <Component id="jlbSexo" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jlbComboEdad" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboEdad" min="-2" pref="63" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jlbTelefono1" min="-2" max="-2" attributes="0"/>
                           <Component id="jtfDireccion" max="32767" attributes="0"/>
@@ -120,7 +117,7 @@
               <Component id="jlbTelefono" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
               <Component id="jtfTelefono" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="40" max="32767" attributes="0"/>
+              <EmptySpace pref="44" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="nuevoRegistroButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="registrarButton" alignment="3" min="-2" max="-2" attributes="0"/>
