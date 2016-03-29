@@ -182,7 +182,6 @@ public final class TreeInterfazPrincipal extends JTree {
                                             JOptionPane.INFORMATION_MESSAGE);
                                 }
 
-//                StaticVarsBusiness.mapPruebas.put(treePrueba.getGrupoPruebas().getNombre(), new ArrayList<Prueba>(temp));
                             }
                             Interfaz_Resultado.jScrollPane1.setViewportView(new JTablePruebas());
                         }
@@ -191,37 +190,5 @@ public final class TreeInterfazPrincipal extends JTree {
                 }
             }
         });
-//        this.addMouseListener(new MouseAdapter() {
-//  public void mouseClicked(MouseEvent me) {
-//      System.out.println("qweewq");
-//        int x= me.getX();
-//      int y= me.getY();
-// 
-//      if (getRowForLocation(x, y) == -1) ;
-//
-//      DefaultMutableTreeNode nodo= (DefaultMutableTreeNode) getPathForLocation(x, y).getLastPathComponent();
-//      
-//      JMenuPruebaTree jMenuPruebaTree = new JMenuPruebaTree();
-//      if(SwingUtilities.isRightMouseButton(me)){
-//          System.out.println("aaaaaaaa");
-//          JPopupMenu menu = new JPopupMenu();
-//           menu.add(new JMenuItem("Test"));
-//        
-//    }
-//     
-//  }
-//});
-
     }
-//      private TreeSelectionListener createSelectionListener() {
-//        return new TreeSelectionListener() {
-//            public void valueChanged(TreeSelectionEvent e) {
-//                TreePath path = e.getPath();  
-//                
-//                int pathCount = path.getPathCount();
-//               
-//            }
-//        };
-//    }
-
 }
